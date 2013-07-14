@@ -1,0 +1,21 @@
+$(function() {
+	$("#main-nav li a.active")
+
+	$("#home-link").hover(function() {
+		$li = $(this);
+		$img = $(this).find("img");
+		if(!$li.hasClass("active")) {
+			$img.attr("src", "/assets/home-active.png");
+		}
+	}, function() {
+		if(!$li.hasClass("active")) {		
+			$img.attr("src", "/assets/home.png");			
+		}
+	});
+
+	$("#main-nav li a").hover(function() {
+		$(this).closest("li").addClass("hover");
+	}, function() {
+		$(this).closest("li").removeClass("hover");
+	});
+});
