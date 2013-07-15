@@ -1,0 +1,17 @@
+
+.DS_Store
+
+app/controllers/pages_controller.rb
+
+app/controllers/pages_controller.rb
+
+log/development.log
+
+tmp/pids/server.pid
+
+tmp
+
+tmp/
+
+tmp/*
+.DS_Store
