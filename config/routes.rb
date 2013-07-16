@@ -4,7 +4,7 @@ MarketingSite::Application.routes.draw do
   match "services", to: "pages#services"
   match "contact", to: "pages#contact"
   match "about", to: "pages#about"
-  match "offera", to: "pages#offers"
+  match "offers", to: "pages#offers"
   match "faq", to: "pages#faq"
   match "terms", to: "pages#terms"
   resources :companies
