@@ -8,4 +8,8 @@ MarketingSite::Application.routes.draw do
   match "faq", to: "pages#faq"
   match "terms", to: "pages#terms"
   resources :companies
+
+  namespace :admin do
+  	match "dashboard", to: "admin#dashboard"
+  end
 end

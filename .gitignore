@@ -15,3 +15,5 @@ tmp/
 
 tmp/*
 .DS_Store
+
+config/admin.yml
