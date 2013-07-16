@@ -86,21 +86,21 @@ ul.inline li {
 	margin-right: 18px;
 }
 
-ul.inline li img.hover-img {
+#main-nav ul.inline li img.hover-img {
 	display: none;
 	position: absolute;
 	top: -22px;
 }
 
-ul.inline li.active img.hover-img, ul.inline li.hover img.hover-img {
+#main-nav ul.inline li.active img.hover-img, #main-nav ul.inline li.hover img.hover-img {
 	display: block;
 }
 
-ul.inline li img.hover-img.left {
+#main-nav ul.inline li img.hover-img.left {
 	left: -10px;
 }
 
-ul.inline li img.hover-img.right {
+#main-nav ul.inline li img.hover-img.right {
 	right: -10px;
 }
 
@@ -111,7 +111,7 @@ ul.inline li a {
 	padding: 21px 10px 10px 10px;
 }
 
-ul.inline li.active a, ul.inline li a:hover {
+#main-nav ul.inline li.active a, #main-nav ul.inline li a:hover {
 	text-decoration: none;
 	background: #326da1;
 	background: -moz-linear-gradient(top,  #326da1 0%, #6290bd 100%);
