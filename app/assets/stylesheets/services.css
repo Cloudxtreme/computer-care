@@ -1,0 +1,25 @@
+#services {
+  margin-left: -20px;
+  margin-top: 20px;
+}
+article.service {
+  float: left;
+  width: 270px;
+  height: 200px;
+  background-color: #EBEBEB;
+  margin-left: 22px;
+  margin-bottom: 30px;
+  padding: 30px;
+  border: 1px solid #497FAF;
+}
+
+article.service h1 {
+  font-size: 160%;
+  font-weight: 200;
+  color: #F99704;
+  margin:0;
+}
+
+article.service p {
+  color: #237DC1;
+}
