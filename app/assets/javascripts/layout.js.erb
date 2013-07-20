@@ -18,4 +18,23 @@ $(function() {
 	}, function() {
 		$(this).closest("li").removeClass("hover");
 	});
+
+	$(document).pjax("#services a.btn", "#main-content");
+
+	$("#services a.btn").click(function() {
+		$("#main-content").css("opacity", "0.3");
+		$("body").append("<div id='spinner'></img>")
+
+		$("#spinner").css("top", $("#main-content").offset().top + 100);
+		$("#spinner").css("left", $("#main-content").offset().left + ($("#main-content").width() / 2) - 60);
+		$('html, body').animate({
+			scrollTop: $("#main-content").offset().top
+		}, 800);		
+	});
+
+	$(document).on("pjax:success", function(xhr, data){
+		$("#main-content").html(data);
+		$("#main-content").css("opacity", "1");
+		$("#spinner").remove();
+	});
 });

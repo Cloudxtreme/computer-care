@@ -14,6 +14,9 @@ tmp
 tmp/
 
 tmp/*
+
+tmp/cache/assets/
+
 .DS_Store
 
 config/admin.yml

@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row-fluid">
-                <div class="span10 offset1">
+                <div class="span10 offset1 wrapper">
                     <nav id="main-nav" class="clearfix">
                         <%= home_link %>
                         <ul class="unstyled pull-left inline">
@@ -45,24 +45,24 @@
                                 <%= image_tag("right-wing.png", :class => "hover-img right") %>
                                 <%= link_to "Services", services_path %>
                             </li>
-                            <li class="<%= is_active('contact') %>">
+                            <li class="<%= is_active('pages', 'contact') %>">
                                 <%= image_tag("left-wing.png", :class => "hover-img left") %>
                                 <%= image_tag("right-wing.png", :class => "hover-img right") %>
                                 <%= link_to "Contact", contact_path %>
                             </li>
-                            <li class="<%= is_active('about') %>">
+                            <li class="<%= is_active('pages', 'about') %>">
                                 <%= image_tag("left-wing.png", :class => "hover-img left") %>
                                 <%= image_tag("right-wing.png", :class => "hover-img right") %>
                                 <%= link_to "About", about_path %>
                             </li>
                         </ul>
                         <ul class="unstyled pull-right inline">
-                            <li class="<%= is_active('offers') %>">
+                            <li class="<%= is_active('pages', 'offers') %>">
                                 <%= image_tag("left-wing.png", :class => "hover-img left") %>
                                 <%= image_tag("right-wing.png", :class => "hover-img right") %>
                                 <%= link_to "Offers", offers_path %>
                             </li>
-                            <li class="<%= is_active('faq') %>">
+                            <li class="<%= is_active('pages', 'faq') %>">
                                 <%= image_tag("left-wing.png", :class => "hover-img left") %>
                                 <%= image_tag("right-wing.png", :class => "hover-img right") %>
                                 <%= link_to "FAQ", faq_path %>
@@ -73,7 +73,7 @@
             </div>
         </header>
         <div class="row-fluid">
-            <div class="span10 offset1">
+            <div class="span10 offset1 wrapper">
                 <%= yield %>
             </div>
         </div>

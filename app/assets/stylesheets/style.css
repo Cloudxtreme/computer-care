@@ -14,6 +14,19 @@ body {
     background-image: url('tile.jpg'); 
 }
 
+.wrapper {
+	max-width: 1048px;
+}
+
+#spinner {
+	height: 128px;
+	width: 128px;
+	position: absolute;
+	background-image: url('spinner.gif');
+	left: 50%;
+	top: 50%;
+}
+
 /* HEADER */
 
 header.main {
@@ -128,8 +141,28 @@ ul.inline li a {
 #main-content {
 	background-color: #FFFFFF;
 	width: 100%;
-	height: 600px;
+	min-height: 400px;
 	margin: 20px 0;
+	padding: 0 10px 10px 10px;
+  	border-left: 1px solid #497FAF;
+  	border-right: 1px solid #497FAF;
+  	border-bottom: 1px solid #497FAF;
+}
+
+#main-content header {
+	width: 102%;
+	height: 50px;
+	padding-bottom: 2px;
+	margin-left: -1%;
+	margin-bottom: 10px;
+	background-image: url('diagonal-stripe.png');
+}
+
+#main-content header h1 {
+	color: #69A4CD;
+	margin-left: 1%;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 hr.dark {

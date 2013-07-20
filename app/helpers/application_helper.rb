@@ -7,8 +7,12 @@ module ApplicationHelper
         end
     end
 
-    def is_active(page)
-    	"active" if controller.action_name.eql?(page)
+    def is_active(controller_name, action_name=nil)
+            if action_name
+    	   "active" if controller.controller_name.eql?(controller_name) && controller.action_name.eql?(action_name)
+        else
+            "active" if controller.controller_name.eql?(controller_name)
+        end
     end
 
     def home_link

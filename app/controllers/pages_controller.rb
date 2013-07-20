@@ -2,9 +2,6 @@ class PagesController < ApplicationController
     def home
     end
 
-    def services
-    end
-
     def contact
     end
 
@@ -18,5 +15,5 @@ class PagesController < ApplicationController
     end
 
     def terms
-    end
+    end                   
 end
