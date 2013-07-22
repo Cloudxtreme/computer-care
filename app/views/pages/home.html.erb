@@ -1,100 +1,102 @@
-<div id="slider">
-    <article class="clearfix">
-        <header><span>1</span></header>
-        <div class="content clearfix">
-            <div class="pull-left">
-                <h1>Welcome!</h1>
-                <p>
-                    Welcome to Cheaper Computer Care!
-                    We specialize in providing quality computing services with the best prices and easy convenience for our customers.
-                </p>
-                <p>
-                    No.1 in PC Services across the UK, offering a strict No Fix No Fee service.
-                </p>
-                <p>
-                    No.1 for Student discounts!
-                </p>
-                <p>
-                    No.1 for servicing convenience - offering the 1st and only free home collection and return service. 
-                </p>
-                <button>Click here for our full list of services</button>
+<div id="slider-container">
+    <div id="slider">
+        <article class="first active">
+            <header><span>1</span></header>
+            <div class="content clearfix">
+                <div class="pull-left">
+                    <h1>Welcome!</h1>
+                    <p>
+                        Welcome to Cheaper Computer Care!
+                        We specialize in providing quality computing services with the best prices and easy convenience for our customers.
+                    </p>
+                    <p>
+                        No.1 in PC Services across the UK, offering a strict No Fix No Fee service.
+                    </p>
+                    <p>
+                        No.1 for Student discounts!
+                    </p>
+                    <p>
+                        No.1 for servicing convenience - offering the 1st and only free home collection and return service. 
+                    </p>
+                    <button>Click here for our full list of services</button>
+                </div>
+                <div class="pull-left image">
+                    <%= image_tag("bob-thumbs-up.png") %>
+                </div>
             </div>
-            <div class="pull-right">
-                <%= image_tag("bob-thumbs-up.png") %>
+        </article>
+        <article class="second collapsed">
+            <header><span>2</span></header>
+            <div class="content clearfix">
+                <div class="pull-left">
+                    <h1>Data Recovery Specialist</h1>
+                    <p>
+                        If you have lost important data due to a corrupt file, system failure, virus or simply due to accidental deletion we are here to help.
+                    </p>
+                    <p>
+                        Using specialist forensic techniques we can successfully recover data from all major mediums even if you PC doesn't boot!
+                    </p>
+                    <p>
+                        We can successfully recover from the following:
+                    </p>
+                    <ul>
+                        <li>Internal and External Hard Drives</li>
+                        <li>USB Memory Sticks</li>
+                        <li>Camera Memory Cards</li>
+                        <li>Even mobile phone memory</li>
+                    </ul>
+                    <button>Click here for more info on our Data Recovery services</button>
+                </div>
+                <div class="pull-left image">
+                    <%= image_tag("bob-with-a-pencil.png") %>
+                </div>
             </div>
-        </div>
-    </article>
-    <article>
-        <header><span>2</span></header>
-        <div class="content clearfix">
-            <div class="pull-left">
-                <h1>Data Recovery Specialist</h1>
-                <p>
-                    If you have lost important data due to a corrupt file, system failure, virus or simply due to accidental deletion we are here to help.
-                </p>
-                <p>
-                    Using specialist forensic techniques we can successfully recover data from all major mediums even if you PC doesn't boot!
-                </p>
-                <p>
-                    We can successfully recover from the following:
-                </p>
-                <ul>
-                    <li>Internal and External Hard Drives</li>
-                    <li>USB Memory Sticks</li>
-                    <li>Camera Memory Cards</li>
-                    <li>Even mobile phone memory</li>
-                </ul>
-                <button>Click here for more info on our Data Recovery services</button>
+        </article>
+        <article class="third collapsed">
+            <header><span>3</span></header>
+            <div class="content clearfix">
+                <div class="pull-left">
+                    <h1>Virus Removal</h1>
+                    <p>
+                        When those viruses infect your computer it can be a real pain and inconvenience trying to put it right again.  We are here to ensure your computer is running at its best and virus free.
+                    </p>
+                    <ul>
+                        <li>Offering free secure collection and delivery right back ti your doorstep, let us put things right again.</li>
+                    </ul>
+                    <button>Click here for more info on our Virus Removal services</button>
+                </div>
+                <div class="pull-left image">
+                    <%= image_tag("worried-bob.png") %>
+                </div>
             </div>
-            <div class="pull-right">
-                <%= image_tag("bob-with-a-pencil.png") %>
+        </article>
+        <article class="fourth collapsed">
+            <header><span>4</span></header>
+            <div class="content clearfix">
+                <div class="pull-left">
+                    <h1>Exclusive Offers</h1>
+                    <p>
+                        We are currently revising our product offers, please enter your email below to be kept up to date and receive exclusive offers.
+                    </p>
+                </div>
             </div>
-        </div>
-    </article>
-    <article>
-        <header><span>3</span></header>
-        <div class="content clearfix">
-            <div class="pull-left">
-                <h1>Virus Removal</h1>
-                <p>
-                    When those viruses infect your computer it can be a real pain and inconvenience trying to put it right again.  We are here to ensure your computer is running at its best and virus free.
-                </p>
-                <ul>
-                    <li>Offering free secure collection and delivery right back ti your doorstep, let us put things right again.</li>
-                </ul>
-                <button>Click here for more info on our Virus Removal services</button>
+        </article>
+        <article class="fifth collapsed">
+            <header><span>5</span></header>
+            <div class="content clearfix">
+                <div class="pull-left">
+                    <h1>Saving Even More!</h1>
+                    <p>
+                        As if our prices weren't cheap enough we even offer 15% Student Discount for all services.
+                    </p>
+                    <button>Click here to register</button>
+                </div>
+                <div class="pull-left image">
+                    <%= image_tag("bob-in-shades.png") %>
+                </div>
             </div>
-            <div class="pull-right">
-                <%= image_tag("worried-bob.png") %>
-            </div>
-        </div>
-    </article>
-    <article>
-        <header><span>4</span></header>
-        <div class="content clearfix">
-            <div class="pull-left">
-                <h1>Exclusive Offers</h1>
-                <p>
-                    We are currently revising our product offers, please enter your email below to be kept up to date and receive exclusive offers.
-                </p>
-            </div>
-        </div>
-    </article>
-    <article>
-        <header><span>5</span></header>
-        <div class="content clearfix">
-            <div class="pull-left">
-                <h1>Saving Even More!</h1>
-                <p>
-                    As if our prices weren't cheap enough we even offer 15% Student Discount for all services.
-                </p>
-                <button>Click here to register</button>
-            </div>
-            <div class="pull-right">
-                <%= image_tag("bob-in-shades.png") %>
-            </div>
-        </div>
-    </article>             
+        </article>             
+    </div>
 </div>
 
 <hr class="dark">

@@ -1,5 +1,22 @@
 $(function() {
-	$("#main-nav li a.active")
+	initialize_slider();
+	function initialize_slider() {
+		var num_slides = $("#slider article").length;
+		var header_width = $("#slider article header").outerWidth(true);
+		var container_width = $("#slider").outerWidth(true);
+		var slide_width = (container_width - ((num_slides - 1) * header_width)) / container_width * 100;
+		
+		// set the width of the slider content
+		$("#slider article").css("width", slide_width + "%");
+		// display all of the collapsed article headers at the correct distance apart
+		$("#slider article.collapsed").show();
+		$("#slider article.collapsed").css("width", header_width + "px");
+		$("#slider article.collapsed").each(function(i) {
+			$(this).css("right", (header_width * (i)) + "px");
+		});
+	}
+
+	$("#main-nav li a.active");
 
 	$("#home-link").hover(function() {
 		$li = $(this);
