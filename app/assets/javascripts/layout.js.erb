@@ -1,21 +1,93 @@
 $(function() {
+
+	/* SLIDER */
 	initialize_slider();
 	function initialize_slider() {
-		var num_slides = $("#slider article").length;
-		var header_width = $("#slider article header").outerWidth(true);
-		var container_width = $("#slider").outerWidth(true);
-		var slide_width = (container_width - ((num_slides - 1) * header_width)) / container_width * 100;
+		var header_width = slider_header_width();
+		var slide_width = slider_slide_width();
 		
+		$("#slider article").removeAttr("style");
+		$("#slider article").removeClass("collapsed");
+		$("#slider article").removeClass("active");
+		$("#slider article").first().addClass("active");
+		$("#slider article:not(.active)").addClass("collapsed");
+		$("#slider article.active").show();
 		// set the width of the slider content
 		$("#slider article").css("width", slide_width + "%");
 		// display all of the collapsed article headers at the correct distance apart
 		$("#slider article.collapsed").show();
 		$("#slider article.collapsed").css("width", header_width + "px");
-		$("#slider article.collapsed").each(function(i) {
+		$("#slider article.collapsed").each(function(i) {			
 			$(this).css("right", (header_width * (i)) + "px");
 		});
 	}
 
+	var slider_interval = 1000;
+	var reset = false;
+	var timer = setInterval(function() {
+		if(reset == true) {
+			initialize_slider();
+			reset = false;
+		}
+		else {
+			var header_width = slider_header_width();
+			var $active = $("#slider article.active");
+			var $next = $active.next();
+			// make current slide inactive
+			$active.removeClass("active");
+			$active.addClass("collapsed");
+			$active.show();
+			$active.css("width", header_width);
+			// make next slide active
+			$next.addClass("active");
+			$next.removeClass("collapsed");
+			$next.css("width", slider_slide_width() + "%");
+			// update all slides positions
+			var active_slide = active_slide_position();
+			var num_slides = $("#slider article").length;
+			$("#slider article").each(function(i) {
+				// if the slide is before the active slide
+				if(i <= active_slide) {
+					// set its left position
+					$(this).css("left", (header_width*i) + "px");
+				}
+				else {
+					// set its right position
+					$(this).css("right", (header_width*(num_slides - (i+1))) + "px");
+				}
+			});
+
+			// if we get to the last slide, start again
+			if((active_slide_position() + 1) == num_slides) {
+				console.log("done");
+				reset = true;
+			}
+		}
+	}, slider_interval);
+
+	function active_slide_position() {
+		var active_slide_position;
+		$("#slider article").each(function(i) {
+			if($(this).hasClass("active")) {
+				active_slide_position = i;
+			}
+		});
+		return active_slide_position;
+	}
+
+	function slider_header_width() {
+		return $("#slider article header").outerWidth(true);
+	}
+
+	function slider_slide_width() {
+		var header_width = slider_header_width();
+		var num_slides = $("#slider article").length;	
+		var container_width = $("#slider").outerWidth(true);
+		var slide_width = (container_width - ((num_slides - 1) * header_width)) / container_width * 100;
+		return slide_width;
+	}
+
+	/* NAVIGATION LINKS */
 	$("#main-nav li a.active");
 
 	$("#home-link").hover(function() {
