@@ -33,15 +33,19 @@ $(function() {
 			var header_width = slider_header_width();
 			var $active = $("#slider article.active");
 			var $next = $active.next();
-			// make current slide inactive
-			$active.removeClass("active");
-			$active.addClass("collapsed");
-			$active.show();
-			$active.css("width", header_width);
 			// make next slide active
 			$next.addClass("active");
 			$next.removeClass("collapsed");
-			$next.css("width", slider_slide_width() + "%");
+			$next.animate({
+				width: slider_slide_width() + "%"
+			}, 500, function() {
+				// make current slide inactive
+				$active.removeClass("active");
+				$active.addClass("collapsed");
+				$active.show();
+				$active.css("width", header_width);				
+			});
+			//$next.css("width", slider_slide_width() + "%");
 			// update all slides positions
 			var active_slide = active_slide_position();
 			var num_slides = $("#slider article").length;
