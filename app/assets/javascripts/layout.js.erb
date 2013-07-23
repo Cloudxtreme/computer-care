@@ -22,7 +22,7 @@ $(function() {
 		});
 	}
 
-	var slider_interval = 1000;
+	var slider_interval = 2000;
 	var reset = false;
 	var timer = setInterval(function() {
 		if(reset == true) {
@@ -36,14 +36,16 @@ $(function() {
 			// make next slide active
 			$next.addClass("active");
 			$next.removeClass("collapsed");
+			$next.css("border-right", "1px solid #000000");
 			$next.animate({
 				width: slider_slide_width() + "%"
-			}, 500, function() {
+			}, 800, function() {
 				// make current slide inactive
 				$active.removeClass("active");
 				$active.addClass("collapsed");
 				$active.show();
-				$active.css("width", header_width);				
+				$active.css("width", header_width);
+				$next.css("border", "none");
 			});
 			//$next.css("width", slider_slide_width() + "%");
 			// update all slides positions
