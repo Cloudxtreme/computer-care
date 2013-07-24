@@ -22,54 +22,64 @@ $(function() {
 		});
 	}
 
-	var slider_interval = 2000;
-	var reset = false;
-	var timer = setInterval(function() {
-		if(reset == true) {
-			initialize_slider();
-			reset = false;
-		}
-		else {
-			var header_width = slider_header_width();
-			var $active = $("#slider article.active");
-			var $next = $active.next();
-			// make next slide active
-			$next.addClass("active");
-			$next.removeClass("collapsed");
-			$next.css("border-right", "1px solid #000000");
-			$next.animate({
-				width: slider_slide_width() + "%"
-			}, 800, function() {
-				// make current slide inactive
-				$active.removeClass("active");
-				$active.addClass("collapsed");
-				$active.show();
-				$active.css("width", header_width);
-				$next.css("border", "none");
-			});
-			//$next.css("width", slider_slide_width() + "%");
-			// update all slides positions
-			var active_slide = active_slide_position();
-			var num_slides = $("#slider article").length;
-			$("#slider article").each(function(i) {
-				// if the slide is before the active slide
-				if(i <= active_slide) {
-					// set its left position
-					$(this).css("left", (header_width*i) + "px");
-				}
-				else {
-					// set its right position
-					$(this).css("right", (header_width*(num_slides - (i+1))) + "px");
-				}
-			});
+	timer = animate_slider(4000, 1000);
 
-			// if we get to the last slide, start again
-			if((active_slide_position() + 1) == num_slides) {
-				console.log("done");
-				reset = true;
+	function animate_slider(slider_interval, animation_time) {
+		var reset = false;		
+		var timer = setInterval(function() {
+			if(reset == true) {
+				initialize_slider();
+				reset = false;
 			}
-		}
-	}, slider_interval);
+			else {
+				var header_width = slider_header_width();
+				var $active = $("#slider article.active");
+				var $next = $active.next();
+				// make next slide active
+				$next.addClass("active");
+				$next.removeClass("collapsed");
+				$next.css("border-right", "1px solid #000000");
+				$next.animate({
+					width: slider_slide_width() + "%"
+				}, animation_time, function() {
+					// make current slide inactive
+					$active.removeClass("active");
+					$active.addClass("collapsed");
+					$active.show();
+					$active.css("width", header_width);
+					$next.css("border", "none");
+				});
+				//$next.css("width", slider_slide_width() + "%");
+				// update all slides positions
+				var active_slide = active_slide_position();
+				var num_slides = $("#slider article").length;
+				$("#slider article").each(function(i) {
+					// if the slide is before the active slide
+					if(i <= active_slide) {
+						// set its left position
+						$(this).css("left", (header_width*i) + "px");
+					}
+					else {
+						// set its right position
+						$(this).css("right", (header_width*(num_slides - (i+1))) + "px");
+					}
+				});
+
+				// if we get to the last slide, start again
+				if((active_slide_position() + 1) == num_slides) {
+					reset = true;
+				}
+			}
+		}, slider_interval);
+	
+		return timer;
+	}
+
+	$("#slider article").hover(function() {
+		clearInterval(timer);
+	}, function() {
+		timer = animate_slider(4000, 1000);
+	});
 
 	function active_slide_position() {
 		var active_slide_position;
