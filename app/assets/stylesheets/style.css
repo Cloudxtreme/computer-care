@@ -246,5 +246,7 @@ footer ul.inline li a {
 	#main-nav ul.inline li.active img.hover-img, #main-nav ul.inline li.hover img.hover-img {
 		display: none;
 	}
-
+	header.main {
+		background: none;
+	}
 }

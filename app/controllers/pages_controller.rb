@@ -15,5 +15,9 @@ class PagesController < ApplicationController
     end
 
     def terms
-    end                   
+    end    
+
+    def slider
+        render :partial => "pages/slider"
+    end               
 end

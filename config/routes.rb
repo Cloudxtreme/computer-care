@@ -6,6 +6,7 @@ MarketingSite::Application.routes.draw do
   match "offers", to: "pages#offers"
   match "faq", to: "pages#faq"
   match "terms", to: "pages#terms"
+  match "slider", to: "pages#slider"
 
   resources :services do
     collection do

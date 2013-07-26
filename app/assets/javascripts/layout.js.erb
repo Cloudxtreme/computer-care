@@ -1,7 +1,36 @@
 $(function() {
+	 var width = get_device_width();
+	 var timer;
+	 function get_device_width() {
+	 	return (window.innerWidth > 0) ? window.innerWidth : screen.width;
+	 }
 
 	/* SLIDER */
-	initialize_slider();
+	setup_slider();
+	$(window).resize(function(){
+		$("#slider-container").load("/slider", function() {
+			clearInterval(timer);
+			setup_slider();
+		});		
+	});
+
+	function setup_slider() {
+		if(get_device_width() > 520 && $("#slider article").length > 1) {
+			initialize_slider();
+			timer = animate_slider(2000, 1000);
+		}
+	}
+
+	$("#slider article").hover(function() {
+		if(get_device_width() > 520 && $("#slider article").length > 1) {
+			clearInterval(timer);
+		}
+	}, function() {
+		if(get_device_width() > 520 && $("#slider article").length > 1) {
+			timer = animate_slider(4000, 1000);
+		}
+	});
+
 	function initialize_slider() {
 		var header_width = slider_header_width();
 		var slide_width = slider_slide_width();
@@ -17,12 +46,10 @@ $(function() {
 		// display all of the collapsed article headers at the correct distance apart
 		$("#slider article.collapsed").show();
 		$("#slider article.collapsed").css("width", header_width + "px");
-		$("#slider article.collapsed").each(function(i) {			
+		$($("#slider article.collapsed").get().reverse()).each(function(i) {			
 			$(this).css("right", (header_width * (i)) + "px");
 		});
 	}
-
-	timer = animate_slider(4000, 1000);
 
 	function animate_slider(slider_interval, animation_time) {
 		var reset = false;		
@@ -39,17 +66,15 @@ $(function() {
 				$next.addClass("active");
 				$next.removeClass("collapsed");
 				$next.css("border-right", "1px solid #000000");
-				$next.animate({
-					width: slider_slide_width() + "%"
-				}, animation_time, function() {
-					// make current slide inactive
-					$active.removeClass("active");
-					$active.addClass("collapsed");
-					$active.show();
-					$active.css("width", header_width);
-					$next.css("border", "none");
-				});
-				//$next.css("width", slider_slide_width() + "%");
+				$next.width(slider_slide_width() + "%");
+
+				// make current slide inactive
+				$active.removeClass("active");
+				$active.addClass("collapsed");
+				$active.show();
+				$active.css("width", header_width);
+				$next.css("border", "none");
+
 				// update all slides positions
 				var active_slide = active_slide_position();
 				var num_slides = $("#slider article").length;
@@ -74,12 +99,6 @@ $(function() {
 	
 		return timer;
 	}
-
-	$("#slider article").hover(function() {
-		clearInterval(timer);
-	}, function() {
-		timer = animate_slider(4000, 1000);
-	});
 
 	function active_slide_position() {
 		var active_slide_position;
