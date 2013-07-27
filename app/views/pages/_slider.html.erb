@@ -17,7 +17,7 @@
                     <p>
                         No.1 for servicing convenience - offering the 1st and only free home collection and return service. 
                     </p>
-                    <button>more info</button>
+                    <%= link_to "more info", services_path, :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-thumbs-up.png") %>
@@ -44,7 +44,7 @@
                         <li>Camera Memory Cards</li>
                         <li>Even mobile phone memory</li>
                     </ul>
-                    <button>more info</button>
+                    <%= link_to "more info", data_recovery_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-with-a-pencil.png") %>
@@ -62,7 +62,7 @@
                     <ul>
                         <li>Offering free secure collection and delivery right back ti your doorstep, let us put things right again.</li>
                     </ul>
-                    <button>more info</button>
+                    <%= link_to "more info", virus_removal_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("worried-bob.png") %>
