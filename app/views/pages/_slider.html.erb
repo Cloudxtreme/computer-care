@@ -72,6 +72,13 @@
         <article class="fourth collapsed">
             <header><span>4</span></header>
             <div class="content clearfix">
+                <%= image_tag("newsletter.png", :id => "newsletter-background") %>
+                <%= form_for @newsletter_user, :id => "newsletter-form" do |f| %>
+                    <h4>Notify me!</h4>
+                    <p>Join our newsletter</p>
+                    <%= f.text_field :email %><br>
+                    <%= f.submit :register, :class => "btn btn-medium" %>
+                <% end %>                
                 <div class="pull-left">
                     <h1>Exclusive Offers</h1>
                     <p>
@@ -79,7 +86,7 @@
                     </p>
                 </div>
             </div>
-        </article>
+        </article>    
         <article class="fifth collapsed">
             <header><span>5</span></header>
             <div class="content clearfix">

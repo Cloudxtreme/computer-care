@@ -1,0 +1,12 @@
+<div id="main-content">
+  <header>
+    <h1>Newsletter Subscribers</h1>
+  </header>
+  <div class="service">
+    <ul>
+      <% @users.each_with_index do |user, i| %>
+        <li><%= i+1 %> - <%= user.email %> - <%= user.created_at %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

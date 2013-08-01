@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
     def home
+        @newsletter_user = NewsletterUser.new
     end
 
     def contact
@@ -18,6 +19,7 @@ class PagesController < ApplicationController
     end    
 
     def slider
+        @newsletter_user = NewsletterUser.new
         render :partial => "pages/slider"
     end               
 end

@@ -1,8 +1,14 @@
 $(function() {
 	 var width = get_device_width();
-	 var timer;
+
+	 $("#notice").slideDown(500, function() {
+	 	var notice_timer = setTimeout(function() {
+	 		$("#notice").fadeOut(1500);
+	 	}, 2000);
+	 });
 
 	/* SLIDER */
+	var timer;	
 	$("#slider-container").load("/slider", function() {	
 		setup_slider();
 	});

@@ -28,6 +28,19 @@ body {
 	top: 50%;
 }
 
+#notice {
+	position: absolute;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	padding: 10px;
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 4px;	
+	z-index: 100;
+	font-weight: bold;
+	left: 23%;
+	top: 10%;
+}
+
 /* HEADER */
 
 header.main {
@@ -140,30 +153,56 @@ ul.inline li a {
 /* MAIN LAYOUT */
 
 #main-content {
+	position: relative;
 	background-color: #FFFFFF;
-	width: 100%;
+	width: 94%;
 	min-height: 400px;
-	margin: 20px 0;
-	padding: 0 10px 10px 10px;
+	margin: 20px 0 20px 10px;
+	padding: 0 2% 10px 2%;
   	border-left: 1px solid #497FAF;
   	border-right: 1px solid #497FAF;
   	border-bottom: 1px solid #497FAF;
+  	z-index: 10;
 }
 
 #main-content header {
+	position: absolute;
+	top:0;
+	left: -1%;
 	width: 102%;
 	height: 50px;
-	padding-bottom: 2px;
-	margin-left: -1%;
-	margin-bottom: 10px;
 	background-image: url('diagonal-stripe.png');
 }
 
+#main-content header .img-shadow {
+	position: absolute;
+	z-index: 1;
+	width: 12px;
+}
+
+#main-content header .img-shadow img {
+	max-width: 100%;
+}
+
+#main-content header .img-shadow.left {
+	bottom: -10px;
+	left: 0;
+}
+
+#main-content header .img-shadow.right {
+	bottom: -10px;
+	right: 0;	
+}
+
 #main-content header h1 {
+	position: relative;
 	color: #69A4CD;
-	margin-left: 1%;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	margin: 0;
+	padding: 3px 0 0 10px;
+}
+
+#main-content .service {
+	padding-top: 75px;
 }
 
 hr.dark {

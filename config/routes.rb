@@ -8,6 +8,8 @@ MarketingSite::Application.routes.draw do
   match "terms", to: "pages#terms"
   match "slider", to: "pages#slider"
 
+  resources :newsletter_users
+
   resources :services do
     collection do
       get :data_recovery
@@ -22,5 +24,6 @@ MarketingSite::Application.routes.draw do
 
   namespace :admin do
   	match "dashboard", to: "admin#dashboard"
+      resources :newsletter_users
   end
 end
