@@ -1,5 +1,6 @@
 MarketingSite::Application.routes.draw do
   root to: "pages#home"
+  match "send", to: "pages#contact_send"
   match "home", to: "pages#home"
   match "contact", to: "pages#contact"
   match "about", to: "pages#about"

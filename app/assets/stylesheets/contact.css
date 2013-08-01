@@ -1,0 +1,11 @@
+#contact .pull-left {
+  width: 40%;
+}
+
+#contact .pull-left .input {
+  width: 100%;
+}
+
+#contact .pull-right {
+  width: 40%;
+}
