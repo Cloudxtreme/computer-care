@@ -76,7 +76,7 @@
                 <%= form_for @newsletter_user, :id => "newsletter-form" do |f| %>
                     <h4>Notify me!</h4>
                     <p>Join our newsletter</p>
-                    <%= f.text_field :email %><br>
+                    <%= f.email_field :email %><br>
                     <%= f.submit :register, :class => "btn btn-medium" %>
                 <% end %>                
                 <div class="pull-left">
