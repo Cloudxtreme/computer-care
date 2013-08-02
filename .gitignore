@@ -19,8 +19,6 @@ tmp/cache/assets/
 
 .DS_Store
 
-config/admin.yml
-
 app/.DS_Store
 
 app/assets/.DS_Store
