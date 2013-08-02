@@ -58,7 +58,7 @@ MarketingSite::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
-    :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => "jsofokleous@googlemail.com",
     :password  => "25_tjv9hdJ3oPksp9sgaSw", # SMTP password is any valid API key
