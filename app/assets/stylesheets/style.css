@@ -19,6 +19,10 @@ body {
 	max-width: 1048px;
 }
 
+.wrapper.main {
+	overflow: hidden;
+}
+
 #spinner {
 	height: 128px;
 	width: 128px;
@@ -48,6 +52,10 @@ header.main {
 	background-image: url('highlight.png');
 	background-repeat: no-repeat;
 	background-position: 40px 25px;
+}
+
+header.main a:hover {
+	text-decoration: none;
 }
 
 header.main h1 {
