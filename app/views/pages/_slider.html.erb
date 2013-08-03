@@ -1,6 +1,12 @@
     <div id="slider">
         <article class="first active">
-            <header><span>1</span></header>
+            <header>
+                <%= image_tag("slider-shadow-top-left.png", :class => "left top") %>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-left.png", :class => "left bottom") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %>
+                <span>1</span>
+            </header>
             <div class="content clearfix">
                 <div class="pull-left">
                     <h1>Welcome!</h1>
@@ -25,7 +31,13 @@
             </div>
         </article>
         <article class="second collapsed">
-            <header><span>2</span></header>
+            <header>
+                <%= image_tag("slider-shadow-top-left.png", :class => "left top") %>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-left.png", :class => "left bottom") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %>
+                <span>2</span>
+            </header>
             <div class="content clearfix">
                 <div class="pull-left">
                     <h1>Data Recovery Specialist</h1>
@@ -52,7 +64,13 @@
             </div>
         </article>
         <article class="third collapsed">
-            <header><span>3</span></header>
+            <header>
+                <%= image_tag("slider-shadow-top-left.png", :class => "left top") %>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-left.png", :class => "left bottom") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %>
+                <span>3</span>
+            </header>
             <div class="content clearfix">
                 <div class="pull-left">
                     <h1>Virus Removal</h1>
@@ -70,7 +88,13 @@
             </div>
         </article>
         <article class="fourth collapsed">
-            <header><span>4</span></header>
+            <header>
+                <%= image_tag("slider-shadow-top-left.png", :class => "left top") %>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-left.png", :class => "left bottom") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %> 
+                <span>4</span>
+            </header>
             <div class="content clearfix">
                 <%= image_tag("newsletter.png", :id => "newsletter-background") %>
                 <%= form_for @newsletter_user, :id => "newsletter-form" do |f| %>
@@ -88,7 +112,13 @@
             </div>
         </article>    
         <article class="fifth collapsed">
-            <header><span>5</span></header>
+            <header>
+                <%= image_tag("slider-shadow-top-left.png", :class => "left top") %>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-left.png", :class => "left bottom") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %> 
+                <span>5</span>
+            </header>
             <div class="content clearfix">
                 <div class="pull-left">
                     <h1>Saving Even More!</h1>
@@ -101,6 +131,9 @@
                     <%= image_tag("bob-in-shades.png") %>
                 </div>
             </div>
-            <footer></footer>
+            <footer>
+                <%= image_tag("slider-shadow-top-right.png", :class => "right top") %>
+                <%= image_tag("slider-shadow-bottom-right.png", :class => "right bottom") %>
+            </footer>
         </article>             
     </div>

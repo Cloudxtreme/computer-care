@@ -51,6 +51,12 @@ $(function() {
 		$("#slider article").first().addClass("active");
 		$("#slider article:not(.active)").addClass("collapsed");
 		$("#slider article.active").show();
+		
+		$("#slider article.active header img.top.left").show();
+		$("#slider article.active header img.bottom.left").show();
+		$("#slider article.active").next("article").find("header img.bottom.right").show();
+		$("#slider article.active").next("article").find("header img.top.right").show();		
+
 		// set the width of the slider content
 		$("#slider article").css("width", slide_width + "%");
 		// display all of the collapsed article headers at the correct distance apart
@@ -72,6 +78,12 @@ $(function() {
 				var header_width = slider_header_width();
 				var $active = $("#slider article.active");
 				var $next = $active.next();
+				$("#slider article header img").hide();
+				$("header img.top.left", $active.next()).show();
+				$("header img.bottom.left", $active.next()).show();
+				$("header img.top.right", $next.next()).show();
+				$("header img.bottom.right", $next.next()).show();
+
 				// make next slide active
 				$next.addClass("active");
 				$next.removeClass("collapsed");

@@ -17,6 +17,7 @@ body {
 .wrapper {
 	position: relative;
 	max-width: 1048px;
+	overflow: hidden;
 }
 
 #spinner {
