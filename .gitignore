@@ -26,5 +26,3 @@ app/assets/.DS_Store
 app/.DS_Store
 
 log/production.log
-
-public/assets
