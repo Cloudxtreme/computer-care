@@ -42,6 +42,7 @@ article.service p {
 @media screen and (max-width: 520px) {
   article.service {
     width: auto;
+    height: auto;
   }
   article.service a.btn {
     bottom: -25px;
