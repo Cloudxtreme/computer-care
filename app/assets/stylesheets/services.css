@@ -40,9 +40,15 @@ article.service p {
 }
 
 @media screen and (max-width: 520px) {
-  article.service {
+  #services article.service {
     width: auto;
     height: auto;
+  }
+  #services article.service img {
+    display:none;
+  }  
+  #services article.service h1, #services article.service p {
+    margin-left: 0;
   }
   article.service a.btn {
     bottom: -25px;
