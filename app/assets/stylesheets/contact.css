@@ -9,3 +9,13 @@
 #contact .pull-right {
   width: 40%;
 }
+
+@media screen and (max-width: 520px) {
+  #contact .pull-left {
+    float: none;
+    width: 90%;
+  }
+  #contact .pull-right {
+    display:none;
+  }  
+}

@@ -25,6 +25,10 @@
   margin-top: 20px; 
 }
 
+#slider {
+  position: relative;
+}
+
 #slider article {
 	position: absolute;
       width: 100%;
@@ -194,5 +198,25 @@
 }
 
 @media screen and (max-width: 520px) {
-  
+  #slider-container {
+    height: auto;
+  }
+
+  #slider article {
+    height: auto;
+    position: relative;
+    margin: 0;
+  }
+
+  #slider article header {
+    height: 108%;
+  }
+
+  #slider article .content {
+    height: auto;
+  }
+
+  #slider article header img {
+    display: block;
+  }
 }
