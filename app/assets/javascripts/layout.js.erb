@@ -8,6 +8,46 @@ $(function() {
 	 });
 
 	/* SLIDER */
+	$("#slider-container").on("click", "#slider article header", function() {
+		var $article = $(this).closest("article");
+		var num = $("#slider article").index($article);
+		var header_width = slider_header_width();		
+		var slide_width = slider_slide_width();
+
+		$("#slider article").removeAttr("style");
+		$("#slider article").removeClass("collapsed");
+		$("#slider article").removeClass("active");
+		$("#slider article").css("width", slide_width + "%");
+
+		$article.addClass("active");
+		$("#slider article:not(.active)").addClass("collapsed");
+		$("#slider article.active").show();
+		$("#slider article.collapsed").show();
+
+		$("#slider article header img").hide();
+		$("#slider article.active header img.top.left").show();
+		$("#slider article.active header img.bottom.left").show();
+		$("#slider article.active").next("article").find("header img.bottom.right").show();
+		$("#slider article.active").next("article").find("header img.top.right").show();	
+
+		// update all slides positions
+		var active_slide = active_slide_position();
+		var num_slides = $("#slider article").length;
+
+		$("#slider article").each(function(i) {
+			// if the slide is before the active slide
+			if(i <= active_slide) {
+				// set its left position
+				$(this).css("left", (header_width*i) + "px");
+			}
+			else {
+				$(this).css("width", header_width+"px");
+				// set its right position
+				$(this).css("right", (header_width*(num_slides - (i+1))) + "px");
+			}
+		});
+	});
+
 	var timer;	
 	$("#slider-container").load("/slider", function() {	
 		setup_slider();
