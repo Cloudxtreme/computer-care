@@ -6,11 +6,17 @@
   <p>
     Enter your university email address below to receive your student discount code.
   </p>
-  <% if @discount_code.errors.any? %> 
-    <% @discount_code.errors.messages.each do |key, val| %>
-      <span class="label label-warning"><%= val %></span>
-    <% end %>
-  <% end %>
+  <% if @discount_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discount_code.errors.count, "error") %> prohibited this discount code from being saved:</h2>
+
+      <ul>
+      <% @discount_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>  
   <%= form_for @discount_code do |f| %>
     <%= f.text_field :name, :placeholder => "name" %><br>
     <%= f.email_field :email, :placeholder => "email" %><br>

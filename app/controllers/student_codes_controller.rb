@@ -6,10 +6,9 @@ class StudentCodesController < ApplicationController
   def create
     @discount_code = StudentCode.new(params[:student_code])
     if @discount_code.save
+      flash[:notice] = "Your discount code has been sent to your email address"
       redirect_to root_path
     else
-      logger.warn @discount_code.errors.inspect
-      logger.warn "*"*100
       render 'new'
     end
   end
