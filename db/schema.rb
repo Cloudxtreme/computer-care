@@ -11,10 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730140427) do
+ActiveRecord::Schema.define(:version => 20130808220849) do
 
   create_table "newsletter_users", :force => true do |t|
     t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "student_codes", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "code"
+    t.boolean  "is_valid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

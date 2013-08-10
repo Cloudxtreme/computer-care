@@ -1,0 +1,21 @@
+<div id="main-content">
+  <header>
+    <h1>Student Discount</h1>
+  </header>
+  <div class="service">
+  <p>
+    Enter your university email address below to receive your student discount code.
+  </p>
+  <% if @discount_code.errors.any? %> 
+    <% @discount_code.errors.messages.each do |key, val| %>
+      <span class="label label-warning"><%= val %></span>
+    <% end %>
+  <% end %>
+  <%= form_for @discount_code do |f| %>
+    <%= f.text_field :name, :placeholder => "name" %><br>
+    <%= f.email_field :email, :placeholder => "email" %><br>
+    <%= f.hidden_field :is_valid, :value => true %>
+    <%= f.submit :submit, :class => "btn" %>
+  <% end %>
+  <div>
+</div>

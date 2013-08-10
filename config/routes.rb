@@ -10,6 +10,7 @@ MarketingSite::Application.routes.draw do
   match "slider", to: "pages#slider"
 
   resources :newsletter_users
+  resources :student_codes
 
   resources :services do
     collection do
@@ -26,5 +27,6 @@ MarketingSite::Application.routes.draw do
   namespace :admin do
   	match "dashboard", to: "admin#dashboard"
       resources :newsletter_users
+      resources :student_codes
   end
 end
