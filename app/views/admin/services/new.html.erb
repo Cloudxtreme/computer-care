@@ -1,0 +1,15 @@
+<div id="main-content">
+  <header>
+    <h1>Services</h1>
+  </header>
+  <div class="service">
+    <%= link_to "back", admin_services_path %><br>
+    <%= form_for [:admin, @service] do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :base_cost %>
+      <%= f.number_field :base_cost %><br>
+      <%= f.submit :submit, :class => "btn" %>
+    <% end %>
+  </div>
+</div>

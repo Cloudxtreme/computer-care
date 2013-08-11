@@ -29,5 +29,6 @@ MarketingSite::Application.routes.draw do
   	match "dashboard", to: "admin#dashboard"
       resources :newsletter_users
       resources :student_codes
+      resources :services
   end
 end

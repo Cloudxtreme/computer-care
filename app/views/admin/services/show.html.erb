@@ -1,0 +1,11 @@
+<div id="main-content">
+  <header>
+    <h1>Services</h1>
+  </header>
+  <div class="service">
+    <%= link_to "back", admin_dashboard_path %>
+    <h2><%= @service.name %></h2>
+    <span><%= @service.base_cost %></span>
+    <%= button_to("remove", admin_service_path(@service.id), :method => :delete, :class => "btn") %>
+  </div>
+</div>
