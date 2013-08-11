@@ -5,6 +5,7 @@ class Admin::ServicesController < Admin::AdminController
 
   def show
     @service = Service.find(params[:id])
+    @options = @service.service_options
   end
 
   def new

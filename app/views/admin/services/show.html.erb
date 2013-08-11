@@ -1,11 +1,27 @@
 <div id="main-content">
   <header>
-    <h1>Services</h1>
+    <h1><%= @service.name %> Service</h1>
   </header>
   <div class="service">
     <%= link_to "back", admin_dashboard_path %>
-    <h2><%= @service.name %></h2>
-    <span><%= @service.base_cost %></span>
-    <%= button_to("remove", admin_service_path(@service.id), :method => :delete, :class => "btn") %>
+    <h5>Service Details</h5>
+    <ul>
+      <li>Service name: <%= @service.name %></li>
+      <li>Cost: <%= @service.base_cost %></li>
+    </ul>
+
+    <h5>Service Options</h5>
+      <ol>
+        <% @options.each do |option| %>
+          <li>
+            Option name: <%= option.name %><br>
+            Is arbitrary value?: <%= option.is_arbitrary %>
+          </li>
+        <% end %>
+        <li><%= link_to "add another option", new_admin_service_service_option_path(@service.id) %></li>
+      </ol>
+
+    <br>
+    <%= button_to("delete service", admin_service_path(@service.id), :method => :delete, :class => "btn") %>
   </div>
 </div>
