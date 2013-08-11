@@ -4,7 +4,7 @@ class StudentCode < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, :with => /@[A-Za-z0-9]+.ac.uk\Z/i, :on => :create
 
-  before_save :set_valid, :generate_code, :send_email
+  before_create :set_valid, :generate_code, :send_email
 
   private
     def set_valid

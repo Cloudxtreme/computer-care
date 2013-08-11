@@ -1,0 +1,32 @@
+<div id="main-content">
+  <header>
+    <h1>Student Discount Codes</h1>
+  </header>
+  <div class="service">
+    <%= link_to "back", admin_dashboard_path %>
+  <table border="1" cellpadding="10">
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Valid</th>
+      <th>Created At</th>
+      <th>ID</th>
+      <th></th>
+    </tr>
+    <% @students.each_with_index do |student, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= student.email %></td>
+        <td><%= student.name %></td>
+        <td><%= student.code %></td>
+        <td><%= student.is_valid %></td>
+        <td><%= student.created_at %></td>
+        <td><%= student.id %></td>
+        <td><%= button_to("make inactive", admin_student_code_path(student.id), :method => :delete) if student.is_valid %></td>
+      </tr>
+    <% end %>
+  </table>    
+  </div>
+</div>
