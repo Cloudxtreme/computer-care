@@ -3,10 +3,24 @@
     <h1>Newsletter Subscribers</h1>
   </header>
   <div class="service">
-    <ul>
+    <%= link_to "back", admin_dashboard_path %>
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>ID</th>
+        <th></th>
+      </tr>
       <% @users.each_with_index do |user, i| %>
-        <li><%= i+1 %> - <%= user.email %> - <%= user.created_at %></li>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.id %></td>
+          <td><%= button_to("remove", admin_newsletter_user_path(user.id), :method => :delete) %></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>      
   </div>
 </div>
