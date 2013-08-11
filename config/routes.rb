@@ -11,6 +11,7 @@ MarketingSite::Application.routes.draw do
 
   resources :newsletter_users
   resources :student_codes
+  resources :orders
 
   resources :services do
     collection do
