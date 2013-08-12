@@ -18,6 +18,11 @@
     	font-size: 120%;
 }
 
+#slider-shadow {
+  display: block;
+  margin: auto;
+}
+
 #slider-container {
   position: relative;
   height: 362px;
