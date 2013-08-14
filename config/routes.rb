@@ -30,7 +30,9 @@ MarketingSite::Application.routes.draw do
       resources :newsletter_users
       resources :student_codes
       resources :services do
-        resources :service_options
+        resources :service_options do
+          resources :service_option_values
+        end
       end
   end
 end
