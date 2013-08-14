@@ -14,7 +14,7 @@
       <ol>
         <% @options.each do |option| %>
           <li>
-            <%= option.name.capitalize %> (<%= link_to "remove" %>)
+            <%= option.name.capitalize %> (<%= link_to "remove", admin_service_service_option_path(@service.id, option.id), :method => :delete %>)
             <% if !option.is_arbitrary %>
               <h5><%= option.name.capitalize %> Option Values:</h5>
               <ul>

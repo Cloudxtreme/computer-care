@@ -13,4 +13,11 @@ class Admin::ServiceOptionsController < Admin::AdminController
       render 'new'
     end
   end
+
+  def destroy
+    service = Service.find(params[:service_id])
+    service_option = ServiceOption.find(params[:id])
+    service_option.destroy
+    redirect_to admin_service_path(service.id)
+  end
 end
