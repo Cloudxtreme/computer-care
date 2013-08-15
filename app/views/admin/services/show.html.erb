@@ -22,7 +22,7 @@
                 <% option.service_option_values.each do |value| %>
                 <li><%= value.name %> (<%= link_to "remove", admin_service_service_option_service_option_value_path(@service.id, option.id, value.id), :method => "delete" %>)</li>
                 <% end %>
-                <li><%= link_to "Add Option Value", new_admin_service_service_option_service_option_value_path(@service.id, option.id) %></li>
+                <li><%= link_to "Add Option Value", new_admin_service_service_option_service_option_value_path(@service.id, option.id), :class => "add-option" %></li>
               </ul>
             <% end %>
           </li>

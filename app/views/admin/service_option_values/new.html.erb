@@ -4,11 +4,6 @@
   </header>
   <div class="service">
     <%= link_to "back", admin_service_path(@service.id) %>
-
-    <%= form_for [:admin, @service, @option, @value] do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %><br><br>
-      <%= f.submit :submit, :class => "btn" %>
-    <% end %>
+    <%= render :partial => "form" %>
   </div>
 </div>
