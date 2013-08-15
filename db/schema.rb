@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812220921) do
+ActiveRecord::Schema.define(:version => 20130815205007) do
 
   create_table "newsletter_users", :force => true do |t|
     t.string   "email"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20130812220921) do
   create_table "services", :force => true do |t|
     t.string   "name"
     t.float    "base_cost"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.boolean  "can_checkout"
   end
 
   create_table "student_codes", :force => true do |t|

@@ -8,6 +8,7 @@
     <ul>
       <li>Service name: <%= @service.name %></li>
       <li>Cost: <%= @service.base_cost %></li>
+      <li><b><%= @service.can_checkout ? "Can be Checked Out" : "Can Not be Checked Out" %></b></li>
     </ul>
 
     <h5>Service Options</h5>
