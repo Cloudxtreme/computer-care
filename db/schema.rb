@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815205007) do
+ActiveRecord::Schema.define(:version => 20130815225711) do
 
   create_table "newsletter_users", :force => true do |t|
     t.string   "email"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(:version => 20130815205007) do
   create_table "service_option_values", :force => true do |t|
     t.string   "name"
     t.integer  "service_option_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.float    "additional_cost",   :default => 0.0
   end
 
   create_table "service_options", :force => true do |t|

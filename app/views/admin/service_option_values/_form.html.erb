@@ -1,6 +1,8 @@
     <%= form_for [:admin, @service, @option, @value] do |f| %>
       <%= f.label :name %>
-      <%= f.text_field :name %><br><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :additional_cost %>
+      <%= f.text_field :additional_cost %><br><br>
       <%= f.submit :submit, :class => "btn" %>
       <%= link_to "cancel", "#", :id => "cancel", :style => "display:none;" %>
     <% end %>
