@@ -2,6 +2,12 @@ class Admin::ServiceOptionsController < Admin::AdminController
   def new
     @service = Service.find(params[:service_id])
     @service_option = @service.service_options.new
+
+    if request.xhr?
+      render :partial => 'form'
+    else
+      render 'new'
+    end
   end
 
   def create

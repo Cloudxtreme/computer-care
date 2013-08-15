@@ -17,7 +17,7 @@
           <li>
             <%= option.name.capitalize %> (<%= link_to "remove", admin_service_service_option_path(@service.id, option.id), :method => :delete %>)
             <% if !option.is_arbitrary %>
-              <h5><%= option.name.capitalize %> Option Values:</h5>
+              <h5>Values:</h5>
               <ul>
                 <% option.service_option_values.each do |value| %>
                 <li><%= value.name %> (<%= link_to "remove", admin_service_service_option_service_option_value_path(@service.id, option.id, value.id), :method => "delete" %>)</li>
@@ -27,7 +27,7 @@
             <% end %>
           </li>
         <% end %>
-        <li><%= link_to "Add Option", new_admin_service_service_option_path(@service.id) %></li>
+        <li><%= link_to "Add Option", new_admin_service_service_option_path(@service.id), :class => "add-option" %></li>
       </ol>
 
     <br>
