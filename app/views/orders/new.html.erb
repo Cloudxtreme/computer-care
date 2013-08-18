@@ -37,6 +37,13 @@
         <input type="text" name="town" placeholder="Town"><br>
         <input type="text" name="postcode" placeholder="Post Code"><br>
       </fieldset>
+      <fieldset>
+        Please select a convient day for collection:
+        <div id="datepicker"></div>
+        <input type="hidden" name="date"  id="date"/>
+        Please select a convient time for collection:<br>
+        <%= select_time(nil, :prefix => "time") %>
+      </fieldset>
       <%= submit_tag :submit, :class => "btn" %>
     <% end %>
   </div>

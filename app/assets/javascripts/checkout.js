@@ -1,4 +1,6 @@
-$(function() {
+jQuery(function($){
+  $( "#datepicker" ).datepicker({minDate: +1, altField: '#date'});
+
   $(".checkout-service .checkbox input[type='checkbox']").click(function() {
     $options = $(this).closest(".checkout-service").find(".options");
 
