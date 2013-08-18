@@ -3,25 +3,40 @@
     <h1>Order</h1>
   </header>  
   <div class="service">
+    <% @missing.each do |field| %>
+      <div class="label label-important"><%= field %> is missing</div>
+    <% end %>
     <%= form_tag orders_path, :method => :post do %>
-      <% @services.each do |service| %>
-        <div class="checkout-service">
-          <label class="checkbox">
-            <input type="checkbox" name="services[]" value="<%= service.id %>"> <%= service.name %>
-          </label>  
-          <div class="options" style="display:none;">
-            <% service.service_options.each do |option| %> 
-              <% if option.is_arbitrary %>
-                <label for="<%= option.id %>"><%= option.name %></label>
-                <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>
-              <% else %>
-                <label for="<%= option.id %>"><%= option.name %></label>
-                <%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>
+      <fieldset>
+        <% @services.each do |service| %>
+          <div class="checkout-service">
+            <label class="checkbox">
+              <input type="checkbox" name="services[]" value="<%= service.id %>"> <%= service.name %>
+            </label>  
+            <div class="options" style="display:none;">
+              <% service.service_options.each do |option| %> 
+                <% if option.is_arbitrary %>
+                  <label for="<%= option.id %>"><%= option.name %></label>
+                  <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>
+                <% else %>
+                  <label for="<%= option.id %>"><%= option.name %></label>
+                  <%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-        </div>     
-      <% end %>
+            </div>
+          </div>     
+        <% end %>
+      </fieldset>
+      <fieldset>
+        <input type="text" name="first-name" placeholder="First Name"><br>
+        <input type="text" name="last-name" placeholder="Last Name"><br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="text" name="telephone" placeholder="Telephone Number"><br>
+        <input type="text" name="building" placeholder="Building Number"><br>
+        <input type="text" name="street" placeholder="Street"><br>
+        <input type="text" name="town" placeholder="Town"><br>
+        <input type="text" name="postcode" placeholder="Post Code"><br>
+      </fieldset>
       <%= submit_tag :submit, :class => "btn" %>
     <% end %>
   </div>
