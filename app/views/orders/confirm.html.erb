@@ -1,0 +1,37 @@
+<div id="main-content">
+  <header>
+    <h1>Confirm</h1>
+  </header>  
+  <div class="service">
+    <div class="well">
+      <ul class="unstyled">
+        <li><%= @order.first_name %></li>
+        <li><%= @order.last_name %></li>
+        <li><%= @order.email %></li>
+        <li><%= @order.telephone %></li>
+      </ul>     
+    </div>
+    <div class="well">
+      <ul class="unstyled">
+        <li><%= @order.building %> <%= @order.street %></li>
+        <li><%= @order.town %></li>
+        <li><%= @order.postcode %></li>
+      </ul>         
+    </div>
+    <div class="well">
+      <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
+    </div>
+    <%= form_tag finalize_orders_path, :method => :post do %>
+      <input type="hidden" name="order[building]" value="<%= @order.building %>">
+      <input type="hidden" name="order[email]" value="<%= @order.email %>">
+      <input type="hidden" name="order[first_name]" value="<%= @order.first_name %>">
+      <input type="hidden" name="order[last_name]" value="<%= @order.last_name %>">
+      <input type="hidden" name="order[postcode]" value="<%= @order.postcode %>">
+      <input type="hidden" name="order[street]" value="<%= @order.street %>">
+      <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
+      <input type="hidden" name="order[town]" value="<%= @order.town %>">
+      <input type="hidden" name="order[date]" value="<%= @order.date %>">
+      <%= submit_tag :finalize, :class => "btn btn-large" %>
+    <% end %>
+  </div>
+</div>

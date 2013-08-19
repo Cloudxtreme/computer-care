@@ -11,10 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815225711) do
+ActiveRecord::Schema.define(:version => 20130819202841) do
 
   create_table "newsletter_users", :force => true do |t|
     t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "telephone"
+    t.string   "building"
+    t.string   "street"
+    t.string   "town"
+    t.string   "postcode"
+    t.datetime "date"
+    t.integer  "total_cost"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

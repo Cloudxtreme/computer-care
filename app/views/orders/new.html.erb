@@ -6,6 +6,11 @@
     <% @missing.each do |field| %>
       <div class="label label-important"><%= field %> is missing</div>
     <% end %>
+    <script type="text/javascript">
+      var missing = [<%= raw @missing.to_json %>];
+      var invalid = [<%= raw @invalid.to_json %>];
+      console.log(invalid);
+    </script>
     <%= form_tag orders_path, :method => :post do %>
       <fieldset>
         <% @services.each do |service| %>
@@ -28,14 +33,14 @@
         <% end %>
       </fieldset>
       <fieldset>
-        <input type="text" name="first-name" placeholder="First Name"><br>
-        <input type="text" name="last-name" placeholder="Last Name"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <input type="text" name="telephone" placeholder="Telephone Number"><br>
-        <input type="text" name="building" placeholder="Building Number"><br>
-        <input type="text" name="street" placeholder="Street"><br>
-        <input type="text" name="town" placeholder="Town"><br>
-        <input type="text" name="postcode" placeholder="Post Code"><br>
+        <input type="text" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>><br>
+        <input type="text" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>><br>
+        <input type="text" name="email" placeholder="Email" value=<%= params["email"] %>><br>
+        <input type="text" name="telephone" placeholder="Telephone Number" value=<%= params["telephone"] %>><br>
+        <input type="text" name="building" placeholder="Building Number" value=<%= params["building"] %>><br>
+        <input type="text" name="street" placeholder="Street" value=<%= params["street"] %>><br>
+        <input type="text" name="town" placeholder="Town" value=<%= params["town"] %>><br>
+        <input type="text" name="postcode" placeholder="Post Code" value=<%= params["postcode"] %>><br>
       </fieldset>
       <fieldset>
         Please select a convient day for collection:
@@ -44,7 +49,7 @@
         Please select a convient time for collection:<br>
         <%= select_time(nil, :prefix => "time") %>
       </fieldset>
-      <%= submit_tag :submit, :class => "btn" %>
+      <%= submit_tag :submit, :class => "btn btn-large" %>
     <% end %>
   </div>
 </div>
