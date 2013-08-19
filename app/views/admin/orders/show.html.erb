@@ -1,0 +1,28 @@
+<div id="main-content">
+  <header>
+    <h1>Order <%= @order.id %></h1>
+  </header>
+  <div class="service">
+    <%= link_to "back", admin_orders_path %>
+    <h5>Order Details</h5>
+    <div class="well">
+      <ul class="unstyled">
+        <li>First Name: <%= @order.first_name %></li>
+        <li>Last Name: <%= @order.last_name %></li>
+        <li>Email: <%= @order.email %></li>
+        <li>Telephone: <%= @order.telephone %></li>
+      </ul>     
+    </div>
+    <div class="well">
+      <ul class="unstyled">
+        <li>Building: <%= @order.building %></li>
+        <li>Street: <%= @order.street %></li>        
+        <li>Town: <%= @order.town %></li>
+        <li>Postcode: <%= @order.postcode %></li>
+      </ul>         
+    </div>
+    <div class="well">
+      <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
+    </div>
+  </div>
+</div>
