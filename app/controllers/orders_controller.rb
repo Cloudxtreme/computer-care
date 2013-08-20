@@ -11,10 +11,14 @@ class OrdersController < ApplicationController
     delivery_date = Time.new(date.last, date.first, date.second, params["time"]["hour"], params["time"]["minute"], 0)
 
     @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
+    @service_options = {}
+    @options = params[:options]
     @services = Service.all
+    
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
     @missing = []
     @invalid = []
+
     required.each do |param|      
       @missing << param if params[param].blank?
     end
@@ -36,6 +40,13 @@ class OrdersController < ApplicationController
     @invalid = []
 
     if @order.save
+      params[:options].each do |service_id, options|
+        order_service = @order.order_services.create(:service_id => service_id)
+        options.each do |option_id, value|
+          service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
+        end
+      end
+
       redirect_to complete_orders_path
     else
       render :new

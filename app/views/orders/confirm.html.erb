@@ -21,6 +21,23 @@
     <div class="well">
       <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
     </div>
+    <div class="well">
+      <% @options.each do |service_id, option_values| %>
+        <% service_name = Service.find(service_id).name %>
+        <b><%= service_name %></b><br>
+        <% option_values.each do |service_option, value| %>
+          <% option = ServiceOption.find(service_option) %>
+
+          <% if option.is_arbitrary %>
+            <%= option.name %>: <%= value %><br>
+          <% else %>
+            <% option_value = ServiceOptionValue.find(value).name %>
+            <%= option.name %>: <%= option_value %><br>
+          <% end %>
+        <% end %>
+        <br>
+      <% end %>
+    </div>
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">
@@ -31,7 +48,18 @@
       <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
       <input type="hidden" name="order[town]" value="<%= @order.town %>">
       <input type="hidden" name="order[date]" value="<%= @order.date %>">
-      <%= submit_tag :finalize, :class => "btn btn-large" %>
+      <% @options.each do |service_id, option_values| %>
+        <% option_values.each do |service_option, value| %>
+          <% option = ServiceOption.find(service_option) %>
+          <% if option.is_arbitrary %>
+            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= value %>">
+          <% else %>
+            <% option_value = ServiceOptionValue.find(value).name %>
+            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= option_value %>">
+          <% end %>
+        <% end %>
+      <% end %>      
+      <%= submit_tag "place order", :class => "btn btn-large" %>
     <% end %>
   </div>
 </div>
