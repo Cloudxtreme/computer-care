@@ -9,14 +9,13 @@
     <script type="text/javascript">
       var missing = [<%= raw @missing.to_json %>];
       var invalid = [<%= raw @invalid.to_json %>];
-      console.log(invalid);
     </script>
     <%= form_tag orders_path, :method => :post do %>
       <fieldset>
         <% @services.each do |service| %>
           <div class="checkout-service">
             <label class="checkbox">
-              <input type="checkbox" name="services[]" value="<%= service.id %>"> <%= service.name %>
+              <input type="checkbox" class="service" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>"> <%= service.name %>
             </label>  
             <div class="options" style="display:none;">
               <% service.service_options.each do |option| %> 
@@ -48,6 +47,11 @@
         <input type="hidden" name="date"  id="date"/>
         Please select a convient time for collection:<br>
         <%= select_time(nil, :prefix => "time") %>
+      </fieldset>
+      <fieldset id="payment">
+        <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
+        <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
+        <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
       </fieldset>
       <%= submit_tag :submit, :class => "btn btn-large" %>
     <% end %>

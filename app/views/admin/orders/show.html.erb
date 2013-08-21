@@ -32,8 +32,14 @@
         <% service_name = Service.find(service.service_id).name %>
         <b><%= service_name %></b><br>
         <% service.order_service_options.each do |option| %>
-          <% option_name = ServiceOption.find(option.service_option_id).name %>
-          <%= option_name %>: <%= option.value %><br>
+          <% service_option = ServiceOption.find(option.service_option_id) %>
+          <% option_name = service_option.name %>
+          <% if service_option.is_arbitrary %>
+            <%= option_name %>: <%= option.value %><br>
+          <% else %>
+            <% value = ServiceOptionValue.find(option.value) %>
+            <%= option_name %>: <%= value.name %><br>
+          <% end %>
         <% end %>
         <br>
       <% end %>

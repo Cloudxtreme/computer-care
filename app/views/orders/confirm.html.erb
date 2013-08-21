@@ -22,21 +22,28 @@
       <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
     </div>
     <div class="well">
+      <% total = 0.0 %>
       <% @options.each do |service_id, option_values| %>
-        <% service_name = Service.find(service_id).name %>
-        <b><%= service_name %></b><br>
+        <% service = Service.find(service_id) %>
+        <% total += service.base_cost %>
+        <% service_name = service.name %>
+        <b><%= service_name %> - <%= service.base_cost %></b><br>
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>
 
           <% if option.is_arbitrary %>
-            <%= option.name %>: <%= value %><br>
+            <% if !value.blank? %>
+              <%= option.name %>: <%= value %><br>
+            <% end %>
           <% else %>
-            <% option_value = ServiceOptionValue.find(value).name %>
-            <%= option.name %>: <%= option_value %><br>
+            <% option_value = ServiceOptionValue.find(value) %>
+            <% total += option_value.additional_cost %>
+            <%= option.name %>: <%= option_value.name %> - <%= option_value.additional_cost %><br>
           <% end %>
         <% end %>
         <br>
       <% end %>
+      <b>Total Cost:</b> <%= total %>
     </div>
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
@@ -54,8 +61,8 @@
           <% if option.is_arbitrary %>
             <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= value %>">
           <% else %>
-            <% option_value = ServiceOptionValue.find(value).name %>
-            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= option_value %>">
+            <% option_value = ServiceOptionValue.find(value) %>
+            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= option_value.id %>">
           <% end %>
         <% end %>
       <% end %>      

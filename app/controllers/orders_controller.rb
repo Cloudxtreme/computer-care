@@ -35,9 +35,33 @@ class OrdersController < ApplicationController
 
   def finalize
     @order = Order.new(params[:order])
+
+    if params[:paid]
+      @order.paid = true
+    else
+      @order.paid = false
+    end
+    
     @services = Service.all
     @missing = []
     @invalid = []
+
+    total = 0.0
+    params[:options].each do |service_id, options|
+      service = Service.find(service_id)
+      total += service.base_cost
+
+      options.each do |service_option, value|
+        option = ServiceOption.find(service_option)
+
+        if !option.is_arbitrary
+          option_value = ServiceOptionValue.find(value)
+          total += option_value.additional_cost
+        end
+      end
+    end
+
+    @order.total_cost = total
 
     if @order.save
       params[:options].each do |service_id, options|
