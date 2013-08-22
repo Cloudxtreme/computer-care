@@ -10,6 +10,7 @@
         <th>Order Received</th>
         <th>Total Cost</th>
         <th>Customer Email</th>
+        <th>Paid</th>
         <th></th>
       </tr>
       <% @orders.each_with_index do |order| %>
@@ -18,6 +19,7 @@
           <td><%= order.created_at %></td>
           <td><%= order.total_cost %></td>
           <td><%= order.email %></td>
+          <td><%= order.paid %></td>
           <td><%= link_to("view", admin_order_path(order.id)) %></td>
         </tr>
       <% end %>
