@@ -3,6 +3,17 @@
     <h1>Confirm</h1>
   </header>  
   <div class="service">
+    <% quote_services = @options.select do |service_id, option_values| %>
+      <% service = Service.find(service_id) %>
+      <% !service.can_checkout %>
+    <% end %>
+    <% if quote_services.any? %>
+      <div class="alert alert-info">
+        <h4>Note:</h4>
+        You have selected service(s) that require additional costs.<br>
+        Place the order by clicking the button below and we will be in contact shortly with a quote. 
+      </div>
+    <% end %>    
     <div class="well">
       <ul class="unstyled">
         <li><%= @order.first_name %></li>
@@ -44,7 +55,7 @@
         <br>
       <% end %>
       <b>Total Cost:</b> <%= total %>
-    </div>
+    </div> 
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">
