@@ -7,7 +7,7 @@
     <h5>Service Details</h5>
     <ul>
       <li>Service name: <%= @service.name %></li>
-      <li>Cost: <%= @service.base_cost %></li>
+      <li>Cost: <%= number_to_currency(@service.base_cost, unit: "&pound;", separator: ".", delimiter: "")  %></li>
       <li><b><%= @service.can_checkout ? "Can be Checked Out" : "Can Not be Checked Out" %></b></li>
     </ul>
 
@@ -20,7 +20,7 @@
               <h5>Values:</h5>
               <ul>
                 <% option.service_option_values.each do |value| %>
-                <li><%= value.name %> - <%= value.additional_cost %> (<%= link_to "remove", admin_service_service_option_service_option_value_path(@service.id, option.id, value.id), :method => "delete" %>)</li>
+                <li><%= value.name %> - <%= number_to_currency(value.additional_cost, unit: "&pound;", separator: ".", delimiter: "") %> (<%= link_to "remove", admin_service_service_option_service_option_value_path(@service.id, option.id, value.id), :method => "delete" %>)</li>
                 <% end %>
                 <li><%= link_to "Add Option Value", new_admin_service_service_option_service_option_value_path(@service.id, option.id), :class => "add-option" %></li>
               </ul>
