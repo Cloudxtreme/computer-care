@@ -1,13 +1,9 @@
 <div id="main-content">
   <header>
-    <h1>Order <%= @order.id %></h1>
-  </header>
+    <h1>Order</h1>
+  </header>  
   <div class="service">
-    <%= link_to "back", admin_orders_path %>
     <h5>Order Details</h5>
-    <div class="well">
-      <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %>
-    </div>
     <div class="well">
       <ul class="unstyled">
         <li>First Name: <%= @order.first_name %></li>
@@ -43,10 +39,14 @@
         <% end %>
         <br>
       <% end %>
-    </div>    
+    </div>      
+    <%= form_tag payment_order_invoice_path(@order.id), :method => :post do %>
+      <fieldset id="payment">
+        <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
+        <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
+        <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
+      </fieldset>
+      <%= submit_tag :complete, :class => "btn btn-large btn-primary" %>
+    <% end %>
   </div>
-  <% if !@order.paid %>
-    <%= link_to "view invoice", order_invoice_path(@order.id), :class => "btn btn-large btn-primary" if !@order.invoice.blank? %>
-    <%= button_to "generate invoice", admin_order_invoice_path(@order.id), :method => :post, :class => "btn btn-large btn-primary" if @order.invoice.blank? %>
-  <% end %>
 </div>

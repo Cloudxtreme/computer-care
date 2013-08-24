@@ -12,6 +12,11 @@ MarketingSite::Application.routes.draw do
   resources :newsletter_users
   resources :student_codes
   resources :orders do
+    resource :invoice do
+      member do
+        post :payment
+      end
+    end
     collection do
       post :finalize
       get :complete
@@ -34,7 +39,9 @@ MarketingSite::Application.routes.draw do
   	match "dashboard", to: "admin#dashboard"
       resources :newsletter_users
       resources :student_codes
-      resources :orders
+      resources :orders do
+        resource :invoice
+      end
       resources :services do
         resources :service_options do
           resources :service_option_values
