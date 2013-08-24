@@ -35,20 +35,16 @@ class OrdersController < ApplicationController
 
   def finalize
     @order = Order.new(params[:order])
-
-    if params[:paid]
-      @order.paid = true
-    else
-      @order.paid = false
-    end
     
     @services = Service.all
     @missing = []
     @invalid = []
 
     total = 0.0
+    services_that_need_quote = []
     params[:options].each do |service_id, options|
       service = Service.find(service_id)
+      services_that_need_quote << service if !service.can_checkout
       total += service.base_cost
 
       options.each do |service_option, value|
@@ -62,6 +58,14 @@ class OrdersController < ApplicationController
     end
 
     @order.total_cost = total
+
+    if services_that_need_quote.any?
+      @order.paid = false
+    elsif false # payment completed successfully
+      @order.paid = true
+    else # payment completed unsuccesfully 
+      @order.paid = false
+    end
 
     if @order.save
       params[:options].each do |service_id, options|
