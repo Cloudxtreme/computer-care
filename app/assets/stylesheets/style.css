@@ -240,6 +240,11 @@ footer ul.inline li a {
 }
 
 /* RESPONSIVE */
+@media screen and (max-width: 940px) {
+	.container {
+		width: 100% !important;
+	}
+}
 
 @media screen and (max-width: 768px) {
 	ul.inline li.active a, ul.inline li a:hover {
@@ -260,7 +265,6 @@ footer ul.inline li a {
 		margin-left: 40px;
 	}		
 	#main-nav ul li {
-		margin: 5px;
 		padding: 0;
 	}		
 	#main-nav ul li a {
