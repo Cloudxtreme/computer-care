@@ -1,18 +1,20 @@
-  <header>
-    <h1>
-      Replacement Parts
-    </h1>
+  <header class="stripe">
+    <h1>Replacement Parts</h1>
+    <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+    <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
   </header>
-  <div class="service">
-  <p>
-    More often than not when we have a laptop or computer, over a long period of time, wear and tear commonly takes place. Or we can 
-sometimes be a bit clumsy and accidently scratch, break or smash parts. This is where Cheaper Computer Care comes in. With our 
-specialist connections and expertise we will guarantee you the best replacement parts at the most cost effective prices.
-</p>
-<p>
-  So if your computer screen is cracked, if your keyboard has keys no longer working, or any other problems then contact us now 
-to discuss your individual needs.
-</p>
+  <div  id="main-content">
+    <div class="service">
+      <p>
+        More often than not when we have a laptop or computer, over a long period of time, wear and tear commonly takes place. Or we can 
+      sometimes be a bit clumsy and accidently scratch, break or smash parts. This is where Cheaper Computer Care comes in. With our 
+      specialist connections and expertise we will guarantee you the best replacement parts at the most cost effective prices.
+      </p>
+      <p>
+      So if your computer screen is cracked, if your keyboard has keys no longer working, or any other problems then contact us now 
+      to discuss your individual needs.
+      </p>
 
-<a href="<%= new_order_path %>" class="btn btn-large">Click here to get started</a>
-</div>
+      <a href="<%= new_order_path %>" class="btn btn-large">Click here to get started</a>
+    </div>
+  </div>
