@@ -6,13 +6,13 @@
     <% @missing.each do |field| %>
       <div class="label label-important"><%= field %> is missing</div>
     <% end %>
-    <%= form_tag orders_path, :method => :post do %>
-      <header class="stripe">
-        <h1>One</h1>
+    <%= form_tag orders_path, :method => :post, :id => "order-form" do %>
+      <header class="stripe order">
+        <h1>Service Selection</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
       </header>    
-      <fieldset class="main-content">
+      <fieldset class="main-content" id="options">
         <p>Please select your required services below:</p>
         <% @services.each do |service| %>
           <div class="checkout-service">
@@ -32,15 +32,16 @@
             </div>
           </div>     
         <% end %>
+        <a class="btn btn-primary next">next</a>
       </fieldset>
-      <header class="stripe no-margin">
-        <h1>Two</h1>
+      <header class="stripe no-margin order">
+        <h1>Customer Information</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
       </header>        
-      <fieldset class="main-content">
+      <fieldset class="main-content" id="user">
         <p>Please fill out all of the fields below:</p>
         <input type="text" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>><br>
         <input type="text" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>><br>
@@ -50,23 +51,28 @@
         <input type="text" name="street" placeholder="Street" value=<%= params["street"] %>><br>
         <input type="text" name="town" placeholder="Town" value=<%= params["town"] %>><br>
         <input type="text" name="postcode" placeholder="Post Code" value=<%= params["postcode"] %>><br>
+        <a class="btn back">back</a>
+        <a class="btn btn-primary next">next</a>
       </fieldset>
-      <header class="stripe no-margin">
-        <h1>Three</h1>
+      <header class="stripe no-margin order">
+        <h1>Collection Arrangements</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
       </header>      
-      <fieldset class="main-content">
+      <fieldset class="main-content" id="collection">
         <p>Please select a convient day for collection:</p>
         <div id="datepicker"></div>
         <input type="hidden" name="date"  id="date"/>
         <p>Please select a convient time for collection:</p>
         <%= select_time(nil, :prefix => "time") %>
+        <br>
+        <a class="btn back">back</a>
+        <a class="btn btn-primary next">next</a>        
       </fieldset>
-      <header class="stripe no-margin">
-        <h1>Four</h1>
+      <header class="stripe no-margin order">
+        <h1>Pay</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
@@ -74,10 +80,17 @@
       </header>        
       <fieldset class="main-content" id="payment">
         <p>Please fill out all of the fields below:</p>
+        <div class="alert alert-info" style="display:none;">
+          <strong>Please note:</strong>
+          <p>You have selected a service that requires addtitional cost calculation, so you cannot pay right now.</p>
+          <p>Complete the order and we will be in contact shortly with a price quote.</p>
+        </div>
         <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
         <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
         <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
-        <%= submit_tag :continue, :class => "btn btn-large btn-primary" %>        
+        <a class="btn back">back</a>
+        <%= submit_tag :continue, :class => "btn btn-primary" %>
+        <p><small>You can review this order before it's final</small></p>
       </fieldset>
       <footer class="stripe no-margin">
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>

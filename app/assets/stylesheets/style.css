@@ -193,6 +193,11 @@ header.stripe, footer.stripe {
 	border-bottom: 1px solid #000;
 }
 
+header.stripe.order h1 {
+	color: #fff;
+	font-size: 120%;
+}
+
 footer.stripe {
 	height: 20px;
 	border: none;
