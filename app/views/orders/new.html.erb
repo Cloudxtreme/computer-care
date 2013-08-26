@@ -1,17 +1,18 @@
-<div id="main-content">
-  <header>
-    <h1>Order</h1>
-  </header>  
-  <div class="service">
+<script type="text/javascript">
+  var missing = [<%= raw @missing.to_json %>];
+  var invalid = [<%= raw @invalid.to_json %>];
+</script>
+<div>
     <% @missing.each do |field| %>
       <div class="label label-important"><%= field %> is missing</div>
     <% end %>
-    <script type="text/javascript">
-      var missing = [<%= raw @missing.to_json %>];
-      var invalid = [<%= raw @invalid.to_json %>];
-    </script>
     <%= form_tag orders_path, :method => :post do %>
-      <fieldset>
+      <header class="stripe">
+        <h1>One</h1>
+        <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+        <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+      </header>    
+      <fieldset class="main-content">
         <% @services.each do |service| %>
           <div class="checkout-service">
             <label class="checkbox">
@@ -31,7 +32,14 @@
           </div>     
         <% end %>
       </fieldset>
-      <fieldset>
+      <header class="stripe no-margin">
+        <h1>Two</h1>
+        <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+        <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+        <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+        <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
+      </header>        
+      <fieldset class="main-content">
         <input type="text" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>><br>
         <input type="text" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>><br>
         <input type="text" name="email" placeholder="Email" value=<%= params["email"] %>><br>
@@ -41,19 +49,32 @@
         <input type="text" name="town" placeholder="Town" value=<%= params["town"] %>><br>
         <input type="text" name="postcode" placeholder="Post Code" value=<%= params["postcode"] %>><br>
       </fieldset>
-      <fieldset>
+      <header class="stripe no-margin">
+        <h1>Three</h1>
+        <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+        <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+        <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+        <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
+      </header>      
+      <fieldset class="main-content">
         Please select a convient day for collection:
         <div id="datepicker"></div>
         <input type="hidden" name="date"  id="date"/>
         Please select a convient time for collection:<br>
         <%= select_time(nil, :prefix => "time") %>
       </fieldset>
-      <fieldset id="payment">
+      <header class="stripe no-margin">
+        <h1>Four</h1>
+        <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+        <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+        <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+        <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
+      </header>        
+      <fieldset class="main-content" id="payment">
         <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
         <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
         <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
+        <%= submit_tag :continue, :class => "btn btn-large btn-primary" %>        
       </fieldset>
-      <%= submit_tag :continue, :class => "btn btn-large btn-primary" %>
     <% end %>
-  </div>
 </div>
