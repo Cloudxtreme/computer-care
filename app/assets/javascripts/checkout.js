@@ -73,20 +73,25 @@ jQuery(function($){
 });
 
 function initialize_form() {
-  $("#order-form fieldset").first().addClass("active");
-  $("#order-form fieldset:not(:first)").hide();
-  $("#order-form header.stripe").each(function(i) {
-    i++;
-    if(i>2) {
-      $(this).find(".img-shadow.left").hide();
-      $(this).find(".img-shadow.right").hide();
-    }
-    else if(i==2) {
-      $(this).find(".img-shadow.left:not(.top)").hide();
-      $(this).find(".img-shadow.right:not(.top)").hide();
-    }
-  });
-  $("#order-form footer.stripe .img-shadow").hide();  
+  if(!$("#order-form").hasClass("error")) {
+    $("#order-form fieldset").first().addClass("active");
+    $("#order-form fieldset:not(:first)").hide();
+    $("#order-form header.stripe").each(function(i) {
+      i++;
+      if(i>2) {
+        $(this).find(".img-shadow.left").hide();
+        $(this).find(".img-shadow.right").hide();
+      }
+      else if(i==2) {
+        $(this).find(".img-shadow.left:not(.top)").hide();
+        $(this).find(".img-shadow.right:not(.top)").hide();
+      }
+    });
+    $("#order-form footer.stripe .img-shadow").hide();  
+  }
+  else {
+    $(".next").hide();
+  }
 }
 
 function open_next_section($current) {

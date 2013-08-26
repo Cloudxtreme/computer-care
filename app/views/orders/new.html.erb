@@ -3,10 +3,20 @@
   var invalid = [<%= raw @invalid.to_json %>];
 </script>
 <div>
+  <div id="errors" class="well">
+    <h5>Please fix the following errors and press continue:</h5>
     <% @missing.each do |field| %>
-      <div class="label label-important"><%= field %> is missing</div>
+      <div class="alert alert-error">
+        <p><strong><%= field.capitalize %></strong> is missing</p>
+      </div>
     <% end %>
-    <%= form_tag orders_path, :method => :post, :id => "order-form" do %>
+    <% @invalid.each do |field| %>
+      <div class="alert alert-error">
+        <p><strong><%= field.capitalize %></strong> is not valid</p>
+      </div>
+    <% end %>  
+  </div>  
+    <%= form_tag orders_path, :method => :post, :id => "order-form", :class => "#{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
       <header class="stripe order">
         <h1>Service Selection</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>

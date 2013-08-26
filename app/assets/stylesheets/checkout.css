@@ -1,3 +1,7 @@
 #time_hour, #time_minute {
   width: auto;
 }
+
+#errors {
+  margin: 15px 0 0 0;
+}
