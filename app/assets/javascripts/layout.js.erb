@@ -209,22 +209,22 @@ $(function() {
 		$(this).closest("li").removeClass("hover");
 	});
 
-	$(document).pjax("#services a.btn", "#main-content");
+	$(document).pjax("#services a.btn", "#pjax-container");
 
 	$("#services a.btn").click(function() {
-		$("#main-content").css("opacity", "0.3");
+		$("#pjax-container").css("opacity", "0.3");
 		$("body").append("<div id='spinner'></img>")
 
-		$("#spinner").css("top", $("#main-content").offset().top + 100);
-		$("#spinner").css("left", $("#main-content").offset().left + ($("#main-content").width() / 2) - 60);
+		$("#spinner").css("top", $("#pjax-container").offset().top + 100);
+		$("#spinner").css("left", $("#pjax-container").offset().left + ($("#pjax-container").width() / 2) - 60);
 		$('html, body').animate({
-			scrollTop: $("#main-content").offset().top
+			scrollTop: $("#pjax-container").offset().top
 		}, 800);		
 	});
 
 	$(document).on("pjax:success", function(xhr, data){
-		$("#main-content").html(data);
-		$("#main-content").css("opacity", "1");
+		$("#pjax-container").html(data);
+		$("#pjax-container").css("opacity", "1");
 		$("#spinner").remove();
 	});
 });
