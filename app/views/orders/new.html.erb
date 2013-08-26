@@ -13,6 +13,7 @@
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
       </header>    
       <fieldset class="main-content">
+        <p>Please select your required services below:</p>
         <% @services.each do |service| %>
           <div class="checkout-service">
             <label class="checkbox">
@@ -40,6 +41,7 @@
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
       </header>        
       <fieldset class="main-content">
+        <p>Please fill out all of the fields below:</p>
         <input type="text" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>><br>
         <input type="text" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>><br>
         <input type="text" name="email" placeholder="Email" value=<%= params["email"] %>><br>
@@ -57,10 +59,10 @@
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
       </header>      
       <fieldset class="main-content">
-        Please select a convient day for collection:
+        <p>Please select a convient day for collection:</p>
         <div id="datepicker"></div>
         <input type="hidden" name="date"  id="date"/>
-        Please select a convient time for collection:<br>
+        <p>Please select a convient time for collection:</p>
         <%= select_time(nil, :prefix => "time") %>
       </fieldset>
       <header class="stripe no-margin">
@@ -71,10 +73,15 @@
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
       </header>        
       <fieldset class="main-content" id="payment">
+        <p>Please fill out all of the fields below:</p>
         <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
         <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
         <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
         <%= submit_tag :continue, :class => "btn btn-large btn-primary" %>        
       </fieldset>
+      <footer class="stripe no-margin">
+        <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+        <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>     
+      </div>
     <% end %>
 </div>

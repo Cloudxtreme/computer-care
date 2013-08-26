@@ -183,13 +183,20 @@ ul.inline li a {
   	border-bottom: none;	
 }
 
-header.stripe {
+header.stripe, footer.stripe {
 	position: relative;
 	height: 50px;
 	margin-top: 20px;
 	background-image: url('diagonal-stripe.png');
 	z-index: -10;
 	color: #fff;
+	border-bottom: 1px solid #000;
+}
+
+footer.stripe {
+	height: 20px;
+	border: none;
+	padding: 0;
 }
 
 header.stripe h1 {
@@ -199,26 +206,26 @@ header.stripe h1 {
 	padding: 3px 0 0 10px;
 }
 
-header.stripe .img-shadow {
+header.stripe .img-shadow, footer.stripe .img-shadow {
 	position: absolute;
 	z-index: 1;
 }
 
-header.stripe .img-shadow img {
+header.stripe .img-shadow img, footer.stripe .img-shadow img {
 	max-width: 100%;
 }
 
-header.stripe .img-shadow.left {
+header.stripe .img-shadow.left, footer.stripe .img-shadow.left {
 	top: 43px;
 	left: 0px;
 }
 
-header.stripe .img-shadow.right {
+header.stripe .img-shadow.right, footer.stripe .img-shadow.right {
 	top: 43px;
 	right: 0px;	
 }
 
-header.stripe .img-shadow.top {
+header.stripe .img-shadow.top, footer.stripe .img-shadow.top {
 	top: -15px;
 }
 
