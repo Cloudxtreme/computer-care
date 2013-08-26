@@ -26,6 +26,11 @@ jQuery(function($){
     } 
   });
 
+  $("#order-form").on("click", "fieldset.active a.back", function() {
+    $fieldset = $(this).closest("fieldset");
+    open_previous_section($fieldset);
+  });
+
   $(".service").click(function() {
     if($(".service:checked[data-can-checkout='false']").length > 0) {
       // make payment form disabled
@@ -87,7 +92,7 @@ function initialize_form() {
 function open_next_section($current) {
   $current.hide();
   $current.prev("header").find(".img-shadow").hide();
-  $current.next().next("fieldset").addClass("active").show();
+  $current.next().next("fieldset").addClass("active").slideDown();
   $current.next("header").find(".img-shadow").show();  
   $current.next("header").find(".img-shadow.top").hide();
   $current.next().next().next().find(".img-shadow.top").show();
@@ -95,4 +100,14 @@ function open_next_section($current) {
   if($("fieldset.active").is(":nth-last-child(2)")) {
     $("footer.stripe .img-shadow").show();
   }
+}
+
+function open_previous_section($current) {
+  $(".img-shadow").hide();
+  $current.hide();
+  $current.prev().prev("fieldset").addClass("active").slideDown();
+  $current.prev("header").find(".img-shadow").hide();
+  $current.prev("header").find(".img-shadow.top").show();
+  $current.prev().prev().prev().find(".img-shadow:not(.top)").show();
+  $current.removeClass("active");
 }
