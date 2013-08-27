@@ -18,7 +18,7 @@
       <% end %>  
     </div> 
   <% end %> 
-    <%= form_tag orders_path, :method => :post, :id => "order-form", :class => "#{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
+    <%= form_tag orders_path, :method => :post, :id => "order-form", :class => "form-horizontal #{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
       <header class="stripe order">
         <h1>Service Selection</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
@@ -29,7 +29,7 @@
         <% @services.each do |service| %>
           <div class="checkout-service">
             <label class="checkbox">
-              <input type="checkbox" class="service" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>"> <%= service.name %>
+              <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>"> <%= service.name %>
             </label>  
             <div class="options" style="display:none;">
               <% service.service_options.each do |option| %> 
@@ -38,7 +38,12 @@
                   <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
-                  <%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>
+                  <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->
+                  <select name='<%= "options[#{service.id}][#{option.id}]" %>'>
+                    <% option.service_option_values.each do |value| %>
+                      <option value="<%= value.id %>" data-additional="<%= value.additional_cost %>"><%= value.name %></option>
+                    <% end %>
+                  </select>
                 <% end %>
               <% end %>
             </div>
@@ -55,14 +60,54 @@
       </header>        
       <fieldset class="main-content" id="user">
         <p>Please fill out all of the fields below:</p>
-        <input type="text" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>><br>
-        <input type="text" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>><br>
-        <input type="text" name="email" placeholder="Email" value=<%= params["email"] %>><br>
-        <input type="text" name="telephone" placeholder="Telephone Number" value=<%= params["telephone"] %>><br>
-        <input type="text" name="building" placeholder="Building Number" value=<%= params["building"] %>><br>
-        <input type="text" name="street" placeholder="Street" value=<%= params["street"] %>><br>
-        <input type="text" name="town" placeholder="Town" value=<%= params["town"] %>><br>
-        <input type="text" name="postcode" placeholder="Post Code" value=<%= params["postcode"] %>><br>
+        <div class="control-group">
+          <label class="control-label" for="first-name">First Name</label>
+          <div class="controls">
+            <input type="text" id="first-name" name="first-name" placeholder="First Name" value=<%= params["first-name"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="last-name">Last Name</label>
+          <div class="controls">
+            <input type="text" id="last-name" name="last-name" placeholder="Last Name" value=<%= params["last-name"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="email">Email</label>
+          <div class="controls">
+            <input type="text" id="email" name="email" placeholder="Email" value=<%= params["email"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="telephone">Phone Number</label>
+          <div class="controls">
+            <input type="text" id="telephone" name="telephone" placeholder="Phone Number" value=<%= params["telephone"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="building">Building Number</label>
+          <div class="controls">
+            <input type="text" id="building" name="building" placeholder="Building Number" value=<%= params["building"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="street">Street Name</label>
+          <div class="controls">
+            <input type="text" id="street" name="street" placeholder="Street" value=<%= params["street"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="town">Town</label>
+          <div class="controls">
+            <input type="text" id="town" name="town" placeholder="Town" value=<%= params["town"] %>>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="postcode">Postcode</label>
+          <div class="controls">
+            <input type="text" id="postcode" name="postcode" placeholder="Post Code" value=<%= params["postcode"] %>>
+          </div>
+        </div>
         <a class="btn back">back</a>
         <a class="btn btn-primary next">next</a>
       </fieldset>

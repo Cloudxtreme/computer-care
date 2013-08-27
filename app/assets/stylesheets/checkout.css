@@ -5,3 +5,11 @@
 #errors {
   margin: 15px 0 0 0;
 }
+
+.control-label {
+  width: auto !important;
+}
+
+.controls {
+  margin-left: 120px !important;
+}
