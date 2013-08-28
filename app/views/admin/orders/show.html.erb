@@ -7,6 +7,15 @@
   <div class="service">
     <%= link_to "back", admin_orders_path %>
     <h5>Order Details</h5>
+    <% if @order.paid %>
+      <div class="alert alert-success">
+        <strong>PAID</strong>
+      </div>
+    <% else %>
+      <div class="alert alert-error">
+        <strong>UNPAID</strong>
+      </div>
+    <% end %>
     <div class="well">
       <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %><br>
       <b>Total cost: </b> <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %>
