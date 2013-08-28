@@ -75,6 +75,11 @@ class OrdersController < ApplicationController
         end
       end
 
+      # send confimation to customer
+      NotificationMailer.order_confirmation(@order).deliver
+      # send notification to admin
+      NotificationMailer.order_notification(@order).deliver
+
       redirect_to complete_orders_path
     else
       render :new

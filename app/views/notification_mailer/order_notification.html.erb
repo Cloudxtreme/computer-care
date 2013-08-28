@@ -1,0 +1,9 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>New Order Received - <%= @order.id %></title>
+  </head>
+  <body>
+    <p>View order details <a href="<%= admin_order_url(@order.id, :host => SITE_HOST) %>">here</a></p>
+  </body>
+</html>
