@@ -31,6 +31,10 @@ jQuery(function($){
     open_previous_section($fieldset);
   });
 
+  $(".checkout-service input[type='checkbox']").each(function() {
+    $(this).attr("checked", false);
+  });
+
   $(".service").click(function() {
     var $clicked = $(this);
     var $container = $clicked.closest(".checkout-service");    

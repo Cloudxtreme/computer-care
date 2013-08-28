@@ -39,7 +39,7 @@
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->
-                  <select name='<%= "options[#{service.id}][#{option.id}]" %>'>
+                  <select name='<%= "options[#{service.id}][#{option.id}]" %>' disabled>
                     <% option.service_option_values.each do |value| %>
                       <option value="<%= value.id %>" data-additional="<%= value.additional_cost %>"><%= value.name %></option>
                     <% end %>
