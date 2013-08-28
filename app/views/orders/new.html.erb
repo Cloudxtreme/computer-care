@@ -49,6 +49,16 @@
             </div>
           </div>     
         <% end %>
+        <br>
+        <div class="well">
+          <div class="alert alert-info" style="display:none;">
+            <strong>Please note:</strong>
+            <p>You have selected a service that requires addtitional parts.</p>
+            <p>The cost displayed represents the base cost of the service not including additional costs.</p>
+            <p>Once the order is place we will be in contact with an actual price quote.</p>
+          </div>          
+          <strong>Cost:</strong> £<span id="total-cost">0.00</span>
+        </div>        
         <a class="btn btn-primary next">next</a>
       </fieldset>
       <header class="stripe no-margin order">
@@ -129,7 +139,7 @@
         <a class="btn btn-primary next">next</a>        
       </fieldset>
       <header class="stripe no-margin order">
-        <h1>Pay</h1>
+        <h1>Payment Details</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
@@ -145,8 +155,9 @@
         <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
         <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
         <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
+        <br>
         <a class="btn back">back</a>
-        <%= submit_tag :continue, :class => "btn btn-primary" %>
+        <%= submit_tag :summary, :class => "btn btn-primary" %>
         <p><small>You can review this order before it's final</small></p>
       </fieldset>
       <footer class="stripe no-margin">

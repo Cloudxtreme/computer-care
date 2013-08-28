@@ -32,18 +32,29 @@ jQuery(function($){
   });
 
   $(".service").click(function() {
+    var $clicked = $(this);
+    var $container = $clicked.closest(".checkout-service");    
+
+    $container.toggleClass("selected");
+
     if($(".service:checked[data-can-checkout='false']").length > 0) {
       // make payment form disabled
       $("#payment input[type='text']").attr("disabled", "disabled").hide();
       //show message
-      $("#payment .alert").show();
+      $(".alert").show();
     }
     else {
       // enable payment form 
       $("#payment input[type='text']").removeAttr("disabled").show();
       // hide message
-      $("#payment .alert").hide();
+      $(".alert").hide();   
     }
+
+    update_cost();
+  });
+
+  $(".options select").change(function() {
+    update_cost();
   });
 
   $( "#datepicker" ).datepicker({minDate: +1, altField: '#date'});
@@ -115,4 +126,16 @@ function open_previous_section($current) {
   $current.prev("header").find(".img-shadow.top").show();
   $current.prev().prev().prev().find(".img-shadow:not(.top)").show();
   $current.removeClass("active");
+}
+
+function update_cost() {
+  var total = 0;
+  $("input[type='checkbox']:checked").each(function() {      
+    total = total + parseInt($(this).data("base"));
+  });
+  $(".selected :selected", "#options").each(function() {
+    total = total + parseInt($(this).data("additional"));
+  });
+
+  $("#total-cost").html(total);
 }
