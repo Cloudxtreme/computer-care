@@ -29,6 +29,8 @@ $(function() {
 		$("#slider article.active header img.bottom.left").show();
 		$("#slider article.active").next("article").find("header img.bottom.right").show();
 		$("#slider article.active").next("article").find("header img.top.right").show();	
+		$("#slider article header img.title.active").hide();
+		$("#slider article.active header img.title.active").show();
 
 		// update all slides positions
 		var active_slide = active_slide_position();
