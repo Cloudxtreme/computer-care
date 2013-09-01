@@ -15,7 +15,7 @@ Hard drives, USB Flash drives
 and even Camera Memory 
 cards.
 <% service = Service.where("lower(name) = 'data recovery'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <%= link_to "more info", data_recovery_services_path, :class => "btn btn-large" %>
@@ -35,7 +35,7 @@ or complete screen
 replacement we have the 
 solution. 
 <% service = Service.where("lower(name) = 'replacement parts'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <%= link_to "more info", replacement_parts_services_path, :class => "btn btn-large" %>
@@ -54,7 +54,7 @@ trying to put it right again.
 Let us get your PC back to 
 its best.  
 <% service = Service.where("lower(name) = 'virus removal'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>      
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>      
       </p>
     </div>
     <%= link_to "more info", virus_removal_services_path, :class => "btn btn-large" %>
@@ -72,7 +72,7 @@ our aim is to make your
 computer run as good as it 
 did the day you bought it.
 <% service = Service.where("lower(name) = 'servicing & tune-up'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <%= link_to "more info", servicing_services_path, :class => "btn btn-large" %>
@@ -93,7 +93,7 @@ the most cost effective
 solution for your computer 
 needs.
 <% service = Service.where("lower(name) = 'upgrades'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <%= link_to "more info", upgrades_services_path, :class => "btn btn-large" %>
@@ -112,7 +112,7 @@ smooth again and clear out
 any problems you may be 
 having.    
 <% service = Service.where("lower(name) = 'fault finding & repairs'").first %>
-<span>Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>    
+<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>    
       </p>
     </div>
     <%= link_to "more info", repairs_services_path, :class => "btn btn-large" %>
