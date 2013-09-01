@@ -24,7 +24,7 @@ $(function() {
 		$("#slider article.active").show();
 		$("#slider article.collapsed").show();
 
-		$("#slider article header img").hide();
+		$("#slider article header img.arrow").hide();
 		$("#slider article.active header img.top.left").show();
 		$("#slider article.active header img.bottom.left").show();
 		$("#slider article.active").next("article").find("header img.bottom.right").show();
@@ -92,9 +92,11 @@ $(function() {
 		$("#slider article:not(.active)").addClass("collapsed");
 		$("#slider article.active").show();
 		
-		$("#slider article header img").hide();
+		$("#slider article header img.arrow").hide();
 		$("#slider article.active header img.top.left").show();
 		$("#slider article.active header img.bottom.left").show();
+		$("#slider article header img.title.active").hide();
+		$("#slider article.active header img.title.active").show();
 		$("#slider article.active").next("article").find("header img.bottom.right").show();
 		$("#slider article.active").next("article").find("header img.top.right").show();		
 
@@ -127,7 +129,7 @@ $(function() {
 				var header_width = slider_header_width();
 				var $active = $("#slider article.active");
 				var $next = $active.next();
-				$("#slider article header img").hide();
+				$("#slider article header img.arrow").hide();
 				$("header img.top.left", $active.next()).show();
 				$("header img.bottom.left", $active.next()).show();
 				$("header img.top.right", $next.next()).show();
@@ -138,6 +140,7 @@ $(function() {
 				$next.removeClass("collapsed");
 				$next.css("border-right", "1px solid #000000");
 				$next.width(slider_slide_width() + "%");
+				$next.find("header img.title.active").show();
 
 				// make current slide inactive
 				$active.removeClass("active");
@@ -145,6 +148,7 @@ $(function() {
 				$active.show();
 				$active.css("width", header_width);
 				$next.css("border", "none");
+				$active.find("header img.title.active").hide();
 
 				// update all slides positions
 				var active_slide = active_slide_position();

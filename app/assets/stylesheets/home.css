@@ -71,7 +71,13 @@
   z-index: 1;  
 }
 
-#slider article header img {
+#slider article header img.title {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+#slider article header img.arrow {
   display: none;
   position: absolute;
   z-index: 1;
@@ -110,7 +116,7 @@
 
 #slider article header span {
   position: absolute;
-  font-size: 160%;
+  font-size: 120%;
   color: #ffffff;
   font-weight: bold;
   bottom: 10%;
