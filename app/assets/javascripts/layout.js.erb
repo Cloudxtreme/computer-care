@@ -92,6 +92,7 @@ $(function() {
 		$("#slider article:not(.active)").addClass("collapsed");
 		$("#slider article.active").show();
 		
+		$("#slider article header img").hide();
 		$("#slider article.active header img.top.left").show();
 		$("#slider article.active header img.bottom.left").show();
 		$("#slider article.active").next("article").find("header img.bottom.right").show();
@@ -108,10 +109,18 @@ $(function() {
 	}
 
 	function animate_slider(slider_interval, animation_time) {
-		var reset = false;		
+		var reset = false;	
+
+		var num_slides = $("#slider article").length;	
+
+		if((active_slide_position() + 1) == num_slides) {
+			reset = true;
+		}
+
 		var timer = setInterval(function() {
 			if(reset == true) {
-				initialize_slider();
+				clearInterval(timer);
+				setup_slider();
 				reset = false;
 			}
 			else {
