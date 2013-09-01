@@ -41,6 +41,10 @@ article.service p {
   line-height: 15px;
 }
 
+article.service p span{
+  color: #F99704; 
+}
+
 @media screen and (max-width: 940px) {
   article.service {
     width: 230px;
