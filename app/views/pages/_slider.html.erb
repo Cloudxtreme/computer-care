@@ -25,7 +25,7 @@
                     <p>
                         <span class="yellow">No.1</span> for servicing convenience - offering the 1st and only free home collection and return service. 
                     </p>
-                    <%= link_to "more info", services_path, :class => "btn btn-medium" %>
+                    <%= link_to "View All Services", services_path, :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-thumbs-up.png") %>
@@ -60,7 +60,7 @@
                         <li>Camera Memory Cards</li>
                         <li>Even mobile phone memory</li>
                     </ul>
-                    <%= link_to "more info", data_recovery_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
+                    <%= link_to "More Info", data_recovery_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-with-a-pencil.png") %>
@@ -86,7 +86,7 @@
                     <ul>
                         <li>Offering free secure collection and delivery right back to your doorstep, let us put things right again.</li>
                     </ul>
-                    <%= link_to "more info", virus_removal_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
+                    <%= link_to "More Info", virus_removal_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("worried-bob.png") %>
@@ -109,7 +109,7 @@
                     <h4>Notify me!</h4>
                     <p>Join our newsletter</p>
                     <%= f.email_field :email %><br>
-                    <%= f.submit :register, :class => "btn btn-medium" %>
+                    <%= f.submit :register, :value => "Sign Up", :class => "btn btn-medium btn-success" %>
                 <% end %>                
                 <div class="pull-left">
                     <h1 class="yellow">Exclusive Offers</h1>
@@ -135,7 +135,7 @@
                     <p>
                         As if our prices weren't cheap enough we even offer 15% Student Discount for all services.
                     </p>
-                    <%= link_to "register", new_student_code_path, :class => "btn" %>
+                    <%= link_to "Register", new_student_code_path, :class => "btn" %>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-in-shades.png") %>

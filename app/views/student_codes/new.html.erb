@@ -1,7 +1,9 @@
+<header class="stripe">
+  <h1>Student Discount</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>    
+</header>
 <div id="main-content">
-  <header>
-    <h1>Student Discount</h1>
-  </header>
   <div class="service">
   <p>
     Enter your university email address below to receive your student discount code.
@@ -23,5 +25,5 @@
     <%= f.hidden_field :is_valid, :value => true %>
     <%= f.submit :submit, :class => "btn" %>
   <% end %>
-  <div>
+  </div>
 </div>
