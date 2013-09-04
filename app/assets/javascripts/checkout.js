@@ -1,4 +1,48 @@
 jQuery(function($){
+  // form validation
+  var first_name = new LiveValidation( "first-name", { validMessage: " ", wait: 500 } );
+  first_name.add( Validate.Presence, { failureMessage: "Required" } );
+  first_name.add( Validate.Length, { minimum: 2 } );
+
+  var last_name = new LiveValidation( "last-name", { validMessage: " ", wait: 500 } );
+  last_name.add( Validate.Presence, { failureMessage: "Required" } );
+  first_name.add( Validate.Length, { minimum: 2 } );
+
+  var email = new LiveValidation( "email", { validMessage: " ", wait: 500 } );
+  email.add( Validate.Presence, { failureMessage: "Required" } );
+  email.add( Validate.Email );
+
+  var telephone = new LiveValidation( "telephone", { validMessage: " ", wait: 500 } );
+  telephone.add( Validate.Presence, { failureMessage: "Required" } );
+  telephone.add( Validate.Numericality, { onlyInteger: true } );
+  telephone.add( Validate.Length, { minimum: 11 } );
+
+  var building = new LiveValidation( "building", { validMessage: " ", wait: 500 } );
+  building.add( Validate.Presence, { failureMessage: "Required" } );
+
+  var street = new LiveValidation( "street", { validMessage: " ", wait: 500 } );
+  street.add( Validate.Presence, { failureMessage: "Required" } );
+  street.add( Validate.Length, { minimum: 2 } );
+
+  var town = new LiveValidation( "town", { validMessage: " ", wait: 500 } );
+  town.add( Validate.Presence, { failureMessage: "Required" } );
+  town.add( Validate.Length, { minimum: 2 } );
+
+  $("#postcode").blur(function() {
+    var newPostCode = checkPostCode($(this).val());
+    if(newPostCode) {
+      $(this).addClass("LV_valid_field");
+      $(this).removeClass("LV_invalid_field");
+      $(this).next("span").remove();
+      $(this).val(newPostCode);
+    } else {
+      $(this).addClass("LV_invalid_field");
+      if($(this).next("span").length == 0) {
+        $(this).after("<span class='LV_validation_message LV_invalid'>Must be a valid UK postcode!</span>");
+      }
+    }
+  });
+
   // accordian effect
   initialize_form();
   $("#order-form").on("click", "fieldset.active a.next", function() {
