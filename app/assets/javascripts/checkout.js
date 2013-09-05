@@ -6,7 +6,7 @@ jQuery(function($){
 
   var last_name = new LiveValidation( "last-name", { validMessage: " ", wait: 500 } );
   last_name.add( Validate.Presence, { failureMessage: "Required" } );
-  first_name.add( Validate.Length, { minimum: 2 } );
+  last_name.add( Validate.Length, { minimum: 2 } );
 
   var email = new LiveValidation( "email", { validMessage: " ", wait: 500 } );
   email.add( Validate.Presence, { failureMessage: "Required" } );
@@ -36,12 +36,59 @@ jQuery(function($){
       $(this).next("span").remove();
       $(this).val(newPostCode);
     } else {
+      $(this).removeClass("LV_valid_field");      
       $(this).addClass("LV_invalid_field");
       if($(this).next("span").length == 0) {
         $(this).after("<span class='LV_validation_message LV_invalid'>Must be a valid UK postcode!</span>");
       }
     }
   });
+
+  $("#user a.next").attr("disabled", "disabled");
+
+  $("#user input").keyup(function() {
+    console.log("here");
+    setTimeout(function() { validate_user_details(); }, 500);     
+  });
+
+  function validate_user_details() {
+    var areAllValid = true;
+
+    try {
+      Validate.Presence($("#first-name").val());
+      Validate.Length($("#first-name").val(), { minimum: 2 });
+
+      Validate.Presence($("#last-name").val());
+      Validate.Length($("#last-name").val(), { minimum: 2 });
+
+      Validate.Presence($("#email").val());
+      Validate.Email($("#email").val());
+
+      Validate.Presence($("#telephone").val());
+      Validate.Numericality($("#telephone").val(), { onlyInteger: true });
+      Validate.Length($("#telephone").val(), { minimum: 11 });
+
+      Validate.Presence($("#building").val());
+
+      Validate.Presence($("#street").val());
+      Validate.Length($("#street").val(), { minimum: 2 });
+
+      Validate.Presence($("#town").val());
+      Validate.Length($("#town").val(), { minimum: 2 });
+    }
+    catch(err) {
+      areAllValid = false;
+    }
+    if(!checkPostCode($("#postcode").val())) {
+      areAllValid = false;
+    }
+
+    if(areAllValid) {
+      $("#user a.next").removeAttr("disabled");
+    } else {
+      $("#user a.next").attr("disabled", "disabled"); 
+    }
+  }
 
   // accordian effect
   initialize_form();
