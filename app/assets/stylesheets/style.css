@@ -27,6 +27,14 @@ body {
 	margin: 0 !important;
 }
 
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
 #spinner {
 	height: 128px;
 	width: 128px;

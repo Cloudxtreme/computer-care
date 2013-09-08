@@ -1,3 +1,18 @@
+#order-form #options .checkout-service {
+  border: 1px solid #ccc;
+  padding: 7px;
+  margin-bottom: 15px;
+  width: 60%;
+  border-radius: 5px
+}
+
+#order-form fieldset#options .options.well {
+  background-color: #C0D9D9;
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);    */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
+}
+
 #order-form header h1 {
   font-size: 110%;
   color: #D18100;
@@ -59,4 +74,15 @@ input.LV_invalid_field:active,
 textarea.LV_invalid_field:hover, 
 textarea.LV_invalid_field:active {
     border: 1px solid #CC0000 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .left {
+    clear: both;
+    float: none !important;
+  }
+  .right {
+    clear: both;
+    float: none !important;
+  }
 }
