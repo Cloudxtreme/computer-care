@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
     @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
     @service_options = {}
-    @options = params[:options]
+    @options = params[:options] ? params[:options] : []
     @services = Service.all
     
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     required.each do |param|      
       @missing << param if params[param].blank?
     end
+    @missing << "services" if @options.empty?
 
     if @missing.any?
       render :new
@@ -67,7 +68,7 @@ class OrdersController < ApplicationController
       @order.paid = false
     end
 
-    if @order.save
+    if params[:options].any? and @order.save
       params[:options].each do |service_id, options|
         order_service = @order.order_services.create(:service_id => service_id)
         options.each do |option_id, value|
