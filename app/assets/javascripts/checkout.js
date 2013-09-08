@@ -1,6 +1,17 @@
 jQuery(function($){
-  if($("#order-form").length > 0) {
-    // form validation
+  // form validation
+  if($("#order-form").length > 0) {    
+    $("#options a.next").attr("disabled", "disabled"); 
+
+    $("#options input[type='checkbox']").click(function() {
+      if($("#options input[type='checkbox']:checked").length > 0) {
+        $("#options a.next").removeAttr("disabled");
+      }
+      else {
+        $("#options a.next").attr("disabled", "disabled");         
+      }
+    });
+
     var first_name = new LiveValidation( "first-name", { validMessage: " ", wait: 500 } );
     first_name.add( Validate.Presence, { failureMessage: "Required" } );
     first_name.add( Validate.Length, { minimum: 2 } );
