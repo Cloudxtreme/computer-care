@@ -1,3 +1,21 @@
+#order-form header h1 {
+  font-size: 110%;
+  color: #D18100;
+  float: left;
+}
+
+#order-form header span {
+  font-size: 140%;
+  color: #CCCCCC;
+  float: left;
+  padding: 3px 0 0 10px;
+  line-height: 40px;
+}
+
+#order-form header.active h1 {
+  color: #69A3CC;
+}
+
 #time_hour, #time_minute {
   width: auto;
 }

@@ -19,8 +19,8 @@
     </div> 
   <% end %> 
     <%= form_tag orders_path, :method => :post, :id => "order-form", :class => "form-horizontal #{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
-      <header class="stripe order">
-        <h1>Service Selection</h1>
+      <header class="stripe order active">
+        <span>1</span><h1>Service Selection</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
       </header>    
@@ -62,7 +62,7 @@
         <a class="btn btn-primary next">next</a>
       </fieldset>
       <header class="stripe no-margin order">
-        <h1>Customer Information</h1>
+        <span>2</span><h1>Customer Information</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
@@ -122,7 +122,7 @@
         <a class="btn btn-primary next">next</a>
       </fieldset>
       <header class="stripe no-margin order">
-        <h1>Collection Arrangements</h1>
+        <span>3</span><h1>Collection Arrangements</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
@@ -139,7 +139,7 @@
         <a class="btn btn-primary next">next</a>        
       </fieldset>
       <header class="stripe no-margin order">
-        <h1>Payment Details</h1>
+        <span>4</span><h1>Payment Details</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>

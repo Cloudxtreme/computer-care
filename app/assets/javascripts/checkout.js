@@ -214,10 +214,12 @@ function initialize_form() {
 
 function open_next_section($current) {
   $current.hide();
+  $current.prev("header").removeClass("active");
   $current.prev("header").find(".img-shadow").hide();
   $current.next().next("fieldset").addClass("active").slideDown();
   $current.next("header").find(".img-shadow").show();  
   $current.next("header").find(".img-shadow.top").hide();
+  $current.next("header").addClass("active");
   $current.next().next().next().find(".img-shadow.top").show();
   $current.removeClass("active");
   if($("fieldset.active").is(":nth-last-child(2)")) {
@@ -228,6 +230,8 @@ function open_next_section($current) {
 function open_previous_section($current) {
   $(".img-shadow").hide();
   $current.hide();
+  $current.prev().prev().prev("header").addClass("active");
+  $current.prev("header").removeClass("active");
   $current.prev().prev("fieldset").addClass("active").slideDown();
   $current.prev("header").find(".img-shadow").hide();
   $current.prev("header").find(".img-shadow.top").show();
