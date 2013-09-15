@@ -136,7 +136,7 @@ header.main h1 em {
 	background: linear-gradient(to bottom,  #6290bd 0%,#326da1 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6290bd', endColorstr='#326da1',GradientType=0 );
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 5px;	
 }
 
 #main-nav ul.inline li.home {

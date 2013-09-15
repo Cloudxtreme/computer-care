@@ -203,11 +203,21 @@ $(function() {
 		return slide_width;
 	}
 
-	/* fluid navigation */
+	/* NAVIGATION */
 	set_nav_item_width();
 
 	$(window).resize(function() {
 		set_nav_item_width();
+	});
+
+	$("#main-nav li").css("cursor", "pointer");
+	$("#main-nav li:not(.active)").hover(function() {
+		$(this).addClass("active");
+	}, function() {
+		$(this).removeClass("active");
+	});
+	$("#main-nav li").click(function() {
+		window.location = $(this).find("a").attr("href");
 	});
 
 	function set_nav_item_width() {
