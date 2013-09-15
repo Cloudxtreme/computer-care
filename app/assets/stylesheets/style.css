@@ -97,6 +97,7 @@ header.main h1 em {
 #main-nav {
 	position: relative;
 	height: 50px;
+	overflow: hidden;
 }
 
 #main-nav div {
@@ -127,13 +128,13 @@ header.main h1 em {
 	  text-shadow: 1px 1px 3px #000000;	
 	text-decoration: none;
 	background: #326da1;
-	background: -moz-linear-gradient(top,  #326da1 0%, #6290bd 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#326da1), color-stop(100%,#6290bd));
-	background: -webkit-linear-gradient(top,  #326da1 0%,#6290bd 100%);
-	background: -o-linear-gradient(top,  #326da1 0%,#6290bd 100%);
-	background: -ms-linear-gradient(top,  #326da1 0%,#6290bd 100%);
-	background: linear-gradient(to bottom,  #326da1 0%,#6290bd 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#326da1', endColorstr='#6290bd',GradientType=0 );
+	background: -moz-linear-gradient(top,  #6290bd 0%, #326da1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6290bd), color-stop(100%,#326da1));
+	background: -webkit-linear-gradient(top,  #6290bd 0%,#326da1 100%);
+	background: -o-linear-gradient(top,  #6290bd 0%,#326da1 100%);
+	background: -ms-linear-gradient(top,  #6290bd 0%,#326da1 100%);
+	background: linear-gradient(to bottom,  #6290bd 0%,#326da1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6290bd', endColorstr='#326da1',GradientType=0 );
 	text-align: center;
 	border-radius: 5px;
 }
@@ -321,36 +322,15 @@ footer ul.inline li:first-child, footer ul.inline li:first-child a {
 	header.main h1 {
 		font-size: 50px;
 	}
+	#main-nav ul.inline li a{
+		font-size: 110%;
+	}
 	footer ul.inline {
 		margin-top: 80px;
 	}
 	#social {
 		display: none;
 	}
-	ul.inline li.active a, ul.inline li a:hover {
-		text-decoration: underline;
-		background: none;
-	}
-	ul.inline li.active img.hover-img, ul.inline li.hover img.hover-img {
-		display: none;
-	}
-	#main-nav ul.inline li.active img.hover-img, #main-nav ul.inline li.hover img.hover-img {
-		display: none;
-	}	
-	#main-nav ul.inline li.active a, #main-nav ul.inline li a:hover {
-		background: none;
-		text-decoration: underline;
-	}
-	#main-nav ul.pull-left {
-		margin-left: 40px;
-	}		
-	#main-nav ul li {
-		padding: 0;
-	}		
-	#main-nav ul li a {
-		margin: 0;
-		padding: 0;
-	}	
 }
 
 @media screen and (max-width: 520px) {
@@ -367,18 +347,12 @@ footer ul.inline li:first-child, footer ul.inline li:first-child a {
 	header.main span {
 		display:none;
 	}
-	#main-nav ul li {
-		margin: 0;
-		margin-right: 2px;
-	}	
-	#main-nav ul li a {
-		font-size: 100%;
+	#main-nav ul.inline li {
+		padding: 15px 0 9px 0;
 	}
-	#main-nav ul.pull-left {
-		margin-left: 0;
-	}
-	#home-link {
-		display:none;
+
+	#main-nav ul.inline li a{
+		font-size: 90%;
 	}
   	#main-content header {
   		height: auto;

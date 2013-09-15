@@ -1,4 +1,4 @@
-$(function() {
+$(function() {	
 	 var width = get_device_width();
 
 	 $("#notice").slideDown(500, function() {
@@ -204,8 +204,25 @@ $(function() {
 	}
 
 	/* fluid navigation */
-	var header_width = $("header.main").outerWidth(false);
-	console.log(header_width);
+	set_nav_item_width();
+
+	$(window).resize(function() {
+		set_nav_item_width();
+	});
+
+	function set_nav_item_width() {
+		var header_width = $("header.main").outerWidth(false);
+		var home_link_width = $("header.main li.home").outerWidth(true);
+		var num_of_links = $("header.main li:not(.home)").length;
+		var li_width = (header_width - home_link_width - 20) / num_of_links;
+
+		$("header.main li:not(.home)").css("padding-left", 0);
+		$("header.main li:not(.home)").css("padding-right", 0);
+		$("header.main li:not(.home) a").css("padding-left", 0);
+		$("header.main li:not(.home) a").css("padding-right", 0);
+		$("header.main li:not(.home)").css("width", li_width + "px");
+	}
+
 
 	$(document).pjax("#services a.btn", "#pjax-container");
 
