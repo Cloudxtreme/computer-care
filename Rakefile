@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MarketingSite::Application.load_tasks
+ComputerCare::Application.load_tasks

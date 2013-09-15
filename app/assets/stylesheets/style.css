@@ -61,9 +61,6 @@ body {
 
 header.main {
 	padding-top: 30px;
-	background-image: url('highlight.png');
-	background-repeat: no-repeat;
-	background-position: 40px 25px;
 }
 
 header.main a:hover {
@@ -86,9 +83,9 @@ header.main h1 {
 	letter-spacing: -4px;
 	word-spacing: -5px;
 
-	background-image: url('logo-icon.png');
+	/*background-image: url('logo-icon.png');
 	background-repeat: no-repeat;
-	background-position: 68% 15px;
+	background-position: 630px 15px;*/
 }
 
 header.main h1 em {
@@ -98,20 +95,16 @@ header.main h1 em {
 }
 
 #main-nav {
-	position:relative;
-	padding: 15px;
-	background: #d58c00;
-	background: -moz-linear-gradient(top,  #d58c00 0%, #b85500 100%, #b85500 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d58c00), color-stop(100%,#b85500), color-stop(100%,#b85500));
-	background: -webkit-linear-gradient(top,  #d58c00 0%,#b85500 100%,#b85500 100%);
-	background: -o-linear-gradient(top,  #d58c00 0%,#b85500 100%,#b85500 100%);
-	background: -ms-linear-gradient(top,  #d58c00 0%,#b85500 100%,#b85500 100%);
-	background: linear-gradient(to bottom,  #d58c00 0%,#b85500 100%,#b85500 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d58c00', endColorstr='#b85500',GradientType=0 );	
-	background-image: url('nav_stripe.png');
-    -webkit-text-shadow: 1px 1px 3px #000000;
-    -moz-text-shadow: 1px 1px 3px #000000;
-    text-shadow: 1px 1px 3px #000000;
+	position: relative;
+	height: 50px;
+}
+
+#main-nav div {
+	position: absolute;
+	bottom: 0;
+	height: 10px;
+	width: 100%; 
+	background-color: #F99703;
 }
 
 #main-nav #home-link {
@@ -119,46 +112,19 @@ header.main h1 em {
 	top: 10px;
 }
 
-ul.inline {
+#main-nav ul.inline {
 	margin: 0;
-}
-
-ul.inline.pull-left {
-	margin-left: 60px;
-}
-
-ul.inline li {
-	display: inline;
-	position:relative;
-	margin-right: 18px;
-}
-
-#main-nav ul.inline li img.hover-img {
-	display: none;
 	position: absolute;
-	top: -22px;
+	top: 0;
+	width: 100%;
 }
 
-#main-nav ul.inline li.active img.hover-img, #main-nav ul.inline li.hover img.hover-img {
-	display: block;
-}
-
-#main-nav ul.inline li img.hover-img.left {
-	left: -10px;
-}
-
-#main-nav ul.inline li img.hover-img.right {
-	right: -10px;
-}
-
-ul.inline li a {
-	font-size: 130%;
-	color: #FFFFFF;
-	font-weight: 400;
-	padding: 21px 10px 10px 10px;
-}
-
-#main-nav ul.inline li.active a, #main-nav ul.inline li a:hover {
+#main-nav ul.inline li {
+	padding: 15px 1% 9px 1%;
+	margin-right: 0px;
+	  -webkit-text-shadow: 1px 1px 3px #000000;
+	  -moz-text-shadow: 1px 1px 3px #000000;
+	  text-shadow: 1px 1px 3px #000000;	
 	text-decoration: none;
 	background: #326da1;
 	background: -moz-linear-gradient(top,  #326da1 0%, #6290bd 100%);
@@ -167,7 +133,29 @@ ul.inline li a {
 	background: -o-linear-gradient(top,  #326da1 0%,#6290bd 100%);
 	background: -ms-linear-gradient(top,  #326da1 0%,#6290bd 100%);
 	background: linear-gradient(to bottom,  #326da1 0%,#6290bd 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#326da1', endColorstr='#6290bd',GradientType=0 );	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#326da1', endColorstr='#6290bd',GradientType=0 );
+	text-align: center;
+	border-radius: 5px;
+}
+
+#main-nav ul.inline li.home {
+	padding: 13px 5px 5px 0px;
+}
+
+#main-nav ul.inline li.home img {
+	height: 25px;
+}
+
+#main-nav ul.inline li.active {
+	background: none;
+	background: #F99703;
+}
+
+#main-nav ul.inline li a {
+	font-size: 130%;
+	color: #FFFFFF;
+	font-weight: 400;
+	padding: 21px 10px 10px 10px;
 }
 
 /* MAIN LAYOUT */
@@ -254,15 +242,62 @@ hr.dark {
 /* FOOTER */
 
 footer {
+	position: relative;
 	padding: 30px 0;
 	background-color: #000000;
 	height: 120px;
 	margin-top: 20px;
 	color: #FFFFFF;
 	background-image: url('diagonal-stripe.png');
+	font-size: 90%;
+}
+
+footer .container {
+	position: relative;
+}
+
+footer .social-icon {
+	position: absolute;
+	top: 15px;
+	z-index: 2;
+	font-size: 90%;	
+}
+
+footer hr {
+	position: absolute;
+	top:0px;
+	width: 100%;
+	z-index: 1;
+}
+
+footer a, footer a:hover {
+	color: #ffffff;
+}
+
+#social {
+	position: absolute;
+	top: 45px;
+	right: 240px;
+}
+
+footer .social-icon.facebook {
+	right: 180px;
+}
+
+footer .social-icon.twitter {
+	right: 120px;
+}
+
+footer .social-icon.google {
+	right: 60px;
+}
+
+footer .social-icon.youtube {
+	right: 0;
 }
 
 footer ul.inline {
+	margin-top: 45px;
 	margin-bottom: 10px;	
 }
 
@@ -270,8 +305,9 @@ footer ul.inline li {
 	margin-right: 0px;
 }
 
-footer ul.inline li a {
-	font-size: 100%;
+footer ul.inline li:first-child, footer ul.inline li:first-child a {
+	margin-left: 0;
+	padding-left: 0;
 }
 
 /* RESPONSIVE */
@@ -282,6 +318,15 @@ footer ul.inline li a {
 }
 
 @media screen and (max-width: 768px) {
+	header.main h1 {
+		font-size: 50px;
+	}
+	footer ul.inline {
+		margin-top: 80px;
+	}
+	#social {
+		display: none;
+	}
 	ul.inline li.active a, ul.inline li a:hover {
 		text-decoration: underline;
 		background: none;

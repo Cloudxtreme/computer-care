@@ -31,40 +31,31 @@
         <![endif]-->
         <header class="main container">
             <div class="container">
-                <a href="<%= root_path %>"><h1 class="pull-left"><em>C</em><span>heaper</span> <em>C</em><span>omputer</span> <em>C</em><span>are</span></h1></a>
+                <a href="<%= root_path %>"><h1 class="pull-left"><em>C</em><span>heaper</span> <em>C</em><span>omputer</span> <em>C</em><span>are</span><%= image_tag("logo-icon.png") %></h1></a>
             </div>
             <div class="container">
-                <nav id="main-nav" class="clearfix">
-                    <%= home_link %>
-                    <ul class="unstyled pull-left inline">
+                <nav id="main-nav" class="clearfix">                    
+                    <ul class="unstyled inline">
+                        <li class="home <%= is_active('pages', 'home') %>">
+                            <%= link_to image_tag("home-icon.png"), home_path %>
+                        </li>
                         <li class="<%= is_active('services') %>">
-                            <%= image_tag("left-wing.png", :class => "hover-img left") %>
-                            <%= image_tag("right-wing.png", :class => "hover-img right") %>
                             <%= link_to "Services", services_path %>
                         </li>
                         <li class="<%= is_active('pages', 'contact') %>">
-                            <%= image_tag("left-wing.png", :class => "hover-img left") %>
-                            <%= image_tag("right-wing.png", :class => "hover-img right") %>
                             <%= link_to "Contact", contact_path %>
                         </li>
                         <li class="<%= is_active('pages', 'about') %>">
-                            <%= image_tag("left-wing.png", :class => "hover-img left") %>
-                            <%= image_tag("right-wing.png", :class => "hover-img right") %>
                             <%= link_to "About", about_path %>
                         </li>
-                    </ul>
-                    <ul class="unstyled pull-right inline">
                         <li class="<%= is_active('pages', 'offers') %>">
-                            <%= image_tag("left-wing.png", :class => "hover-img left") %>
-                            <%= image_tag("right-wing.png", :class => "hover-img right") %>
                             <%= link_to "Offers", offers_path %>
                         </li>
                         <li class="<%= is_active('pages', 'faq') %>">
-                            <%= image_tag("left-wing.png", :class => "hover-img left") %>
-                            <%= image_tag("right-wing.png", :class => "hover-img right") %>
                             <%= link_to "FAQ", faq_path %>
                         </li>
                     </ul>
+                    <div></div>
                 </nav>
             </div>            
         </header>
@@ -74,6 +65,11 @@
         <div class="row-fluid">
             <footer>
                 <div class="container">
+                    <%= image_tag("social.png", :id => "social", :width => 130) %>
+                    <a href="#"><%= image_tag("facebook-icon.png", :class => "social-icon facebook") %></a>
+                    <a href="#"><%= image_tag("twitter-icon.png", :class => "social-icon twitter") %></a>
+                    <a href="#"><%= image_tag("google-icon.png", :class => "social-icon google") %></a>
+                    <a href="#"><%= image_tag("youtube-icon.png", :class => "social-icon youtube") %></a>
                     <hr>
                     <nav>
                         <ul class="unstlyed inline">

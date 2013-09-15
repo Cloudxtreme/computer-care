@@ -1,0 +1,713 @@
+# Logfile created on 2013-09-13 10:43:13 +0100 by logger.rb/31641
+[36m
+  Route:                                  => [0m
+[36m#<Journey::Route:0x00000103a3d7f8>[0m
+[36m                         Path: /assets[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route:  root                           pages => home[0m
+[36m#<Journey::Route:0x000001038cb438>[0m
+[36m                         Path: /[0m
+[36m
+  Route:  send                           pages => contact_send[0m
+[36m#<Journey::Route:0x00000100f6c998>[0m
+[36m                         Path: /send(.:format)[0m
+[36m
+  Route:  home                           pages => home[0m
+[36m#<Journey::Route:0x00000103858438>[0m
+[36m                         Path: /home(.:format)[0m
+[36m
+  Route:  contact                        pages => contact[0m
+[36m#<Journey::Route:0x0000010385e860>[0m
+[36m                         Path: /contact(.:format)[0m
+[36m
+  Route:  about                          pages => about[0m
+[36m#<Journey::Route:0x00000100cbb870>[0m
+[36m                         Path: /about(.:format)[0m
+[36m
+  Route:  offers                         pages => offers[0m
+[36m#<Journey::Route:0x00000100cc1b80>[0m
+[36m                         Path: /offers(.:format)[0m
+[36m
+  Route:  faq                            pages => faq[0m
+[36m#<Journey::Route:0x00000100fea370>[0m
+[36m                         Path: /faq(.:format)[0m
+[36m
+  Route:  terms                          pages => terms[0m
+[36m#<Journey::Route:0x00000103879de0>[0m
+[36m                         Path: /terms(.:format)[0m
+[36m
+  Route:  slider                         pages => slider[0m
+[36m#<Journey::Route:0x00000103a5ff88>[0m
+[36m                         Path: /slider(.:format)[0m
+[36m
+  Route: get newsletter_users               newsletter_users => index[0m
+[36m#<Journey::Route:0x000001039c5488>[0m
+[36m                         Path: /newsletter_users(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                newsletter_users => create[0m
+[36m#<Journey::Route:0x00000100d12e90>[0m
+[36m                         Path: /newsletter_users(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_newsletter_user            newsletter_users => new[0m
+[36m#<Journey::Route:0x00000100d16888>[0m
+[36m                         Path: /newsletter_users/new(.:format)[0m
+[36m
+  Route: get edit_newsletter_user           newsletter_users => edit[0m
+[36m#<Journey::Route:0x00000100d1e790>[0m
+[36m                         Path: /newsletter_users/:id/edit(.:format)[0m
+[36m
+  Route: get newsletter_user                newsletter_users => show[0m
+[36m#<Journey::Route:0x000001039e3758>[0m
+[36m                         Path: /newsletter_users/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                newsletter_users => update[0m
+[36m#<Journey::Route:0x000001039ed280>[0m
+[36m                         Path: /newsletter_users/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                newsletter_users => destroy[0m
+[36m#<Journey::Route:0x000001039ea828>[0m
+[36m                         Path: /newsletter_users/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get student_codes                  student_codes => index[0m
+[36m#<Journey::Route:0x00000103af7068>[0m
+[36m                         Path: /student_codes(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                student_codes => create[0m
+[36m#<Journey::Route:0x00000103afe138>[0m
+[36m                         Path: /student_codes(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_student_code               student_codes => new[0m
+[36m#<Journey::Route:0x00000103b02a08>[0m
+[36m                         Path: /student_codes/new(.:format)[0m
+[36m
+  Route: get edit_student_code              student_codes => edit[0m
+[36m#<Journey::Route:0x00000100dca978>[0m
+[36m                         Path: /student_codes/:id/edit(.:format)[0m
+[36m
+  Route: get student_code                   student_codes => show[0m
+[36m#<Journey::Route:0x00000100dd3230>[0m
+[36m                         Path: /student_codes/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                student_codes => update[0m
+[36m#<Journey::Route:0x00000100dd4a18>[0m
+[36m                         Path: /student_codes/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                student_codes => destroy[0m
+[36m#<Journey::Route:0x00000100dd9e00>[0m
+[36m                         Path: /student_codes/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: post payment_order_invoice          invoices => payment[0m
+[36m#<Journey::Route:0x00000100f47d50>[0m
+[36m                         Path: /orders/:order_id/invoice/payment(.:format)[0m
+[36m              Explicit Exclude -> exclude[0m
+[36m
+  Route: post order_invoice                  invoices => create[0m
+[36m#<Journey::Route:0x00000100f50b30>[0m
+[36m                         Path: /orders/:order_id/invoice(.:format)[0m
+[36m              Explicit Exclude -> exclude[0m
+[36m
+  Route: get new_order_invoice              invoices => new[0m
+[36m#<Journey::Route:0x00000100f52110>[0m
+[36m                         Path: /orders/:order_id/invoice/new(.:format)[0m
+[36m
+  Route: get edit_order_invoice             invoices => edit[0m
+[36m#<Journey::Route:0x000001038ab958>[0m
+[36m                         Path: /orders/:order_id/invoice/edit(.:format)[0m
+[36m
+  Route: get                                invoices => show[0m
+[36m#<Journey::Route:0x000001038ad960>[0m
+[36m                         Path: /orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: put                                invoices => update[0m
+[36m#<Journey::Route:0x000001038b3018>[0m
+[36m                         Path: /orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                invoices => destroy[0m
+[36m#<Journey::Route:0x000001038b86f8>[0m
+[36m                         Path: /orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: post finalize_orders                orders => finalize[0m
+[36m#<Journey::Route:0x000001038b57f0>[0m
+[36m                         Path: /orders/finalize(.:format)[0m
+[36m              Explicit Exclude -> exclude[0m
+[36m
+  Route: get complete_orders                orders => complete[0m
+[36m#<Journey::Route:0x000001038bf818>[0m
+[36m                         Path: /orders/complete(.:format)[0m
+[36m
+  Route: get orders                         orders => index[0m
+[36m#<Journey::Route:0x00000100f7a840>[0m
+[36m                         Path: /orders(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                orders => create[0m
+[36m#<Journey::Route:0x00000100f850b0>[0m
+[36m                         Path: /orders(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_order                      orders => new[0m
+[36m#<Journey::Route:0x00000100f82518>[0m
+[36m                         Path: /orders/new(.:format)[0m
+[36m
+  Route: get edit_order                     orders => edit[0m
+[36m#<Journey::Route:0x00000100f8bbe0>[0m
+[36m                         Path: /orders/:id/edit(.:format)[0m
+[36m
+  Route: get order                          orders => show[0m
+[36m#<Journey::Route:0x000001038366a8>[0m
+[36m                         Path: /orders/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                orders => update[0m
+[36m#<Journey::Route:0x00000103838a70>[0m
+[36m                         Path: /orders/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                orders => destroy[0m
+[36m#<Journey::Route:0x0000010383e4e8>[0m
+[36m                         Path: /orders/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get data_recovery_services         services => data_recovery[0m
+[36m#<Journey::Route:0x00000103842160>[0m
+[36m                         Path: /services/data_recovery(.:format)[0m
+[36m
+  Route: get replacement_parts_services     services => replacement_parts[0m
+[36m#<Journey::Route:0x00000103844190>[0m
+[36m                         Path: /services/replacement_parts(.:format)[0m
+[36m
+  Route: get virus_removal_services         services => virus_removal[0m
+[36m#<Journey::Route:0x0000010381c7f8>[0m
+[36m                         Path: /services/virus_removal(.:format)[0m
+[36m
+  Route: get servicing_services             services => servicing[0m
+[36m#<Journey::Route:0x0000010381e850>[0m
+[36m                         Path: /services/servicing(.:format)[0m
+[36m
+  Route: get upgrades_services              services => upgrades[0m
+[36m#<Journey::Route:0x000001038288a0>[0m
+[36m                         Path: /services/upgrades(.:format)[0m
+[36m
+  Route: get repairs_services               services => repairs[0m
+[36m#<Journey::Route:0x0000010382a8f8>[0m
+[36m                         Path: /services/repairs(.:format)[0m
+[36m
+  Route: get services                       services => index[0m
+[36m#<Journey::Route:0x00000103b1f310>[0m
+[36m                         Path: /services(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                services => create[0m
+[36m#<Journey::Route:0x00000103b21bb0>[0m
+[36m                         Path: /services(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_service                    services => new[0m
+[36m#<Journey::Route:0x00000103b26fe8>[0m
+[36m                         Path: /services/new(.:format)[0m
+[36m
+  Route: get edit_service                   services => edit[0m
+[36m#<Journey::Route:0x00000103b286e0>[0m
+[36m                         Path: /services/:id/edit(.:format)[0m
+[36m
+  Route: get service                        services => show[0m
+[36m#<Journey::Route:0x00000103b32988>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                services => update[0m
+[36m#<Journey::Route:0x00000103b34d78>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                services => destroy[0m
+[36m#<Journey::Route:0x00000103b3a7f0>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get companies                      companies => index[0m
+[36m#<Journey::Route:0x00000103b3eb98>[0m
+[36m                         Path: /companies(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                companies => create[0m
+[36m#<Journey::Route:0x00000103b41410>[0m
+[36m                         Path: /companies(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_company                    companies => new[0m
+[36m#<Journey::Route:0x00000103b46848>[0m
+[36m                         Path: /companies/new(.:format)[0m
+[36m
+  Route: get edit_company                   companies => edit[0m
+[36m#<Journey::Route:0x00000103b47f40>[0m
+[36m                         Path: /companies/:id/edit(.:format)[0m
+[36m
+  Route: get company                        companies => show[0m
+[36m#<Journey::Route:0x00000103b52210>[0m
+[36m                         Path: /companies/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                companies => update[0m
+[36m#<Journey::Route:0x00000103b545b0>[0m
+[36m                         Path: /companies/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                companies => destroy[0m
+[36m#<Journey::Route:0x00000103b5a028>[0m
+[36m                         Path: /companies/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route:  admin_dashboard                admin/admin => dashboard[0m
+[36m#<Journey::Route:0x00000103b5f050>[0m
+[36m                         Path: /admin/dashboard(.:format)[0m
+[36m
+  Route: get admin_newsletter_users         admin/newsletter_users => index[0m
+[36m#<Journey::Route:0x00000103b5fac8>[0m
+[36m                         Path: /admin/newsletter_users(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/newsletter_users => create[0m
+[36m#<Journey::Route:0x00000103b69f78>[0m
+[36m                         Path: /admin/newsletter_users(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_newsletter_user      admin/newsletter_users => new[0m
+[36m#<Journey::Route:0x00000103b6eff0>[0m
+[36m                         Path: /admin/newsletter_users/new(.:format)[0m
+[36m
+  Route: get edit_admin_newsletter_user     admin/newsletter_users => edit[0m
+[36m#<Journey::Route:0x00000103b70300>[0m
+[36m                         Path: /admin/newsletter_users/:id/edit(.:format)[0m
+[36m
+  Route: get admin_newsletter_user          admin/newsletter_users => show[0m
+[36m#<Journey::Route:0x00000103b7a210>[0m
+[36m                         Path: /admin/newsletter_users/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/newsletter_users => update[0m
+[36m#<Journey::Route:0x00000103b7c1f0>[0m
+[36m                         Path: /admin/newsletter_users/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/newsletter_users => destroy[0m
+[36m#<Journey::Route:0x00000103b818a8>[0m
+[36m                         Path: /admin/newsletter_users/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get admin_student_codes            admin/student_codes => index[0m
+[36m#<Journey::Route:0x00000103b85930>[0m
+[36m                         Path: /admin/student_codes(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/student_codes => create[0m
+[36m#<Journey::Route:0x00000103b87dc0>[0m
+[36m                         Path: /admin/student_codes(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_student_code         admin/student_codes => new[0m
+[36m#<Journey::Route:0x00000103b8ce60>[0m
+[36m                         Path: /admin/student_codes/new(.:format)[0m
+[36m
+  Route: get edit_admin_student_code        admin/student_codes => edit[0m
+[36m#<Journey::Route:0x00000103b96118>[0m
+[36m                         Path: /admin/student_codes/:id/edit(.:format)[0m
+[36m
+  Route: get admin_student_code             admin/student_codes => show[0m
+[36m#<Journey::Route:0x00000103b98058>[0m
+[36m                         Path: /admin/student_codes/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/student_codes => update[0m
+[36m#<Journey::Route:0x00000103ba2030>[0m
+[36m                         Path: /admin/student_codes/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/student_codes => destroy[0m
+[36m#<Journey::Route:0x00000103ba76e8>[0m
+[36m                         Path: /admin/student_codes/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: post admin_order_invoice            admin/invoices => create[0m
+[36m#<Journey::Route:0x00000103ba9510>[0m
+[36m                         Path: /admin/orders/:order_id/invoice(.:format)[0m
+[36m              Explicit Exclude -> exclude[0m
+[36m
+  Route: get new_admin_order_invoice        admin/invoices => new[0m
+[36m#<Journey::Route:0x00000103bb27a0>[0m
+[36m                         Path: /admin/orders/:order_id/invoice/new(.:format)[0m
+[36m
+  Route: get edit_admin_order_invoice       admin/invoices => edit[0m
+[36m#<Journey::Route:0x00000103bbb698>[0m
+[36m                         Path: /admin/orders/:order_id/invoice/edit(.:format)[0m
+[36m
+  Route: get                                admin/invoices => show[0m
+[36m#<Journey::Route:0x00000103bbd330>[0m
+[36m                         Path: /admin/orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: put                                admin/invoices => update[0m
+[36m#<Journey::Route:0x00000103bc26c8>[0m
+[36m                         Path: /admin/orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/invoices => destroy[0m
+[36m#<Journey::Route:0x00000103bbfa68>[0m
+[36m                         Path: /admin/orders/:order_id/invoice(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get admin_orders                   admin/orders => index[0m
+[36m#<Journey::Route:0x00000103bc4ec8>[0m
+[36m                         Path: /admin/orders(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/orders => create[0m
+[36m#<Journey::Route:0x00000103bcf350>[0m
+[36m                         Path: /admin/orders(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_order                admin/orders => new[0m
+[36m#<Journey::Route:0x00000103bcc420>[0m
+[36m                         Path: /admin/orders/new(.:format)[0m
+[36m
+  Route: get edit_admin_order               admin/orders => edit[0m
+[36m#<Journey::Route:0x00000103bd5750>[0m
+[36m                         Path: /admin/orders/:id/edit(.:format)[0m
+[36m
+  Route: get admin_order                    admin/orders => show[0m
+[36m#<Journey::Route:0x00000103bdf660>[0m
+[36m                         Path: /admin/orders/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/orders => update[0m
+[36m#<Journey::Route:0x00000103be1640>[0m
+[36m                         Path: /admin/orders/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/orders => destroy[0m
+[36m#<Journey::Route:0x00000103be6cf8>[0m
+[36m                         Path: /admin/orders/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get admin_service_service_option_service_option_values admin/service_option_values => index[0m
+[36m#<Journey::Route:0x00000103bee840>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/service_option_values => create[0m
+[36m#<Journey::Route:0x00000103befd30>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_service_service_option_service_option_value admin/service_option_values => new[0m
+[36m#<Journey::Route:0x00000103bf3fc0>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values/new(.:format)[0m
+[36m
+  Route: get edit_admin_service_service_option_service_option_value admin/service_option_values => edit[0m
+[36m#<Journey::Route:0x00000103bed878>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values/:id/edit(.:format)[0m
+[36m
+  Route: get admin_service_service_option_service_option_value admin/service_option_values => show[0m
+[36m#<Journey::Route:0x00000103be4f98>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/service_option_values => update[0m
+[36m#<Journey::Route:0x00000103bdc910>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/service_option_values => destroy[0m
+[36m#<Journey::Route:0x00000103bd8810>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:service_option_id/service_option_values/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get admin_service_service_options  admin/service_options => index[0m
+[36m#<Journey::Route:0x00000103bd4878>[0m
+[36m                         Path: /admin/services/:service_id/service_options(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/service_options => create[0m
+[36m#<Journey::Route:0x00000103bcd668>[0m
+[36m                         Path: /admin/services/:service_id/service_options(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_service_service_option admin/service_options => new[0m
+[36m#<Journey::Route:0x00000103bc95b8>[0m
+[36m                         Path: /admin/services/:service_id/service_options/new(.:format)[0m
+[36m
+  Route: get edit_admin_service_service_option admin/service_options => edit[0m
+[36m#<Journey::Route:0x00000103bc04b8>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:id/edit(.:format)[0m
+[36m
+  Route: get admin_service_service_option   admin/service_options => show[0m
+[36m#<Journey::Route:0x00000103bb85b0>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/service_options => update[0m
+[36m#<Journey::Route:0x00000103bb0900>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/service_options => destroy[0m
+[36m#<Journey::Route:0x00000103bad458>[0m
+[36m                         Path: /admin/services/:service_id/service_options/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get admin_services                 admin/services => index[0m
+[36m#<Journey::Route:0x00000103ba9ab0>[0m
+[36m                         Path: /admin/services(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                admin/services => create[0m
+[36m#<Journey::Route:0x00000103ba3868>[0m
+[36m                         Path: /admin/services(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_admin_service              admin/services => new[0m
+[36m#<Journey::Route:0x00000103b9fb78>[0m
+[36m                         Path: /admin/services/new(.:format)[0m
+[36m
+  Route: get edit_admin_service             admin/services => edit[0m
+[36m#<Journey::Route:0x00000103b97b30>[0m
+[36m                         Path: /admin/services/:id/edit(.:format)[0m
+[36m
+  Route: get admin_service                  admin/services => show[0m
+[36m#<Journey::Route:0x00000103b90920>[0m
+[36m                         Path: /admin/services/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                admin/services => update[0m
+[36m#<Journey::Route:0x00000103b898a0>[0m
+[36m                         Path: /admin/services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                admin/services => destroy[0m
+[36m#<Journey::Route:0x00000103b86420>[0m
+[36m                         Path: /admin/services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route:  rails_info_properties          rails/info => properties[0m
+[36m#<Journey::Route:0x000001038492a8>[0m
+[36m                         Path: /rails/info/properties(.:format)[0m
+processing route:  name: newsletter_users  controller: newsletter_users  action: index
+[36msitemap_setup: action_name => index source => sitemap model => NewsletterUser[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: newsletter_user  controller: newsletter_users  action: show
+[36msitemap_setup: action_name => show source => sitemap model => NewsletterUser[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: student_codes  controller: student_codes  action: index
+[36msitemap_setup: action_name => index source => sitemap model => StudentCode[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: student_code  controller: student_codes  action: show
+[36msitemap_setup: action_name => show source => sitemap model => StudentCode[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: orders  controller: orders  action: index
+[36msitemap_setup: action_name => index source => sitemap model => Order[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: order  controller: orders  action: show
+[36msitemap_setup: action_name => show source => sitemap model => Order[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: services  controller: services  action: index
+[36msitemap_setup: action_name => index source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: service  controller: services  action: show
+[36msitemap_setup: action_name => show source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: companies  controller: companies  action: index
+[36msorry, could not determine controller class...: route name: companies controller: companies  action: index[0m
+processing route:  name: company  controller: companies  action: show
+[36msorry, could not determine controller class...: route name: company controller: companies  action: show[0m
+processing route:  name: admin_newsletter_users  controller: admin/newsletter_users  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: admin_newsletter_user  controller: admin/newsletter_users  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: admin_student_codes  controller: admin/student_codes  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: admin_student_code  controller: admin/student_codes  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: admin_orders  controller: admin/orders  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: admin_order  controller: admin/orders  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: admin_service_service_option_service_option_values  controller: admin/service_option_values  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+[31mNo route matches {:controller=>"admin/service_option_values", :format=>"html"}[0m
+processing route:  name: admin_service_service_option_service_option_value  controller: admin/service_option_values  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: admin_service_service_options  controller: admin/service_options  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+[31mNo route matches {:controller=>"admin/service_options", :format=>"html"}[0m
+processing route:  name: admin_service_service_option  controller: admin/service_options  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: admin_services  controller: admin/services  action: index
+[36msitemap_setup: action_name => index source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: admin_service  controller: admin/services  action: show
+[36msitemap_setup: action_name => show source => sitemap model => [0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+[36m
+  Route:  root                           pages => home[0m
+[36m#<Journey::Route:0x0000010124ce10>[0m
+[36m                         Path: /[0m
+[36m
+  Route:  send                           pages => contact_send[0m
+[36m#<Journey::Route:0x000001012b4088>[0m
+[36m                         Path: /send(.:format)[0m
+[36m
+  Route:  home                           pages => home[0m
+[36m#<Journey::Route:0x000001012adf80>[0m
+[36m                         Path: /home(.:format)[0m
+[36m
+  Route:  contact                        pages => contact[0m
+[36m#<Journey::Route:0x00000104742430>[0m
+[36m                         Path: /contact(.:format)[0m
+[36m
+  Route:  about                          pages => about[0m
+[36m#<Journey::Route:0x0000010473c468>[0m
+[36m                         Path: /about(.:format)[0m
+[36m
+  Route:  offers                         pages => offers[0m
+[36m#<Journey::Route:0x00000104733840>[0m
+[36m                         Path: /offers(.:format)[0m
+[36m
+  Route:  faq                            pages => faq[0m
+[36m#<Journey::Route:0x00000104710ed0>[0m
+[36m                         Path: /faq(.:format)[0m
+[36m
+  Route:  terms                          pages => terms[0m
+[36m#<Journey::Route:0x000001042ca7b8>[0m
+[36m                         Path: /terms(.:format)[0m
+[36m
+  Route:  slider                         pages => slider[0m
+[36m#<Journey::Route:0x0000010418c630>[0m
+[36m                         Path: /slider(.:format)[0m
+[36mtotal routes filtered: 9  included? 0[0m
+[36m  Route name: sitemap_sitemap[0m
+[36m  Route name: root[0m
+[36m  Route name: send[0m
+[36m  Route name: home[0m
+[36m  Route name: contact[0m
+[36m  Route name: about[0m
+[36m  Route name: offers[0m
+[36m  Route name: faq[0m
+[36m  Route name: terms[0m
+[36m  Route name: slider[0m
+[36m
+  Route: get data_recovery_services         services => data_recovery[0m
+[36m#<Journey::Route:0x0000010383e1f0>[0m
+[36m                         Path: /services/data_recovery(.:format)[0m
+[36m
+  Route: get replacement_parts_services     services => replacement_parts[0m
+[36m#<Journey::Route:0x0000010381ca78>[0m
+[36m                         Path: /services/replacement_parts(.:format)[0m
+[36m
+  Route: get virus_removal_services         services => virus_removal[0m
+[36m#<Journey::Route:0x0000010382c4f0>[0m
+[36m                         Path: /services/virus_removal(.:format)[0m
+[36m
+  Route: get servicing_services             services => servicing[0m
+[36m#<Journey::Route:0x00000103b22b78>[0m
+[36m                         Path: /services/servicing(.:format)[0m
+[36m
+  Route: get upgrades_services              services => upgrades[0m
+[36m#<Journey::Route:0x00000103b2e568>[0m
+[36m                         Path: /services/upgrades(.:format)[0m
+[36m
+  Route: get repairs_services               services => repairs[0m
+[36m#<Journey::Route:0x00000103b3b5b0>[0m
+[36m                         Path: /services/repairs(.:format)[0m
+[36m
+  Route: get services                       services => index[0m
+[36m#<Journey::Route:0x00000103b476d0>[0m
+[36m                         Path: /services(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: post                                services => create[0m
+[36m#<Journey::Route:0x00000103b4c658>[0m
+[36m                         Path: /services(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: get new_service                    services => new[0m
+[36m#<Journey::Route:0x00000103b505c8>[0m
+[36m                         Path: /services/new(.:format)[0m
+[36m
+  Route: get edit_service                   services => edit[0m
+[36m#<Journey::Route:0x00000103b5c3c8>[0m
+[36m                         Path: /services/:id/edit(.:format)[0m
+[36m
+  Route: get service                        services => show[0m
+[36m#<Journey::Route:0x00000103b69fc8>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m              Explicit Include -> include[0m
+[36m
+  Route: put                                services => update[0m
+[36m#<Journey::Route:0x00000103b70490>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36m
+  Route: delete                                services => destroy[0m
+[36m#<Journey::Route:0x00000103b73f28>[0m
+[36m                         Path: /services/:id(.:format)[0m
+[36m            Route Name Missing -> route name blank[0m
+[36mtotal routes filtered: 13  included? 2[0m
+[36m  Route name: sitemap_sitemap[0m
+[36m  Route name: root[0m
+[36m  Route name: send[0m
+[36m  Route name: home[0m
+[36m  Route name: contact[0m
+[36m  Route name: about[0m
+[36m  Route name: offers[0m
+[36m  Route name: faq[0m
+[36m  Route name: terms[0m
+[36m  Route name: slider[0m
+[36m  Route name: data_recovery_services[0m
+[36m  Route name: replacement_parts_services[0m
+[36m  Route name: virus_removal_services[0m
+[36m  Route name: servicing_services[0m
+[36m  Route name: upgrades_services[0m
+[36m  Route name: repairs_services[0m
+[36m  Route name: services[0m
+[36m  Route name: [0m
+[36m  Route name: new_service[0m
+[36m  Route name: edit_service[0m
+[36m  Route name: service[0m
+[36m  Route name: [0m
+[36m  Route name: [0m
+processing route:  name: services  controller: services  action: index
+[36msitemap_setup: action_name => index source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: service  controller: services  action: show
+[36msitemap_setup: action_name => show source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m
+processing route:  name: services  controller: services  action: index
+[36msitemap_setup: action_name => index source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_index, :first_model=>true}}[0m
+processing route:  name: service  controller: services  action: show
+[36msitemap_setup: action_name => show source => sitemap model => Service[0m
+[36msitemap_setup: attributes => {:title=>:title, :keywords=>:keywords, :description=>:description, :lastmod=>:updated_at, :changefreq=>nil, :priority=>nil, :canonical=>nil, :canonical_host=>nil, :canonical_port=>nil, :static_host=>nil, :static_port=>nil, :url_format=>nil, :url_limit=>nil, :handler=>{:action_name=>:sitemap_show, :first_model=>true}}[0m

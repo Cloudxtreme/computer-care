@@ -8,7 +8,7 @@ module ApplicationHelper
     end
 
     def is_active(controller_name, action_name=nil)
-            if action_name
+        if action_name
     	   "active" if controller.controller_name.eql?(controller_name) && controller.action_name.eql?(action_name)
         else
             "active" if controller.controller_name.eql?(controller_name)
@@ -17,9 +17,9 @@ module ApplicationHelper
 
     def home_link
     	if controller.action_name.eql?("home")
-    		link_to image_tag("home-active.png"), root_path, :id => "home-link", :class => "active"
+    	   link_to image_tag("home-icon.png"), root_path, :id => "home-link", :class => "active"
     	else
-    		link_to image_tag("home.png"), root_path, :id => "home-link"
+    	   link_to image_tag("home.png"), root_path, :id => "home-link"
     	end
     end
 end
