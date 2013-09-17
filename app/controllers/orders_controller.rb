@@ -15,6 +15,11 @@ class OrdersController < ApplicationController
     @options = params[:options] ? params[:options] : []
     @services = Service.all
     
+    @discount = nil
+    if !params[:discount].blank?
+      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+    end
+    
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
     @missing = []
     @invalid = []
@@ -28,6 +33,9 @@ class OrdersController < ApplicationController
       render :new
     elsif (/^([a-zA-Z0-9\-\._]+)@((?:[-a-z0-9]+\.)+[a-z]{2,4})$/i =~ params[:email]).nil?
       @invalid << "email"
+      render :new
+    elsif (!params[:discount].blank? && @discount.nil?) || (!@discount.nil? && !@discount.is_valid)
+      @invalid << "discount code"
       render :new
     else
       render :confirm
@@ -59,6 +67,16 @@ class OrdersController < ApplicationController
     end
 
     @order.total_cost = total
+
+    if params[:discount]
+      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      if @discount
+        @order.total_cost = @order.total_cost - (@order.total_cost * 0.15)
+        @order.student_code_id = @discount.id
+        @discount.is_valid = false
+        @discount.save
+      end
+    end
 
     if services_that_need_quote.any?
       @order.paid = false

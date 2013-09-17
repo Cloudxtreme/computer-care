@@ -13,31 +13,31 @@ jQuery(function($){
     });
 
     var first_name = new LiveValidation( "first-name", { validMessage: " ", wait: 500 } );
-    first_name.add( Validate.Presence, { failureMessage: "Required" } );
-    first_name.add( Validate.Length, { minimum: 2 } );
+    first_name.add( Validate.Presence, { failureMessage: "*" } );
+    first_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );
 
     var last_name = new LiveValidation( "last-name", { validMessage: " ", wait: 500 } );
-    last_name.add( Validate.Presence, { failureMessage: "Required" } );
-    last_name.add( Validate.Length, { minimum: 2 } );
+    last_name.add( Validate.Presence, { failureMessage: "*" } );
+    last_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );
 
     var email = new LiveValidation( "email", { validMessage: " ", wait: 500 } );
-    email.add( Validate.Presence, { failureMessage: "Required" } );
-    email.add( Validate.Email );
+    email.add( Validate.Presence, { failureMessage: "*" } );
+    email.add( Validate.Email, { failureMessage: " " } );
 
     var telephone = new LiveValidation( "telephone", { validMessage: " ", wait: 500 } );
-    telephone.add( Validate.Presence, { failureMessage: "Required" } );
+    telephone.add( Validate.Presence, { failureMessage: "*" } );
     telephone.add( Validate.Numericality, { onlyInteger: true } );
     telephone.add( Validate.Length, { minimum: 11 } );
 
     var building = new LiveValidation( "building", { validMessage: " ", wait: 500 } );
-    building.add( Validate.Presence, { failureMessage: "Required" } );
+    building.add( Validate.Presence, { failureMessage: "*" } );
 
     var street = new LiveValidation( "street", { validMessage: " ", wait: 500 } );
-    street.add( Validate.Presence, { failureMessage: "Required" } );
+    street.add( Validate.Presence, { failureMessage: "*" } );
     street.add( Validate.Length, { minimum: 2 } );
 
     var town = new LiveValidation( "town", { validMessage: " ", wait: 500 } );
-    town.add( Validate.Presence, { failureMessage: "Required" } );
+    town.add( Validate.Presence, { failureMessage: "*" } );
     town.add( Validate.Length, { minimum: 2 } );
 
     $("#postcode").blur(function() {
@@ -51,7 +51,7 @@ jQuery(function($){
         $(this).removeClass("LV_valid_field");      
         $(this).addClass("LV_invalid_field");
         if($(this).next("span").length == 0) {
-          $(this).after("<span class='LV_validation_message LV_invalid'>Must be a valid UK postcode!</span>");
+          $(this).after("<span class='LV_validation_message LV_invalid'>*</span>");
         }
       }
     });

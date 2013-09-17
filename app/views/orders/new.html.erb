@@ -5,7 +5,7 @@
 <div>
   <% if @missing.any? || @invalid.any? %>
     <div id="errors" class="well">
-      <h5>Please fix the following errors and press continue:</h5>
+      <h5>Please fix the following errors and before continuing:</h5>
       <% @missing.each do |field| %>
         <div class="alert alert-error">
           <p><strong><%= field.capitalize %></strong> is missing</p>
@@ -35,7 +35,8 @@
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
-                  <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>
+                  <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>                  
+                  <!--<textarea id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder=""></textarea>-->
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->
@@ -139,12 +140,27 @@
         <input type="hidden" name="date"  id="date"/>
         <p>Please select a convient time for collection:</p>
         <%= select_time(nil, :prefix => "time") %>
-        <br>
+        <br><br>
         <a class="btn back">back</a>
         <a class="btn btn-primary next">next</a>        
       </fieldset>
       <header class="stripe no-margin order">
-        <span>4</span><h1>Payment Details</h1>
+        <span>4</span><h1>Discount Code</h1>
+        <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+        <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+        <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+        <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
+      </header>      
+      <fieldset class="main-content" id="collection">
+        <p>If you have a discount code, enter it here:</p>
+        <input type="text" id="discount" name="discount">
+        <br>
+        <br>
+        <a class="btn back">back</a>
+        <a class="btn btn-primary next">next</a>        
+      </fieldset>      
+      <header class="stripe no-margin order">
+        <span>5</span><h1>Payment Details</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>

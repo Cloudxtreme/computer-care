@@ -56,7 +56,12 @@
         <% end %>
         <br>
       <% end %>
-      <b>Total Cost:</b> <%= number_to_currency(total, unit: "&pound;", separator: ".", delimiter: "") %>
+      <% if @discount %>
+        <b>Discount: 15%</b><br>
+        <b>Total Cost:</b> <%= number_to_currency(total - (total * 0.15), unit: "&pound;", separator: ".", delimiter: "") %>
+      <% else %>
+        <b>Total Cost:</b> <%= number_to_currency(total, unit: "&pound;", separator: ".", delimiter: "") %>
+      <% end %>
     </div> 
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
@@ -68,6 +73,9 @@
       <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
       <input type="hidden" name="order[town]" value="<%= @order.town %>">
       <input type="hidden" name="order[date]" value="<%= @order.date %>">
+      <% if @discount %>
+        <input type="hidden" name="discount" value="<%= @discount.code %>">
+      <% end %>
       <% @options.each do |service_id, option_values| %>
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>

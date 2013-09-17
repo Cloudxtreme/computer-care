@@ -1,4 +1,5 @@
 class StudentCode < ActiveRecord::Base
+  belongs_to :order
   attr_accessible :code, :email, :name, :is_valid
   validates_presence_of :name, :email
   validates_uniqueness_of :email
