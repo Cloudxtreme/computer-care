@@ -1,4 +1,7 @@
 jQuery(function($){
+  // turn off form autocomplete
+  $(":input").attr("autocomplete", "off");
+
   // form validation
   if($("#order-form").length > 0) {    
     $("#options a.next").attr("disabled", "disabled"); 
