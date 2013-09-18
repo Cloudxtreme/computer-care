@@ -173,6 +173,9 @@ jQuery(function($){
       $("input", $options).each(function() {
         $(this).removeAttr("disabled");
       });
+      $("textarea", $options).each(function() {
+        $(this).removeAttr("disabled");
+      });      
       $("select", $options).each(function() {
         $(this).removeAttr("disabled");
       });    
@@ -182,6 +185,9 @@ jQuery(function($){
       $("input", $options).each(function() {
         $(this).attr("disabled", "disabled");
       });
+      $("textarea", $options).each(function() {
+        $(this).attr("disabled", "disabled");
+      });        
       $("select", $options).each(function() {
         $(this).attr("disabled", "disabled");
       });    

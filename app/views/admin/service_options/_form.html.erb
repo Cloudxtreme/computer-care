@@ -2,7 +2,9 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       <%= f.label :is_arbitrary %>
-      <%= f.check_box :is_arbitrary %><br><br>
+      <%= f.check_box :is_arbitrary %><br>
+      <%= f.label :placeholder %>
+      <%= f.text_field :placeholder %><br>
       <%= f.submit :submit, :class => "btn" %>
       <%= link_to "cancel", "#", :id => "cancel", :style => "display:none;" %>
     <% end %>

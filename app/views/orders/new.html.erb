@@ -35,8 +35,9 @@
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
-                  <input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>                  
-                  <!--<textarea id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder=""></textarea>-->
+                  <!--<input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>-->
+                  <% placeholder = option.placeholder.blank? ? "" : option.placeholder %>
+                  <textarea id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder="<%= placeholder %>" disabled></textarea>
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->

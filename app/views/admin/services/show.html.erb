@@ -26,6 +26,12 @@
                 <% end %>
                 <li><%= link_to "Add Option Value", new_admin_service_service_option_service_option_value_path(@service.id, option.id), :class => "add-option" %></li>
               </ul>
+            <% else %>
+              <% if !option.placeholder.blank? %>
+                <ul>
+                  <li>Placeholder: <%= option.placeholder %></li>
+                </ul>
+              <% end %>
             <% end %>
           </li>
         <% end %>
