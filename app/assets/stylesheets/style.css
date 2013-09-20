@@ -35,6 +35,11 @@ body {
 	float: right;
 }
 
+.error {
+	background-color: #f2dede;
+	padding: 5px;
+}
+
 #spinner {
 	height: 128px;
 	width: 128px;

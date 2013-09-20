@@ -5,6 +5,12 @@
 </header>  
 <div id="main-content">
   <div class="service">
+    <% if !@accepted %>
+      <div class="alert alert-error">
+        <h5>You must accept the <a href="#">Terms & Conditions</a> and <a href="#">Terms of Service</a> before continuing</h5>  
+      </div> 
+    <% end %> 
+
     <% quote_services = @options.select do |service_id, option_values| %>
       <% service = Service.find(service_id) %>
       <% !service.can_checkout %>
@@ -86,8 +92,15 @@
             <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= option_value.id %>">
           <% end %>
         <% end %>
-      <% end %>      
-      <%= submit_tag "place order", :class => "btn btn-large btn-primary" %>
+      <% end %>
+      <label class="checkbox <%= @accepted ? "" : "error" %>">
+        <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
+      </label>
+      <label class="checkbox <%= @accepted ? "" : "error" %>">
+        <input type="checkbox" class="required agreement" name="accept_service"> I have read and agree with the <a href="#">Terms of Service</a>
+      </label>
+      <br>
+      <%= submit_tag "place order", :class => "btn btn-large btn-primary", :id=>"complete-order" %>
     <% end %>
   </div>
 </div>

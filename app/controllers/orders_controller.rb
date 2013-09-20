@@ -43,65 +43,72 @@ class OrdersController < ApplicationController
   end
 
   def finalize
+    @options = params[:options]
     @order = Order.new(params[:order])
-    
     @services = Service.all
     @missing = []
-    @invalid = []
-
-    total = 0.0
-    services_that_need_quote = []
-    params[:options].each do |service_id, options|
-      service = Service.find(service_id)
-      services_that_need_quote << service if !service.can_checkout
-      total += service.base_cost
-
-      options.each do |service_option, value|
-        option = ServiceOption.find(service_option)
-
-        if !option.is_arbitrary
-          option_value = ServiceOptionValue.find(value)
-          total += option_value.additional_cost
-        end
-      end
-    end
-
-    @order.total_cost = total
-
-    if params[:discount]
-      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
-      if @discount
-        @order.total_cost = @order.total_cost - (@order.total_cost * 0.15)
-        @order.student_code_id = @discount.id
-        @discount.is_valid = false
-        @discount.save
-      end
-    end
-
-    if services_that_need_quote.any?
-      @order.paid = false
-    elsif false # payment completed successfully
-      @order.paid = true
-    else # payment completed unsuccesfully 
-      @order.paid = false
-    end
-
-    if params[:options].any? and @order.save
+    @invalid = []   
+    @accepted = true 
+    if !params[:accept_terms].blank?  && !params[:accept_service].blank? 
+      @order.agreed_to_terms = true
+      
+      total = 0.0
+      services_that_need_quote = []
       params[:options].each do |service_id, options|
-        order_service = @order.order_services.create(:service_id => service_id)
-        options.each do |option_id, value|
-          service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
+        service = Service.find(service_id)
+        services_that_need_quote << service if !service.can_checkout
+        total += service.base_cost
+
+        options.each do |service_option, value|
+          option = ServiceOption.find(service_option)
+
+          if !option.is_arbitrary
+            option_value = ServiceOptionValue.find(value)
+            total += option_value.additional_cost
+          end
         end
       end
 
-      # send confimation to customer
-      NotificationMailer.order_confirmation(@order).deliver
-      # send notification to admin
-      NotificationMailer.order_notification(@order).deliver
+      @order.total_cost = total
 
-      redirect_to complete_orders_path
+      if params[:discount]
+        @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+        if @discount
+          @order.total_cost = @order.total_cost - (@order.total_cost * 0.15)
+          @order.student_code_id = @discount.id
+          @discount.is_valid = false
+          @discount.save
+        end
+      end
+
+      if services_that_need_quote.any?
+        @order.paid = false
+      elsif false # payment completed successfully
+        @order.paid = true
+      else # payment completed unsuccesfully 
+        @order.paid = false
+      end
+
+      if params[:options].any? and @order.save
+        params[:options].each do |service_id, options|
+          order_service = @order.order_services.create(:service_id => service_id)
+          options.each do |option_id, value|
+            service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
+          end
+        end
+
+        # send confimation to customer
+        NotificationMailer.order_confirmation(@order).deliver
+        # send notification to admin
+        NotificationMailer.order_notification(@order).deliver
+
+        redirect_to complete_orders_path
+      else
+        render :new
+      end
     else
-      render :new
+      @accepted = false
+      render :confirm
     end
   end
 

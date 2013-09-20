@@ -1,4 +1,15 @@
 jQuery(function($){
+  // disable finalize button until user has accepter the TOC's
+  $("#complete-order").attr("disabled", "disabled");
+  $(".checkbox .required.agreement").click(function() {
+    if($(".checkbox .required.agreement:checked").length == 2) {
+      $("#complete-order").removeAttr("disabled");
+    }
+    else {
+      $("#complete-order").attr("disabled", "disabled");
+    }
+  });
+
   // turn off form autocomplete
   $(":input").attr("autocomplete", "off");
 
