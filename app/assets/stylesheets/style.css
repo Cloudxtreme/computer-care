@@ -35,9 +35,14 @@ body {
 	float: right;
 }
 
-.error {
+.accept.error {
 	background-color: #f2dede;
 	padding: 5px;
+}
+
+.checkbox input[type="checkbox"] {
+	margin-left: 0 !important;
+	margin-right: 10px !important;
 }
 
 #spinner {

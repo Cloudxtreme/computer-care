@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @services = Service.all    
+    @options = {}
     @missing = []
     @invalid = []
   end

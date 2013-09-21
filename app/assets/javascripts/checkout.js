@@ -148,8 +148,9 @@ jQuery(function($){
     open_previous_section($fieldset);
   });
 
+  // make all services de-selected
   $(".checkout-service input[type='checkbox']").each(function() {
-    $(this).attr("checked", false);
+    //$(this).attr("checked", false);
   });
 
   $(".service").click(function() {
