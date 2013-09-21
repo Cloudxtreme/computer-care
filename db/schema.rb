@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920072428) do
+ActiveRecord::Schema.define(:version => 20130921175135) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "order_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130920072428) do
     t.string   "town"
     t.string   "postcode"
     t.datetime "date"
-    t.integer  "total_cost"
+    t.decimal  "total_cost"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.boolean  "paid"

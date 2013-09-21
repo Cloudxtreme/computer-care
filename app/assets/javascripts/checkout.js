@@ -179,7 +179,11 @@ jQuery(function($){
     update_cost();
   });
 
-  $( "#datepicker" ).datepicker({minDate: +1, altField: '#date'});
+  $( "#datepicker" ).datepicker({
+    minDate: +1, 
+    altField: '#date',
+    beforeShowDay: $.datepicker.noWeekends
+  });
 
   $(".checkout-service .checkbox input[type='checkbox']").click(function() {
     $options = $(this).closest(".checkout-service").find(".options");
