@@ -36,12 +36,12 @@ jQuery(function($){
 
     var email = new LiveValidation( "email", { validMessage: " ", wait: 500 } );
     email.add( Validate.Presence, { failureMessage: "*" } );
-    email.add( Validate.Email, { failureMessage: " " } );
+    email.add( Validate.Email, { failureMessage: "*" } );
 
     var telephone = new LiveValidation( "telephone", { validMessage: " ", wait: 500 } );
     telephone.add( Validate.Presence, { failureMessage: "*" } );
-    telephone.add( Validate.Numericality, { onlyInteger: true } );
-    telephone.add( Validate.Length, { minimum: 11 } );
+    telephone.add( Validate.Numericality, { onlyInteger: true, notANumberMessage: "*", notAnIntegerMessage: "*"  } );
+    telephone.add( Validate.Length, { minimum: 11, tooShortMessage: "*" } );
 
     var building = new LiveValidation( "building", { validMessage: " ", wait: 500 } );
     building.add( Validate.Presence, { failureMessage: "*" } );
@@ -52,7 +52,7 @@ jQuery(function($){
 
     var town = new LiveValidation( "town", { validMessage: " ", wait: 500 } );
     town.add( Validate.Presence, { failureMessage: "*" } );
-    town.add( Validate.Length, { minimum: 2 } );
+    town.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );
 
     $("#postcode").blur(function() {
       var newPostCode = checkPostCode($(this).val());
