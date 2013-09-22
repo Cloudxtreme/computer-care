@@ -17,8 +17,8 @@ cards.
 <% service = Service.where("lower(name) = 'data recovery'").first %>
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
-    </div>
-    <%= link_to "more info", data_recovery_services_path, :class => "btn btn-large" %>
+    </div>    
+    <a href="<%= data_recovery_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>
   <article class="service">
     <div class="pull-left">
@@ -38,7 +38,7 @@ solution.
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
-    <%= link_to "more info", replacement_parts_services_path, :class => "btn btn-large" %>
+    <a href="<%= replacement_parts_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>
   <article class="service">
     <div class="pull-left">
@@ -57,7 +57,7 @@ its best.
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>      
       </p>
     </div>
-    <%= link_to "more info", virus_removal_services_path, :class => "btn btn-large" %>
+    <a href="<%= virus_removal_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>
   <article class="service">
     <div class="pull-left">
@@ -75,7 +75,7 @@ did the day you bought it.
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
-    <%= link_to "more info", servicing_services_path, :class => "btn btn-large" %>
+    <a href="<%= servicing_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>
   <article class="service">
     <div class="pull-left">
@@ -96,7 +96,7 @@ needs.
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
-    <%= link_to "more info", upgrades_services_path, :class => "btn btn-large" %>
+    <a href="<%= upgrades_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>
   <article class="service">
     <div class="pull-left">
@@ -115,6 +115,6 @@ having.
 <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>    
       </p>
     </div>
-    <%= link_to "more info", repairs_services_path, :class => "btn btn-large" %>
+    <a href="<%= repairs_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
   </article>          
 </div>

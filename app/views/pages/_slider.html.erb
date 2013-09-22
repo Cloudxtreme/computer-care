@@ -25,7 +25,7 @@
                     <p>
                         <span class="yellow">No.1</span> for servicing convenience - offering the 1st and only free home collection and return service. 
                     </p>
-                    <%= link_to "View All Services", services_path, :class => "btn btn-medium" %>
+                    <a href="<%= services_path %>" class="btn btn-success">View All Services <i class="icon-white icon-arrow-right"></i></a>
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-thumbs-up.png") %>
@@ -60,7 +60,7 @@
                         <li>Camera Memory Cards</li>
                         <li>Even mobile phone memory</li>
                     </ul>
-                    <%= link_to "More Info", data_recovery_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
+                    <a href="<%= data_recovery_services_path(:anchor => "main-service") %>" class="btn btn-success">More Info <i class="icon-white icon-arrow-right"></i></a>                    
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-with-a-pencil.png") %>
@@ -86,7 +86,7 @@
                     <ul>
                         <li>Offering free secure collection and delivery right back to your doorstep, let us put things right again.</li>
                     </ul>
-                    <%= link_to "More Info", virus_removal_services_path(:anchor => "main-service"), :class => "btn btn-medium" %>
+                    <a href="<%= virus_removal_services_path(:anchor => "main-service") %>" class="btn btn-success">More Info <i class="icon-white icon-arrow-right"></i></a>                    
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("worried-bob.png") %>
@@ -135,7 +135,7 @@
                     <p>
                         As if our prices weren't cheap enough we even offer 15% Student Discount for all services.
                     </p>
-                    <%= link_to "Register", new_student_code_path, :class => "btn" %>
+                    <a href="<%= new_student_code_path %>" class="btn btn-success">Register <i class="icon-white icon-arrow-right"></i></a>                    
                 </div>
                 <div class="pull-left image">
                     <%= image_tag("bob-in-shades.png") %>
