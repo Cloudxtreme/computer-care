@@ -28,11 +28,11 @@ jQuery(function($){
 
     var first_name = new LiveValidation( "first-name", { validMessage: " ", wait: 500 } );
     first_name.add( Validate.Presence, { failureMessage: "*" } );
-    first_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );
+    first_name.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );
 
     var last_name = new LiveValidation( "last-name", { validMessage: " ", wait: 500 } );
     last_name.add( Validate.Presence, { failureMessage: "*" } );
-    last_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );
+    last_name.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );
 
     var email = new LiveValidation( "email", { validMessage: " ", wait: 500 } );
     email.add( Validate.Presence, { failureMessage: "*" } );
@@ -48,7 +48,7 @@ jQuery(function($){
 
     var street = new LiveValidation( "street", { validMessage: " ", wait: 500 } );
     street.add( Validate.Presence, { failureMessage: "*" } );
-    street.add( Validate.Length, { minimum: 2 } );
+    street.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );
 
     var town = new LiveValidation( "town", { validMessage: " ", wait: 500 } );
     town.add( Validate.Presence, { failureMessage: "*" } );
