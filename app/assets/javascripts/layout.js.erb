@@ -252,4 +252,11 @@ $(function() {
 		$("#pjax-container").css("opacity", "1");
 		$("#spinner").remove();
 	});
+
+	var student_name = new LiveValidation( "student_code_name", { validMessage: " ", wait: 500 } );
+	student_name.add( Validate.Presence, { failureMessage: "*" } );
+	student_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );	
+
+	var student_email = new LiveValidation( "student_code_email", { validMessage: " ", wait: 500 } );
+	student_email.add( Validate.Presence, { failureMessage: "*" } );
 });

@@ -153,7 +153,7 @@ jQuery(function($){
     //$(this).attr("checked", false);
   });
 
-  $(".service").click(function() {
+  $("input.service").click(function() {
     var $clicked = $(this);
     var $container = $clicked.closest(".checkout-service");    
 

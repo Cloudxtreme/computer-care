@@ -6,17 +6,12 @@
 <div id="main-content">
   <div class="service">
   <p>
-    Enter your university email address below to receive your student discount code.
+    Enter your university email address below to receive your discount code.
   </p>
+  <div class="alert alert-info"><p>Note: you must have an academic email address to qualify</p></div>
   <% if @discount_code.errors.any? %>
-    <div id="error_explanation">
-      <h4><%= pluralize(@discount_code.errors.count, "error") %> prohibited this discount code from being saved:</h4>
-
-      <ul>
-      <% @discount_code.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="alert alert-error">
+      <p>Error: make sure you have provided a valid UK student email address (ending in .ac.uk) and your full name</p>
     </div>
   <% end %>  
   <%= form_for @discount_code do |f| %>
