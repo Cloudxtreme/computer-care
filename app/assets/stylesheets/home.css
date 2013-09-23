@@ -164,6 +164,10 @@
   display: block;
 }
 
+#slider-shadow {
+  margin: 30px auto 30px auto;
+}
+
 #newsletter-background {
   position: absolute;
   right: 20px;
