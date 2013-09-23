@@ -166,7 +166,7 @@ header.main h1 em {
 	font-size: 130%;
 	color: #FFFFFF;
 	font-weight: 400;
-	padding: 21px 10px 10px 10px;
+	padding: 21px 10px 10px 7px;
 }
 
 /* MAIN LAYOUT */
@@ -216,6 +216,7 @@ header.stripe h1 {
 	color: #69A4CD;
 	margin: 0;
 	padding: 3px 0 0 10px;
+	font-size: 150%;
 }
 
 header.stripe .img-shadow, footer.stripe .img-shadow {
