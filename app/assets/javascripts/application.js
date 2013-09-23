@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cookie.js
+//= require jquery.cookiecuttr.js
 //= require_tree .
 //= require bootstrap.min.js
 //= require jquery.ui.all
