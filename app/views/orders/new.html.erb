@@ -45,7 +45,7 @@
                     <% option.service_option_values.each do |value| %>
                       <option value="<%= value.id %>" data-additional="<%= value.additional_cost %>" <%= "selected" if @options[service.id.to_s] && @options[service.id.to_s][option.id.to_s].eql?(value.id.to_s) %>><%= value.name %></option>
                     <% end %>
-                  </select>
+                  </select><br><br>
                 <% end %>
               <% end %>
             </div>
