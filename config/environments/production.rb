@@ -65,6 +65,7 @@ ComputerCare::Application.configure do
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
     :domain => 'ancient-plains-6432.herokuapp.com', # your domain to identify your server when connecting
   }
+  config.action_mailer.asset_host = ""
 
   # Enable threaded mode
   # config.threadsafe!

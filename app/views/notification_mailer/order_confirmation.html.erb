@@ -2,52 +2,77 @@
 <html>
   <head>
     <title>Order Confirmation - 13<%= @order.id %></title>
+    <style type="text/css">
+      .well {
+        min-height:20px;
+        padding:19px;
+        margin-bottom:20px;
+        background-color:#f5f5f5;
+        border:1px solid #e3e3e3;
+        -webkit-border-radius:4px;
+        -moz-border-radius:4px;
+        border-radius:4px;
+        -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+        -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+        box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+      }
+    </style>
   </head>
-  <body>
-    <p>Hello, <%= @order.first_name %> <%= @order.last_name %></p>
-    <p>Thank you for your order from Cheaper Computer Care.</p>
-    
-    <h5>Order Details</h5>
-    <div class="well">
-      <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %><br>
-      <b>Total cost: </b> <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %>
-    </div>
-    <div class="well">
-      <ul class="unstyled">
-        <li>First Name: <%= @order.first_name %></li>
-        <li>Last Name: <%= @order.last_name %></li>
-        <li>Email: <%= @order.email %></li>
-        <li>Telephone: <%= @order.telephone %></li>
-      </ul>     
-    </div>
-    <div class="well">
-      <ul class="unstyled">
-        <li>Building: <%= @order.building %></li>
-        <li>Street: <%= @order.street %></li>        
-        <li>Town: <%= @order.town %></li>
-        <li>Postcode: <%= @order.postcode %></li>
-      </ul>         
-    </div>
-    <div class="well">
-      <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
-    </div>
-    <div class="well">
-      <% @order.order_services.each do |service| %>
-        <% service_name = Service.find(service.service_id).name %>
-        <b><%= service_name %></b><br>
-        <% service.order_service_options.each do |option| %>
-          <% service_option = ServiceOption.find(option.service_option_id) %>
-          <% option_name = service_option.name %>
-          <% if service_option.is_arbitrary %>
-            <%= option_name %>: <%= option.value %><br>
-          <% else %>
-            <% value = ServiceOptionValue.find(option.value) %>
-            <%= option_name %>: <%= value.name %><br>
-          <% end %>
-        <% end %>
-        <br>
-      <% end %>
-    </div>    
-  </div>
+  <body style="background-color:#CCCCCC;padding:0;margin:0;">
+    <header style="width:500px;margin:auto;" class="container">
+        <a style="text-decoration:none;" href="<%= root_path %>"><h1 style="font-family: 'droid_sansbold', Arial, sans-serif;color: #777777;font-size: 40px;font-weight: bold;letter-spacing: -4px;word-spacing: -5px;text-shadow: -1px -1px #2D3437, 1px 1px #ffffff;"><em style="font-size: 50px;font-style: normal;color: #3F77A9;">C</em><span>heaper</span> <em style="font-size: 50px;font-style: normal;color: #3F77A9;">C</em><span>omputer</span> <em style="font-size: 50px;font-style: normal;color: #3F77A9;">C</em><span>are</span><%= image_tag("logo-icon.png", :height => "50", :style => "margin:0 0 -10px 5px") %></h1></a>
+    </header>   
+
+    <div style="background-color:#CCCCCC;color:#444444;">
+      <div style="background-color:#FFFFFF;padding:8px;width:500px;margin:auto auto 0 auto;">
+
+          <p>Hello, <%= @order.first_name %> <%= @order.last_name %></p>
+          <p>Thank you for your order from Cheaper Computer Care.</p>
+          
+          <h5>Order Details</h5>
+          <div class="well">
+            <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %><br>
+            <b>Total cost: </b> <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %>
+          </div>
+          <div class="well">
+            <ul class="unstyled">
+              <li>First Name: <%= @order.first_name %></li>
+              <li>Last Name: <%= @order.last_name %></li>
+              <li>Email: <%= @order.email %></li>
+              <li>Telephone: <%= @order.telephone %></li>
+            </ul>     
+          </div>
+          <div class="well">
+            <ul class="unstyled">
+              <li>Building: <%= @order.building %></li>
+              <li>Street: <%= @order.street %></li>        
+              <li>Town: <%= @order.town %></li>
+              <li>Postcode: <%= @order.postcode %></li>
+            </ul>         
+          </div>
+          <div class="well">
+            <b>Collection Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
+          </div>
+          <div class="well">
+            <% @order.order_services.each do |service| %>
+              <% service_name = Service.find(service.service_id).name %>
+              <b><%= service_name %></b><br>
+              <% service.order_service_options.each do |option| %>
+                <% service_option = ServiceOption.find(option.service_option_id) %>
+                <% option_name = service_option.name %>
+                <% if service_option.is_arbitrary %>
+                  <%= option_name %>: <%= option.value %><br>
+                <% else %>
+                  <% value = ServiceOptionValue.find(option.value) %>
+                  <%= option_name %>: <%= value.name %><br>
+                <% end %>
+              <% end %>
+              <br>
+            <% end %>
+          </div>    
+
+        </div>
+      </div>
+      <footer style="background-color:#000000;color:#FFFFFF;padding:12px;"><p>&copy; 2013 <a href="" style="color:#FFFFFF;text-decoration:none;">Cheaper Computer Care</a></p></footer>      
   </body>
 </html>
