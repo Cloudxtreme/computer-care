@@ -34,8 +34,6 @@ simple as a broken keyboard,
 or complete screen 
 replacement we have the 
 solution. 
-<% service = Service.where("lower(name) = 'replacement parts'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <a href="<%= replacement_parts_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
@@ -92,8 +90,6 @@ and guarantee to provide
 the most cost effective 
 solution for your computer 
 needs.
-<% service = Service.where("lower(name) = 'upgrades'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
       </p>
     </div>
     <a href="<%= upgrades_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
