@@ -154,11 +154,14 @@ header.main h1 em {
 }
 
 #main-nav ul.inline li.home {
-	padding: 13px 5px 5px 0px;
+	padding: 15px 15px 9px 15px;
 }
 
 #main-nav ul.inline li.home img {
+	position: absolute;
 	height: 25px;
+	bottom: 11px;
+	left: 12px;
 }
 
 #main-nav ul.inline li.active {
@@ -367,7 +370,7 @@ footer ul.inline li:first-child, footer ul.inline li:first-child a {
 	}
 
 	#main-nav ul.inline li a{
-		font-size: 90%;
+		font-size: 87%;
 	}
   	#main-content header {
   		height: auto;
