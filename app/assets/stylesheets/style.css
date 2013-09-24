@@ -35,6 +35,11 @@ body {
 	float: right;
 }
 
+.center {
+	text-align: center;
+	margin-top: 15px;
+}
+
 .orange, .orange:hover {
 	color: #FA9804;
 }
