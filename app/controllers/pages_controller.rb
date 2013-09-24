@@ -30,5 +30,8 @@ class PagesController < ApplicationController
     def slider
         @newsletter_user = NewsletterUser.new
         render :partial => "pages/slider"
-    end               
+    end     
+
+    def privacy
+    end          
 end

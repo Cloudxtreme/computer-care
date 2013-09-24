@@ -7,6 +7,7 @@ ComputerCare::Application.routes.draw do
     match "offers", to: "pages#offers"
     match "faq", to: "pages#faq"
     match "terms", to: "pages#terms"
+    match "privacy", to: "pages#privacy"
     match "slider", to: "pages#slider"
 
   resources :newsletter_users
