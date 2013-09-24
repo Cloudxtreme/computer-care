@@ -61,6 +61,7 @@ body {
 	background-image: url('spinner.gif');
 	left: 50%;
 	top: 50%;
+	z-index: 100;
 }
 
 #notice {

@@ -239,15 +239,15 @@ $(function() {
 
 	$(document).pjax("#services a.btn", "#pjax-container");
 
-	$("#services a.btn").click(function() {
-		$("#pjax-container").css("opacity", "0.3");
-		$("body").append("<div id='spinner'></img>")
+	$(document).on("pjax:click", "#services a.btn", function() {
+		$("#pjax-container").html("");
+		$("body").append("<div id='spinner'></div>")
 
-		$("#spinner").css("top", $("#pjax-container").offset().top + 100);
+		$("#spinner").css("top", $("#pjax-container").offset().top + 100 + "px");
 		$("#spinner").css("left", $("#pjax-container").offset().left + ($("#pjax-container").width() / 2) - 60);
 		$('html, body').animate({
 			scrollTop: $("#pjax-container").offset().top
-		}, 800);		
+		}, 800);	
 	});
 
 	$(document).on("pjax:success", function(xhr, data){
