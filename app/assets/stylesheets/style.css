@@ -171,10 +171,8 @@ header.main h1 em {
 }
 
 #main-nav ul.inline li.home img {
-	position: absolute;
 	height: 25px;
-	bottom: 11px;
-	left: 12px;
+	margin-top: -8px;
 }
 
 #main-nav ul.inline li.active {
@@ -186,7 +184,6 @@ header.main h1 em {
 	font-size: 130%;
 	color: #FFFFFF;
 	font-weight: 400;
-	padding: 21px 10px 10px 7px;
 }
 
 /* MAIN LAYOUT */
