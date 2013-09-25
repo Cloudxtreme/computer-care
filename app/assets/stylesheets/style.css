@@ -44,6 +44,17 @@ body {
 	color: #FA9804;
 }
 
+.overlay {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #000000;
+	opacity: 0.5;
+	left: 0;
+	top: 0;
+	z-index: 99;
+}
+
 .accept.error {
 	background-color: #f2dede;
 	padding: 5px;
@@ -64,17 +75,13 @@ body {
 	z-index: 100;
 }
 
-#notice {
-	position: absolute;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-	padding: 10px;
-	background-color: #ffffff;
-	border: 1px solid #ddd;
-	border-radius: 4px;	
+.notice {
+	position: fixed;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	z-index: 100;
 	font-weight: bold;
-	left: 23%;
-	top: 10%;
+	top: 30%;
 }
 
 /* HEADER */

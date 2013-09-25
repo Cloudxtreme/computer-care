@@ -60,6 +60,20 @@
             </div>            
         </header>
         <div class="container">
+            <% if flash[:notice] %>
+                <div class="overlay"></div>
+                <div class="notice alert alert-success" style="display:none;">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <%= raw flash[:notice] %>
+                </div>
+            <% end %>
+            <% if flash[:alert] %>
+                <div class="overlay"></div>
+                <div class="notice alert alert-error" style="display:none;">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <%= raw flash[:alert] %>
+                </div>
+            <% end %>
             <%= yield %>
         </div>        
         <div class="row-fluid">

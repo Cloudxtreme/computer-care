@@ -8,12 +8,7 @@
   <p>
     Enter your university email address below to receive your discount code.
   </p>
-  <div class="alert alert-info"><p>Note: you must have an academic email address to qualify</p></div>
-  <% if @discount_code.errors.any? %>
-    <div class="alert alert-error">
-      <p>Error: make sure you have provided a valid UK student email address (ending in .ac.uk) and your full name</p>
-    </div>
-  <% end %>  
+  <div class="alert alert-info"><p>Note: you must have an academic email address to qualify</p></div> 
   <%= form_for @discount_code do |f| %>
     <%= f.text_field :name, :placeholder => "name" %><br>
     <%= f.email_field :email, :placeholder => "email" %><br>
