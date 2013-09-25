@@ -138,6 +138,12 @@ $(function() {
 			initialize_slider();
 			timer = animate_slider(2000, 1000);
 		}
+		/* NEWSLETTER SIGNUP VALIDATION */
+		if($("#newsletter_user_email").length > 0) {
+			var signup_email = new LiveValidation( "newsletter_user_email", { validMessage: " ", wait: 500 } );
+			signup_email.add( Validate.Presence, { failureMessage: "*" } );
+			signup_email.add( Validate.Email, { failureMessage: "*" } );
+		}		
 	}
 
 	function initialize_slider() {
@@ -279,10 +285,35 @@ $(function() {
 		$("#spinner").remove();
 	});
 
-	var student_name = new LiveValidation( "student_code_name", { validMessage: " ", wait: 500 } );
-	student_name.add( Validate.Presence, { failureMessage: "*" } );
-	student_name.add( Validate.Length, { minimum: 2, failureMessage: " " } );	
+	/* STUDENT DISCOUNT VALIDATION */
+	if($("#student_code_name").length > 0 && $("#student_code_email").length > 0) {
+		var student_name = new LiveValidation( "student_code_name", { validMessage: " ", wait: 500 } );
+		student_name.add( Validate.Presence, { failureMessage: "*" } );
+		student_name.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );	
 
-	var student_email = new LiveValidation( "student_code_email", { validMessage: " ", wait: 500 } );
-	student_email.add( Validate.Presence, { failureMessage: "*" } );
+		var student_email = new LiveValidation( "student_code_email", { validMessage: " ", wait: 500 } );
+		student_email.add( Validate.Presence, { failureMessage: "*" } );
+		student_email.add( Validate.Email, { failureMessage: "*" } );
+	}
+
+	/* CONTACT FORM VALIDATION */
+	if($("#contact").length > 0) {
+		var name = new LiveValidation( "contact_name", { validMessage: " ", wait: 500 } );
+		name.add( Validate.Presence, { failureMessage: "*" } );
+		name.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );	
+
+		var email = new LiveValidation( "contact_email", { validMessage: " ", wait: 500 } );
+		email.add( Validate.Presence, { failureMessage: "*" } );
+		email.add( Validate.Email, { failureMessage: "*" } );
+
+		var telephone = new LiveValidation( "contact_number", { validMessage: " ", wait: 500 } );
+		telephone.add( Validate.Presence, { failureMessage: "*" } );
+		telephone.add( Validate.Numericality, { onlyInteger: true, notANumberMessage: "*", notAnIntegerMessage: "*"  } );
+		telephone.add( Validate.Length, { minimum: 11, tooShortMessage: "*" } );		
+
+		var message = new LiveValidation( "contact_message", { validMessage: " ", wait: 500 } );
+		message.add( Validate.Presence, { failureMessage: "*" } );
+		message.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );		
+	}
+
 });

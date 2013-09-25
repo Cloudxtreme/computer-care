@@ -14,7 +14,7 @@ jQuery(function($){
   $(":input").attr("autocomplete", "off");
 
   // form validation
-  if($("#order-form").length > 0) {    
+  if($("#order-form").length > 0) {
     $("#options a.next").attr("disabled", "disabled"); 
 
     $("#options input[type='checkbox']").click(function() {
