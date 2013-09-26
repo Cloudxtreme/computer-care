@@ -266,21 +266,28 @@ $(function() {
 		return slide_width;
 	}
 
-	$(document).pjax("#services a.btn", "#pjax-container");
+	//$(document).pjax("#services a.btn", "#pjax-container");
 
-	$(document).on("pjax:click", "#services a.btn", function() {
-		$("#pjax-container").html("");
-		$("body").append("<div id='spinner'></div>")
+	//$(document).on("pjax:click", "#services a.btn", function(event) {
+	$("#services a.btn").click(function() {
+		event.preventDefault();
+		url = $(this).attr("href");
+
+		$("#main-content").html("");
+		$("body").append("<div id='spinner'></div>");
 
 		$("#spinner").css("top", $("#pjax-container").offset().top + 100 + "px");
 		$("#spinner").css("left", $("#pjax-container").offset().left + ($("#pjax-container").width() / 2) - 60);
-		$('html, body').animate({
+		$('body').animate({
 			scrollTop: $("#pjax-container").offset().top
-		}, 800);	
+		}, 800, function() {
+			$("#pjax-container").load(url);
+			$("#spinner").remove();
+		});	
 	});
 
 	$(document).on("pjax:success", function(xhr, data){
-		$("#pjax-container").html(data);
+		//$("#pjax-container").html(data);
 		$("#pjax-container").css("opacity", "1");
 		$("#spinner").remove();
 	});

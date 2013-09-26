@@ -3,7 +3,8 @@ class ServicesController < ApplicationController
   end
 
     def data_recovery
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "data_recovery"
         else
             render "data_recovery"
@@ -11,7 +12,8 @@ class ServicesController < ApplicationController
     end   
 
     def replacement_parts
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "replacement_parts"
         else
             render "replacement_parts"
@@ -19,7 +21,8 @@ class ServicesController < ApplicationController
     end
 
     def virus_removal
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "virus_removal"
         else
             render "virus_removal"
@@ -27,7 +30,8 @@ class ServicesController < ApplicationController
     end        
 
     def servicing
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "servicing"
         else
             render "servicing"
@@ -35,7 +39,8 @@ class ServicesController < ApplicationController
     end   
 
     def upgrades
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "upgrades"
         else
             render "upgrades"
@@ -43,7 +48,8 @@ class ServicesController < ApplicationController
     end 
 
     def repairs
-        if request.headers['X-PJAX']
+        #if request.headers['X-PJAX']
+        if request.xhr?
             render :partial => "repairs"
         else
             render "repairs"
