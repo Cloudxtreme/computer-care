@@ -22,4 +22,12 @@ module ApplicationHelper
     	   link_to image_tag("home.png"), root_path, :id => "home-link"
     	end
     end
+
+    def is_checked(options, service_id)
+        if options.any? && options.has_key?(service_id)
+            true
+        elsif !options.any? && params[:service] && params[:service].eql?(service_id)
+            true
+        end
+    end
 end

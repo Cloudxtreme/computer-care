@@ -15,7 +15,9 @@ Hard drives, USB Flash drives
 and even Camera Memory 
 cards.
 <% service = Service.where("lower(name) = 'data recovery'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<% if service %>
+  <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<% end %>
       </p>
     </div>    
     <a href="<%= data_recovery_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
@@ -52,7 +54,9 @@ trying to put it right again.
 Let us get your PC back to 
 its best.  
 <% service = Service.where("lower(name) = 'virus removal'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>      
+<% if service %>
+  <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>      
+<% end %>
       </p>
     </div>
     <a href="<%= virus_removal_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
@@ -70,7 +74,9 @@ our aim is to make your
 computer run as good as it 
 did the day you bought it.
 <% service = Service.where("lower(name) = 'servicing & tune-up'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<% if service %>
+  <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>
+<% end %>
       </p>
     </div>
     <a href="<%= servicing_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>
@@ -108,7 +114,9 @@ smooth again and clear out
 any problems you may be 
 having.    
 <% service = Service.where("lower(name) = 'fault finding & repairs'").first %>
-<span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>    
+<% if service %>
+  <span class="yellow">Prices starting <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></span>    
+<% end %>
       </p>
     </div>
     <a href="<%= repairs_services_path %>" class="btn btn-large">more info <i class='icon-arrow-right'></i></a>

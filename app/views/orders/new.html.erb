@@ -29,7 +29,7 @@
         <% @services.each do |service| %>
           <div class="checkout-service <%= "selected" if @options.has_key?(service.id.to_s) %>">
             <label class="checkbox">
-              <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if @options.any? && @options.has_key?(service.id.to_s) %>> <%= service.name %>
+              <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(@options, service.id.to_s) %>> <%= service.name %>
             </label>  
             <div class="options well" style=<%= "display:none;" if !@options.has_key?(service.id.to_s) %>>
               <% service.service_options.each do |option| %> 

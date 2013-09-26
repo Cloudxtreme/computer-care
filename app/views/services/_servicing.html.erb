@@ -42,6 +42,11 @@
     <b>Cheaper Computer Care</b> will help your computer feel new again!
     </p>
 
-    <a href="<%= new_order_path %>" class="btn btn-large btn-success">Click here to get started</a>
+    <% service = Service.where("lower(name) = 'servicing & tune-up'").first %>
+    <% if service %>
+      <a href="<%= new_order_path('service' => service.id) %>" class="btn btn-large btn-success">Click here to get started</a>
+    <% else %>
+      <a href="<%= new_order_path %>" class="btn btn-large btn-success">Click here to get started</a>
+    <% end %>
   </div>
 </div>

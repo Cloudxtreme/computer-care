@@ -46,7 +46,11 @@
            download your files from anywhere in the world. <b>We are the first and only company to offer this service.</b>
           </p>
         </p>
-
-        <a href="<%= new_order_path %>" class="btn btn-large btn-success">Click here to get started</a>
+        <% service = Service.where("lower(name) = 'data recovery'").first %>
+        <% if service %>
+          <a href="<%= new_order_path('service' => service.id) %>" class="btn btn-large btn-success">Click here to get started</a>
+        <% else %>
+          <a href="<%= new_order_path %>" class="btn btn-large btn-success">Click here to get started</a>
+        <% end %>
     </div>
   </div>
