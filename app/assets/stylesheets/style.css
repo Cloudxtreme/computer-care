@@ -65,6 +65,10 @@ body {
 	margin-right: 10px !important;
 }
 
+.javascript-required {
+	margin-top: 20px;
+}
+
 #spinner {
 	height: 128px;
 	width: 128px;

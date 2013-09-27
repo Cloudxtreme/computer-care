@@ -1,8 +1,12 @@
+<div class="javascript-required alert alert-error">
+  <strong>Javascript must be enabled to continue</strong>
+  <p>Please make sure that you have javascript enabled in your browser settings.  Get in contact with us if you are unsure of how</p>
+</div>
 <script type="text/javascript">
   var missing = [<%= raw @missing.to_json %>];
   var invalid = [<%= raw @invalid.to_json %>];
 </script>
-<div>
+<div id="order-form" style="display:none;">
   <% if @missing.any? || @invalid.any? %>
     <div id="errors" class="well">
       <h5>Please fix the following errors and before continuing:</h5>
