@@ -260,32 +260,29 @@ function update_cost() {
 
 function open_service_options($clicked) {
   $options = $clicked.closest(".checkout-service").find(".options");
-  console.log($options.html());
   if($clicked.is(":checked")) {
-    console.log("is checked");
     $("input", $options).each(function() {
-      $clicked.removeAttr("disabled");
+      $(this).removeAttr("disabled");
     });
     $("textarea", $options).each(function() {
-      $clicked.removeAttr("disabled");
+      $(this).removeAttr("disabled");
     });      
     $("select", $options).each(function() {
-      $clicked.removeAttr("disabled");
+      $(this).removeAttr("disabled");
     });    
     $options.slideDown(function() {
       update_cost();
     });
   }
   else {
-    console.log("NOT checked");
     $("input", $options).each(function() {
-      $clicked.attr("disabled", "disabled");
+      $(this).attr("disabled", "disabled");
     });
     $("textarea", $options).each(function() {
-      $clicked.attr("disabled", "disabled");
+      $(this).attr("disabled", "disabled");
     });        
     $("select", $options).each(function() {
-      $clicked.attr("disabled", "disabled");
+      $(this).attr("disabled", "disabled");
     });    
     $options.slideUp(function() {
       update_cost();
