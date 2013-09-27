@@ -1,4 +1,10 @@
 jQuery(function($){
+  var $preselected = $(".checkout-service .checkbox input[type='checkbox']:checked");
+  var $container = $preselected.closest(".checkout-service");
+  $container.toggleClass("selected", function() {
+    open_service_options($preselected);
+  });     
+
   // disable finalize button until user has accepter the TOC's
   $("#complete-order").attr("disabled", "disabled");
   $(".checkbox .required.agreement").click(function() {
@@ -153,12 +159,24 @@ jQuery(function($){
     //$(this).attr("checked", false);
   });
 
-  $("input.service").click(function() {
+  $(".options select").change(function() {
+    update_cost();
+  });
+
+  $( "#datepicker" ).datepicker({
+    minDate: +1, 
+    altField: '#date',
+    beforeShowDay: $.datepicker.noWeekends
+  });
+
+  $(".checkout-service .checkbox input[type='checkbox']").click(function() {
     var $clicked = $(this);
-    var $container = $clicked.closest(".checkout-service");    
+    var $container = $clicked.closest(".checkout-service");
+    $container.toggleClass("selected", function() {
+      open_service_options($clicked);
+    });
 
-    $container.toggleClass("selected");
-
+    // check if a service that requires a quote was selected
     if($(".service:checked[data-can-checkout='false']").length > 0) {
       // make payment form disabled
       $("#payment input[type='text']").attr("disabled", "disabled").hide();
@@ -172,46 +190,7 @@ jQuery(function($){
       $(".alert").hide();   
     }
 
-    update_cost();
-  });
-
-  $(".options select").change(function() {
-    update_cost();
-  });
-
-  $( "#datepicker" ).datepicker({
-    minDate: +1, 
-    altField: '#date',
-    beforeShowDay: $.datepicker.noWeekends
-  });
-
-  $(".checkout-service .checkbox input[type='checkbox']").click(function() {
-    $options = $(this).closest(".checkout-service").find(".options");
-
-    if($(this).is(":checked")) {
-      $("input", $options).each(function() {
-        $(this).removeAttr("disabled");
-      });
-      $("textarea", $options).each(function() {
-        $(this).removeAttr("disabled");
-      });      
-      $("select", $options).each(function() {
-        $(this).removeAttr("disabled");
-      });    
-      $options.slideDown();
-    }
-    else {
-      $("input", $options).each(function() {
-        $(this).attr("disabled", "disabled");
-      });
-      $("textarea", $options).each(function() {
-        $(this).attr("disabled", "disabled");
-      });        
-      $("select", $options).each(function() {
-        $(this).attr("disabled", "disabled");
-      });    
-      $options.slideUp();
-    }
+    update_cost();        
   });
 });
 
@@ -274,4 +253,39 @@ function update_cost() {
   });
 
   $("#total-cost").html(total);
+}
+
+function open_service_options($clicked) {
+  $options = $clicked.closest(".checkout-service").find(".options");
+  console.log($options.html());
+  if($clicked.is(":checked")) {
+    console.log("is checked");
+    $("input", $options).each(function() {
+      $clicked.removeAttr("disabled");
+    });
+    $("textarea", $options).each(function() {
+      $clicked.removeAttr("disabled");
+    });      
+    $("select", $options).each(function() {
+      $clicked.removeAttr("disabled");
+    });    
+    $options.slideDown(function() {
+      update_cost();
+    });
+  }
+  else {
+    console.log("NOT checked");
+    $("input", $options).each(function() {
+      $clicked.attr("disabled", "disabled");
+    });
+    $("textarea", $options).each(function() {
+      $clicked.attr("disabled", "disabled");
+    });        
+    $("select", $options).each(function() {
+      $clicked.attr("disabled", "disabled");
+    });    
+    $options.slideUp(function() {
+      update_cost();
+    });
+  }
 }
