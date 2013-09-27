@@ -106,6 +106,8 @@
             <div class="content clearfix">
                 <%= image_tag("newsletter.png", :id => "newsletter-background") %>
                 <%= form_for @newsletter_user, :id => "newsletter-form" do |f| %>
+                    <input type="text" name="blanktest" style="position:absolute;left:-999px" value="">
+                    <input type="text" name="tokentest" style="position:absolute;left:-999px" value="<%= session[:spam_token] %>">
                     <h4>Notify me!</h4>
                     <p>Join our newsletter</p>
                     <%= f.text_field :email %><br>

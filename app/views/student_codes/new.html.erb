@@ -10,6 +10,8 @@
   </p>
   <div class="alert alert-info"><p>Note: you must have an academic email address to qualify</p></div> 
   <%= form_for @discount_code do |f| %>
+    <input type="text" name="blanktest" style="position:absolute;left:-999px" value="">
+    <input type="text" name="tokentest" style="position:absolute;left:-999px" value="<%= session[:spam_token] %>">  
     <%= f.text_field :name, :placeholder => "name" %><br>
     <%= f.text_field :email, :placeholder => "email" %><br>
     <%= f.hidden_field :is_valid, :value => true %>
