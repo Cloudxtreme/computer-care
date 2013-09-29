@@ -86,3 +86,9 @@ textarea.LV_invalid_field:active {
     float: none !important;
   }
 }
+
+@media screen and (max-width: 520px) {
+  #order-form textarea, #order-form select {
+    width: 100%;
+  }
+}
