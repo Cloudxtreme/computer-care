@@ -127,7 +127,7 @@ jQuery(function($){
 
   // accordian effect
   initialize_form();
-  $("#order-form").on("click", "fieldset.active a.next", function() {
+  $("#order-form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
     $fieldset = $(this).closest("fieldset");
     if($fieldset.attr("id") == "options") {
       // make sure atleast one service was selected
