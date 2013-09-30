@@ -64,7 +64,8 @@ jQuery(function($){
     town.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );
 
     $("#postcode").blur(function() {
-      var newPostCode = checkPostCode($(this).val());
+      var postcode_value = $(this).val();
+      var newPostCode = checkPostCode(postcode_value.trim());
       if(newPostCode) {
         $(this).addClass("LV_valid_field");
         $(this).removeClass("LV_invalid_field");
