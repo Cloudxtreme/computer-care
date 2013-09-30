@@ -323,4 +323,11 @@ $(function() {
 		message.add( Validate.Length, { minimum: 2, tooShortMessage: "*" } );		
 	}
 
+	/* NEWSLETTER SIGNUP VALIDATION */
+	if($("#newsletter_user_email").length > 0) {
+		var signup_email = new LiveValidation( "newsletter_user_email", { validMessage: " ", wait: 500 } );
+		signup_email.add( Validate.Presence, { failureMessage: "*" } );
+		signup_email.add( Validate.Email, { failureMessage: "*" } );
+	}	
+
 });

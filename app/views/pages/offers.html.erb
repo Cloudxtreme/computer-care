@@ -4,4 +4,18 @@
   <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
 </header> 
 <div id="main-content">
+  <div class="service">
+    <p>Sign up to our newsletter to find out about all our latest offers and deals.</p>
+    <div id="newsletter-offers">
+      <%= image_tag("newsletter.png", :id => "newsletter-background") %>
+      <%= form_for @newsletter_user, :id => "newsletter-form" do |f| %>
+          <input type="text" name="blanktest" style="position:absolute;left:-999px" value="">
+          <input type="text" name="tokentest" style="position:absolute;left:-999px" value="<%= session[:spam_token] %>">
+          <h4>Notify me!</h4>
+          <p>Join our newsletter</p>
+          <%= f.text_field :email %><br>
+          <%= f.submit :register, :value => "Sign Up", :class => "btn btn-medium btn-success" %>
+      <% end %>  
+    </div>
+  </div>
 </div>

@@ -23,6 +23,7 @@ class PagesController < ApplicationController
     end
 
     def offers
+        @newsletter_user = NewsletterUser.new        
     end
 
     def faq

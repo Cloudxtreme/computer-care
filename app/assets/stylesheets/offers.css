@@ -1,0 +1,13 @@
+#newsletter-offers {
+  position: relative;
+}
+
+#newsletter-offers #newsletter-background {
+  left: 0;
+  top:0;
+}
+
+#newsletter-offers #new_newsletter_user {
+  left: 120px;
+  top:100px;
+}
