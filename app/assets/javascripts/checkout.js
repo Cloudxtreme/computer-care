@@ -184,13 +184,13 @@ jQuery(function($){
       // make payment form disabled
       $("#payment input[type='text']").attr("disabled", "disabled").hide();
       //show message
-      $(".alert").show();
+      $(".alert-service").show();
     }
     else {
       // enable payment form 
       $("#payment input[type='text']").removeAttr("disabled").show();
       // hide message
-      $(".alert").hide();   
+      $(".alert-service").hide();   
     }
 
     update_cost();        
