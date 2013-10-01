@@ -120,7 +120,7 @@ jQuery(function($){
     catch(err) {
       areAllValid = false;
     }
-    if(!checkPostCode($("#postcode").val())) {
+    if(!checkPostCode($("#postcode").val().trim())) {
       areAllValid = false;
     }
 
