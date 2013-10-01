@@ -6,7 +6,7 @@ jQuery(function($){
   var $container = $preselected.closest(".checkout-service");
   $container.toggleClass("selected", function() {
     open_service_options($preselected);
-  });     
+  });
 
   // disable finalize button until user has accepter the TOC's
   $("#complete-order").attr("disabled", "disabled");
@@ -24,7 +24,12 @@ jQuery(function($){
 
   // form validation
   if($("#order-form").length > 0) {
-    $("#options a.next").attr("disabled", "disabled"); 
+    if($preselected.length > 0) {
+      $("#options a.btn").removeAttr("disabled");
+    }
+    else {
+      $("#options a.next").attr("disabled", "disabled");
+    }
 
     $("#options input[type='checkbox']").click(function() {
       if($("#options input[type='checkbox']:checked").length > 0) {
