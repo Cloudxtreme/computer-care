@@ -12,6 +12,17 @@ class Admin::ServicesController < Admin::AdminController
     @service = Service.new
   end
 
+  def edit
+    @service = Service.find(params[:id])
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    @service.update_attributes(params[:service])
+    @service.save
+    redirect_to admin_service_path(@service.id)
+  end
+
   def create
     @service = Service.new(params[:service])
     if @service.save

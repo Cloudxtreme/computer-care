@@ -39,6 +39,7 @@
       </ol>
 
     <br>
+    <%= button_to("Edit Service", edit_admin_service_path(@service.id), :method => :get, :class => "btn") %>    
     <%= button_to("Delete Service", admin_service_path(@service.id), :method => :delete, :class => "btn") %>
   </div>
 </div>
