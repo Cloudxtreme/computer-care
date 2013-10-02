@@ -1,13 +1,34 @@
 class OrdersController < ApplicationController
   def new
+    if !params[:back]
+      session["first-name"] = nil
+      session["last-name"] = nil
+      session["email"] = nil
+      session["telephone"] = nil
+      session["building"] = nil
+      session["street"] = nil
+      session["town"] = nil
+      session["postcode"] = nil
+      session["options"] = nil
+    end
     @order = Order.new
-    @services = Service.all    
+    @services = Service.where(:can_checkout => true) 
     @options = {}
     @missing = []
     @invalid = []
   end
 
   def create
+    session["first-name"] = params["first-name"]
+    session["last-name"] = params["last-name"]
+    session["email"] = params["email"]
+    session["telephone"] = params["telephone"]
+    session["building"] = params["building"]
+    session["street"] = params["street"]
+    session["town"] = params["town"]
+    session["postcode"] = params["postcode"]
+    session["options"] = params[:options] ? params[:options] : []
+
     date = params["date"].split("/")
     delivery_date = Time.new(date.last, date.first, date.second, params["time"]["hour"], params["time"]["minute"], 0)
 
@@ -39,6 +60,7 @@ class OrdersController < ApplicationController
       @invalid << "discount code"
       render :new
     else
+      @accepted = true
       render :confirm
     end
   end
@@ -50,7 +72,7 @@ class OrdersController < ApplicationController
     @missing = []
     @invalid = []   
     @accepted = true 
-    if !params[:accept_terms].blank?  && !params[:accept_service].blank? 
+    if !params[:accept_terms].blank? 
       @order.agreed_to_terms = true
       
       total = 0.0

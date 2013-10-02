@@ -1,45 +1,24 @@
-<header class="stripe">
-  <h1>Confirm</h1>
-  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
-  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
-</header>  
-<div id="main-content">
-  <div class="service">
+<div id="order-form">
+  <header class="stripe order">
+    <span>1</span><h1>Service Selection</h1>
+  </header>
+  <header class="stripe no-margin order">
+    <span>2</span><h1>Customer Information</h1>
+  </header>
+  <header class="stripe no-margin order">
+    <span>3</span><h1>Collection Arrangements</h1>
+  </header> 
+  <header class="stripe no-margin order active">
+    <span>4</span><h1>Summary</h1>
+    <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+    <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+  </header>
+  <fieldset class="main-content" id="summary">
     <% if !@accepted %>
       <div class="alert alert-error">
-        <h5>You must accept the <a href="#">Terms & Conditions</a> and <a href="#">Terms of Service</a> before continuing</h5>  
-      </div> 
-    <% end %> 
-
-    <% quote_services = @options.select do |service_id, option_values| %>
-      <% service = Service.find(service_id) %>
-      <% !service.can_checkout %>
-    <% end %>
-    <% if quote_services.any? %>
-      <div class="alert alert-info">
-        <h4>Note:</h4>
-        You have selected service(s) that require additional costs.<br>
-        Place the order by clicking the button below and we will be in contact shortly with a quote. 
+        <h5>You must accept the <a href="#">Terms & Conditions</a> below before continuing</h5> 
       </div>
     <% end %>    
-    <div class="well">
-      <ul class="unstyled">
-        <li><%= @order.first_name %></li>
-        <li><%= @order.last_name %></li>
-        <li><%= @order.email %></li>
-        <li><%= @order.telephone %></li>
-      </ul>     
-    </div>
-    <div class="well">
-      <ul class="unstyled">
-        <li><%= @order.building %> <%= @order.street %></li>
-        <li><%= @order.town %></li>
-        <li><%= @order.postcode %></li>
-      </ul>         
-    </div>
-    <div class="well">
-      <b>Delivery Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %>
-    </div>
     <div class="well">
       <% total = 0.0 %>
       <% @options.each do |service_id, option_values| %>
@@ -68,7 +47,25 @@
       <% else %>
         <b>Total Cost:</b> <%= number_to_currency(total, unit: "&pound;", separator: ".", delimiter: "") %>
       <% end %>
-    </div> 
+    </div>     
+    <div class="well">
+      <ul class="unstyled">
+        <li><b>Customer Information:</b></li>
+        <li><%= @order.first_name %></li>
+        <li><%= @order.last_name %></li>
+        <li><%= @order.email %></li>
+        <li><%= @order.telephone %></li>
+      </ul>     
+    </div>
+    <div class="well">
+      <ul class="unstyled">
+        <li><b>Collection Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %></li>
+        <li><b>Collection Address:</b></li>
+        <li><%= @order.building %> <%= @order.street %></li>
+        <li><%= @order.town %></li>
+        <li><%= @order.postcode %></li>
+      </ul>         
+    </div>
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">
@@ -93,14 +90,17 @@
           <% end %>
         <% end %>
       <% end %>
-      <label class="checkbox accept <%= @accepted ? "" : "error" %>">
+      <label class="checkbox accept error">
         <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
       </label>
-      <label class="checkbox accept <%= @accepted ? "" : "error" %>">
-        <input type="checkbox" class="required agreement" name="accept_service"> I have read and agree with the <a href="#">Terms of Service</a>
-      </label>
       <br>
-      <%= submit_tag "place order", :class => "btn btn-large btn-primary", :id=>"complete-order" %>
-    <% end %>
-  </div>
+      <a href="<%= new_order_path(:back => "true") %>" class="btn back">back</a>
+      <%= submit_tag "next", :class => "btn btn-primary", :id=>"complete-order" %>
+    <% end %>    
+  </fieldset>
+  <header class="stripe no-margin order">
+    <span>5</span><h1>Payment</h1>    
+  </header>        
+  <footer class="stripe no-margin">   
+  </footer>
 </div>

@@ -24,10 +24,22 @@ module ApplicationHelper
     end
 
     def is_checked(options, service_id)
-        if options.any? && options.has_key?(service_id)
-            true
-        elsif !options.any? && params[:service] && params[:service].eql?(service_id)
-            true
+        if options
+            if options.any? && options.has_key?(service_id)
+                true
+            elsif !options.any? && params[:service] && params[:service].eql?(service_id)
+                true
+            end
+        end
+    end
+
+    def form_value(session_value)
+        if session_value
+            logger.warn "*"*100
+            logger.warn "value='#{session_value}'"
+            "value='#{session_value}'".html_safe
+        else
+            ""
         end
     end
 end

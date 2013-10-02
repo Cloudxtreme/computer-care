@@ -1,17 +1,14 @@
 jQuery(function($){
-  $(".javascript-required").hide();
-  $("#order-form").show();
-
   var $preselected = $(".checkout-service .checkbox input[type='checkbox']:checked");
   var $container = $preselected.closest(".checkout-service");
   $container.toggleClass("selected", function() {
     open_service_options($preselected);
   });
 
-  // disable finalize button until user has accepter the TOC's
-  $("#complete-order").attr("disabled", "disabled");
-  $(".checkbox .required.agreement").click(function() {
-    if($(".checkbox .required.agreement:checked").length == 2) {
+  // disable finalize button until user has accepted the TOC's
+  //$("#complete-order").attr("disabled", "disabled");
+  $("body").on("click", ".checkbox .required.agreement", function() {
+    if($(this).is(":checked")) {
       $("#complete-order").removeAttr("disabled");
     }
     else {
@@ -23,7 +20,7 @@ jQuery(function($){
   $(":input").attr("autocomplete", "off");
 
   // form validation
-  if($("#order-form").length > 0) {
+  if($("#order-form.first").length > 0) {
     if($preselected.length > 0) {
       $("#options a.btn").removeAttr("disabled");
     }
@@ -86,6 +83,7 @@ jQuery(function($){
     });
 
     $("#user a.next").attr("disabled", "disabled");
+    validate_user_details();
 
     $("#user input").keyup(function() {
       setTimeout(function() { validate_user_details(); }, 500);     
@@ -185,29 +183,24 @@ jQuery(function($){
       open_service_options($clicked);
     });
 
-    // check if a service that requires a quote was selected
-    if($(".service:checked[data-can-checkout='false']").length > 0) {
-      // make payment form disabled
-      $("#payment input[type='text']").attr("disabled", "disabled").hide();
-      //show message
-      $(".alert-service").show();
-    }
-    else {
-      // enable payment form 
-      $("#payment input[type='text']").removeAttr("disabled").show();
-      // hide message
-      $(".alert-service").hide();   
-    }
-
     update_cost();        
   });
 });
 
 function initialize_form() {
   if(!$("#order-form").hasClass("error")) {
-    $("#order-form fieldset").first().addClass("active");
-    $("#order-form fieldset:not(:first)").hide();
-    $("#order-form header.stripe").each(function(i) {
+    if($("#order-form").hasClass("reverse")) {
+      $("#order-form fieldset").last().addClass("active");
+      $("#order-form fieldset:not(:last)").hide();
+    }
+    else {
+      $("#order-form fieldset").first().addClass("active");
+      $("#order-form fieldset:not(:first)").hide();
+    }
+    $(".img-shadow").hide();
+    $("#order-form fieldset.active").prev("header.stripe").find(".img-shadow:not(.top)").show();
+    $("#order-form fieldset.active").next("header.stripe").find(".img-shadow.top").show();
+    /*$("#order-form header.stripe").each(function(i) {
       i++;
       if(i>2) {
         $(this).find(".img-shadow.left").hide();
@@ -218,7 +211,7 @@ function initialize_form() {
         $(this).find(".img-shadow.right:not(.top)").hide();
       }
     });
-    $("#order-form footer.stripe .img-shadow").hide();  
+    $("#order-form footer.stripe .img-shadow").hide();  */
   }
   else {
     $(".next").hide();
