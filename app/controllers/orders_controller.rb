@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
       session["town"] = nil
       session["postcode"] = nil
       session["options"] = nil
+      session["discount"] = nil
     end
     @order = Order.new
     @services = Service.where(:can_checkout => true) 
@@ -29,8 +30,12 @@ class OrdersController < ApplicationController
     session["postcode"] = params["postcode"]
     session["options"] = params[:options] ? params[:options] : []
 
-    date = params["date"].split("/")
-    delivery_date = Time.new(date.last, date.first, date.second)
+    if !params["complete_date"]
+      date = params["date"].split("/")
+      delivery_date = Time.new(date.last, date.first, date.second)
+    else
+      delivery_date = params["complete_date"]
+    end
 
     @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
     @service_options = {}
@@ -40,6 +45,10 @@ class OrdersController < ApplicationController
     @discount = nil
     if !params[:discount].blank?
       @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      session["discount"] = params[:discount] if @discount && @discount.is_valid
+    end
+    if session["discount"]
+      @discount = StudentCode.where("code = '#{session[:discount]}'").first 
     end
     
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
@@ -55,9 +64,6 @@ class OrdersController < ApplicationController
       render :new
     elsif (/^([a-zA-Z0-9\-\._]+)@((?:[-a-z0-9]+\.)+[a-z]{2,4})$/i =~ params[:email]).nil?
       @invalid << "email"
-      render :new
-    elsif (!params[:discount].blank? && @discount.nil?) || (!@discount.nil? && !@discount.is_valid)
-      @invalid << "discount code"
       render :new
     else
       @accepted = true

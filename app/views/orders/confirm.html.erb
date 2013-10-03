@@ -19,6 +19,45 @@
         <h5>You must accept the <a href="#">Terms & Conditions</a> below before continuing</h5> 
       </div>
     <% end %>    
+
+
+    <%= form_tag orders_path do %>
+      <input type="hidden" name="building" value="<%= @order.building %>">
+      <input type="hidden" name="email" value="<%= @order.email %>">
+      <input type="hidden" name="first-name" value="<%= @order.first_name %>">
+      <input type="hidden" name="last-name" value="<%= @order.last_name %>">
+      <input type="hidden" name="postcode" value="<%= @order.postcode %>">
+      <input type="hidden" name="street" value="<%= @order.street %>">
+      <input type="hidden" name="telephone" value="<%= @order.telephone %>">
+      <input type="hidden" name="town" value="<%= @order.town %>">
+      <input type="hidden" name="complete_date" value="<%= @order.date %>">
+      <% @options.each do |service_id, option_values| %>
+        <% option_values.each do |service_option, value| %>
+          <% option = ServiceOption.find(service_option) %>
+          <% if option.is_arbitrary %>
+            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= value %>">
+          <% else %>
+            <% option_value = ServiceOptionValue.find(value) %>
+            <input type="hidden" name="options[<%= service_id %>][<%= service_option %>]" value="<%= option_value.id %>">
+          <% end %>
+        <% end %>
+      <% end %>
+      <% unless @discount && @discount.is_valid %>
+        <div class="well">
+          <h4>Have a discount code?</h4>
+          <% if (params["discount"] && @discount.nil?) || (!@discount.nil? && !@discount.is_valid) %>
+            <div class="alert alert-error">
+              <p>Your discount code is not valid</p>
+            </div>
+          <% end %>
+          <p>Enter it here:</p>
+          <input type="text" id="discount" name="discount">
+          <%= submit_tag "update total", :class => "btn" %>          
+        </div>
+      <% end %>
+    <% end %>
+
+
     <div class="well">
       <% total = 0.0 %>
       <% @options.each do |service_id, option_values| %>
@@ -41,7 +80,7 @@
         <% end %>
         <br>
       <% end %>
-      <% if @discount %>
+      <% if @discount && @discount.is_valid %>
         <b>Discount: 15%</b><br>
         <b>Total Cost:</b> <%= number_to_currency(total - (total * 0.15), unit: "&pound;", separator: ".", delimiter: "") %>
       <% else %>
@@ -76,9 +115,6 @@
       <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
       <input type="hidden" name="order[town]" value="<%= @order.town %>">
       <input type="hidden" name="order[date]" value="<%= @order.date %>">
-      <% if @discount %>
-        <input type="hidden" name="discount" value="<%= @discount.code %>">
-      <% end %>
       <% @options.each do |service_id, option_values| %>
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>

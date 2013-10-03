@@ -5,7 +5,7 @@
 <div id="order-form" class="first <%= 'reverse' if params[:back] %>">
     <% if @missing.any? || @invalid.any? %>
       <div id="errors" class="well">
-        <h5>Please fix the following errors and before continuing:</h5>
+        <h5>Please fix the following errors before continuing:</h5>
         <% @missing.each do |field| %>
           <div class="alert alert-error">
             <p><strong><%= field.capitalize %></strong> is missing</p>
