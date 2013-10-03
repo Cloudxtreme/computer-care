@@ -70,12 +70,12 @@
 
           <% if option.is_arbitrary %>
             <% if !value.blank? %>
-              <%= option.name %>: <%= value %><br>
+              <%= "#{option.name}: " if !option.name.blank? %><%= value %><br>
             <% end %>
           <% else %>
             <% option_value = ServiceOptionValue.find(value) %>
             <% total += option_value.additional_cost %>
-            <%= option.name %>: <%= option_value.name %> - <%= number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "") %><br>
+            <%= "#{option.name}: " if !option.name.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if option_value.additional_cost > 0 %><br>
           <% end %>
         <% end %>
         <br>
