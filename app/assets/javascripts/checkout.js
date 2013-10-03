@@ -6,13 +6,13 @@ jQuery(function($){
   });
 
   // disable finalize button until user has accepted the TOC's
-  //$("#complete-order").attr("disabled", "disabled");
+  $("#summary-next").attr("disabled", "disabled");
   $("body").on("click", ".checkbox .required.agreement", function() {
     if($(this).is(":checked")) {
-      $("#complete-order").removeAttr("disabled");
+      $("#summary-next").removeAttr("disabled");
     }
     else {
-      $("#complete-order").attr("disabled", "disabled");
+      $("#summary-next").attr("disabled", "disabled");
     }
   });
 
