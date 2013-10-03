@@ -59,7 +59,7 @@
     </div>
     <div class="well">
       <ul class="unstyled">
-        <li><b>Collection Date:</b> <%= @order.date.strftime("%H:%M %d/%m/%Y") %></li>
+        <li><b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") %></li>
         <li><b>Collection Address:</b></li>
         <li><%= @order.building %> <%= @order.street %></li>
         <li><%= @order.town %></li>

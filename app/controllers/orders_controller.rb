@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     session["options"] = params[:options] ? params[:options] : []
 
     date = params["date"].split("/")
-    delivery_date = Time.new(date.last, date.first, date.second, params["time"]["hour"], params["time"]["minute"], 0)
+    delivery_date = Time.new(date.last, date.first, date.second)
 
     @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
     @service_options = {}
