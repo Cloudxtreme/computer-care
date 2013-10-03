@@ -308,19 +308,19 @@ footer a, footer a:hover {
 #social {
 	position: absolute;
 	top: 45px;
-	right: 200px;
+	right: 250px;
 }
 
 footer .social-icon.facebook {
-	right: 120px;
+	right: 180px;
 }
 
 footer .social-icon.twitter {
-	right: 60px;
+	right: 120px;
 }
 
 footer .social-icon.google {
-	right: 0px;
+	right: 60px;
 }
 
 footer .social-icon.youtube {
