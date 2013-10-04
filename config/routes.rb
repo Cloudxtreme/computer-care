@@ -38,6 +38,8 @@ ComputerCare::Application.routes.draw do
 
   namespace :admin do
   	match "dashboard", to: "admin#dashboard"
+      
+      resources :tips
       resources :newsletter_users
       resources :student_codes
       resources :orders do

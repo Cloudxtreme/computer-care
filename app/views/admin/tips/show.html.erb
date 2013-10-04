@@ -1,0 +1,27 @@
+<header class="stripe">
+  <h1>Tip of the Week</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+</header>
+<div id="main-content">
+  <div class="service">
+    <p>
+      <b>Body:</b>
+      <%= @tip.body %>
+    </p>
+
+    <p>
+      <b>Published:</b>
+      <%= @tip.published %>
+    </p>
+
+    <p>
+      <b>Title:</b>
+      <%= @tip.title %>
+    </p>
+
+
+    <%= link_to 'Edit', edit_admin_tip_path(@tip) %> |
+    <%= link_to 'Back', admin_tips_path %>
+  </div>
+</div>

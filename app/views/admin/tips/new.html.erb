@@ -1,0 +1,11 @@
+<header class="stripe">
+  <h1>New Tip of the Week</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+</header>
+<div id="main-content">
+  <div class="service">
+    <%= render 'form' %>
+    <%= link_to 'Back', admin_tips_path %>
+  </div>
+</div>

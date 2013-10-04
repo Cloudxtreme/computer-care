@@ -1,6 +1,7 @@
 class PagesController < ApplicationController    
     def home
         @newsletter_user = NewsletterUser.new
+        @tip = Tip.where(:published => true).first
     end
 
     def contact

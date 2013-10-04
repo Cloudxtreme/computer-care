@@ -1,0 +1,35 @@
+<header class="stripe">
+  <h1>Tip of the Week list</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+</header>
+
+<div id="main-content">
+  <div class="service">
+    <table>
+      <tr>
+        <th>Created</th>
+        <th>Published</th>
+        <th>Title</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @tips.each do |tip| %>
+      <tr>
+        <td><%= tip.created_at %></td>
+        <td><%= tip.published %></td>
+        <td><%= tip.title %></td>
+        <td><%= link_to 'Show', admin_tip_path(tip.id) %></td>
+        <td><%= link_to 'Edit', edit_admin_tip_path(tip) %></td>
+        <td><%= link_to 'Destroy', admin_tip_path(tip.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Tip', new_admin_tip_path %>
+  </div>
+</div>
