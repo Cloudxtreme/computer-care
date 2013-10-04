@@ -37,6 +37,7 @@ $(function() {
 
 	 /* NOTICES */
 	if($(".notice").length > 0) {
+		$(".overlay").show();
 		var notice_width = $(".notice").outerWidth(true);
 
 		$(".notice").css("left", ((width / 2) - (notice_width / 2)) + "px");
