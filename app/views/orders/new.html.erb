@@ -31,17 +31,17 @@
             <label class="checkbox">
               <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) %>> <%= service.name %>
             </label>  
-            <div class="options well" style=<%= "display:none;" if !@options.has_key?(service.id.to_s) %>>
+            <div class="options well <%= "hidden-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>">
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>-->
                   <% placeholder = option.placeholder.blank? ? "" : option.placeholder %>
-                  <textarea id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder="<%= placeholder %>" <%= "disabled" if !@options.has_key?(service.id.to_s) %>><%= session["options"][service.id.to_s][option.id.to_s] if session["options"] and session["options"].any? && session["options"][service.id.to_s] %></textarea>
+                  <textarea id="<%= option.id %>" class="<%= "disabled-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder="<%= placeholder %>"><%= session["options"][service.id.to_s][option.id.to_s] if session["options"] and session["options"].any? && session["options"][service.id.to_s] %></textarea>
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->
-                  <select id="<%= option.id %>" name='<%= "options[#{service.id}][#{option.id}]" %>' <%= "disabled" if !@options.has_key?(service.id.to_s) %>>
+                  <select id="<%= option.id %>" class="<%= "disabled-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>" name='<%= "options[#{service.id}][#{option.id}]" %>'>
                     <% option.service_option_values.each do |value| %>
                       <option value="<%= value.id %>" data-additional="<%= value.additional_cost %>" <%= "selected" if session["options"] and session["options"][service.id.to_s] && session["options"][service.id.to_s][option.id.to_s].eql?(value.id.to_s) %>><%= value.name %></option>
                     <% end %>
@@ -52,7 +52,7 @@
           </div>     
         <% end %>
         <br>        
-        <a class="btn btn-primary next">next</a>
+        <a class="btn btn-primary next js">next</a>
       </fieldset>
       <header class="stripe no-margin order">
         <span>2</span><h1>Customer Information</h1>
@@ -116,8 +116,8 @@
           </div>
         </div>
         <div style="clear:both;"></div>
-        <a class="btn back">back</a>
-        <a class="btn btn-primary next">next</a>
+        <a class="btn back js">back</a>
+        <a class="btn btn-primary next js">next</a>
       </fieldset>
       <header class="stripe no-margin order <%= 'active' if params[:back] %>">
         <span>3</span><h1>Collection Arrangements</h1>
@@ -133,7 +133,7 @@
         <!--<p>Please select a convenient time for collection:</p>
         <%= select_time(nil, :prefix => "time") %>-->
         <br><br>
-        <a class="btn back">back</a>
+        <a class="btn back js">back</a>
         <%= submit_tag :next, :class => "btn btn-primary" %>        
       </fieldset>
       <header class="stripe no-margin order">

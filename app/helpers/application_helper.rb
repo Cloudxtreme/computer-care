@@ -35,8 +35,6 @@ module ApplicationHelper
 
     def form_value(session_value)
         if session_value
-            logger.warn "*"*100
-            logger.warn "value='#{session_value}'"
             "value='#{session_value}'".html_safe
         else
             ""

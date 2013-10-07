@@ -32,6 +32,7 @@
       <input type="hidden" name="town" value="<%= @order.town %>">
       <input type="hidden" name="complete_date" value="<%= @order.date %>">
       <% @options.each do |service_id, option_values| %>
+        <input type="hidden" name="services[]" value="<%= service_id %>">
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>
           <% if option.is_arbitrary %>
@@ -42,7 +43,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <% unless @discount && @discount.is_valid %>
+      <% if !@discount || !@discount.is_valid %>
         <div class="well">
           <h4>Have a discount code?</h4>
           <% if (params["discount"] && @discount.nil?) || (!@discount.nil? && !@discount.is_valid) %>
@@ -54,6 +55,8 @@
           <input type="text" id="discount" name="discount">
           <%= submit_tag "update total", :class => "btn" %>          
         </div>
+      <% else %>
+        <input type="hidden" name="discount" value="<%= @discount.code %>">
       <% end %>
     <% end %>
 
@@ -98,7 +101,7 @@
     </div>
     <div class="well">
       <ul class="unstyled">
-        <li><b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") %></li>
+        <li><b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") if !@order.date.blank? %></li>
         <li><b>Collection Address:</b></li>
         <li><%= @order.building %> <%= @order.street %></li>
         <li><%= @order.town %></li>
@@ -115,6 +118,10 @@
       <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
       <input type="hidden" name="order[town]" value="<%= @order.town %>">
       <input type="hidden" name="order[date]" value="<%= @order.date %>">
+      <% if @discount %>
+        <input type="hidden" name="discount" value="<%= @discount.code if @discount %>">
+      <% end %>
+
       <% @options.each do |service_id, option_values| %>
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>

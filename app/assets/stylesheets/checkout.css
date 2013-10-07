@@ -19,6 +19,10 @@
   float: left;
 }
 
+#order-form .btn.js {
+  display: none;
+}
+
 #order-form header span {
   font-size: 140%;
   color: #CCCCCC;

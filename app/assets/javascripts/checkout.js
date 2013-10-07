@@ -5,6 +5,12 @@ jQuery(function($){
     open_service_options($preselected);
   });
 
+  // hide service options
+  $(".checkout-service .hidden-option").hide();
+  $(".disabled-option").attr("disabled", "disabled");
+
+  $("#order-form .btn.js").show();
+
   // disable finalize button until user has accepted the TOC's
   $("#summary-next").attr("disabled", "disabled");
   $("body").on("click", ".checkbox .required.agreement", function() {

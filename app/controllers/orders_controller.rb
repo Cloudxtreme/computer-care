@@ -28,18 +28,18 @@ class OrdersController < ApplicationController
     session["street"] = params["street"]
     session["town"] = params["town"]
     session["postcode"] = params["postcode"]
-    session["options"] = params[:options] ? params[:options] : []
+    session["options"] = params[:options] ? params[:options].select { |service_id, options| params[:services].include?(service_id) } : {}
 
     if !params["complete_date"]
-      date = params["date"].split("/")
-      delivery_date = Time.new(date.last, date.first, date.second)
+      date = params["date"].split("/") 
+      delivery_date = Time.new(date.last, date.first, date.second) if !date.blank?
     else
       delivery_date = params["complete_date"]
     end
 
     @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
     @service_options = {}
-    @options = params[:options] ? params[:options] : []
+    @options = params[:options] ? params[:options].select { |service_id, options| params[:services].include?(service_id) } : {}
     @services = Service.all
     
     @discount = nil
@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
       session["discount"] = params[:discount] if @discount && @discount.is_valid
     end
     if session["discount"]
+      #session["discount"] = nil
       @discount = StudentCode.where("code = '#{session[:discount]}'").first 
     end
     
@@ -59,6 +60,9 @@ class OrdersController < ApplicationController
       @missing << param if params[param].blank?
     end
     @missing << "services" if @options.empty?
+
+    logger.warn "*"*100
+    logger.warn @options.inspect
 
     if @missing.any?
       render :new
@@ -74,6 +78,11 @@ class OrdersController < ApplicationController
   def finalize
     @options = params[:options]
     @order = Order.new(params[:order])
+    @discount = nil
+    if !params[:discount].blank?
+      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      session["discount"] = params[:discount] if @discount && @discount.is_valid
+    end
     @services = Service.all
     @missing = []
     @invalid = []   
