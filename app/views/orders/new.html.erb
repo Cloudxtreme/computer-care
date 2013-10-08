@@ -27,21 +27,21 @@
       <fieldset class="main-content" id="options">
         <p>Please select your required services below:</p>
         <% @services.each do |service| %>
-          <div class="checkout-service <%= "selected" if @options.has_key?(service.id.to_s) %>">
+          <div class="checkout-service <%= "selected" if (session["options"] && session["options"].has_key?(service.id.to_s)) || (params[:service] && params[:service].to_s == service.id.to_s) %>">
             <label class="checkbox">
-              <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) %>> <%= service.name %>
+              <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) || (params[:service] && params[:service].to_s == service.id.to_s) %>> <%= service.name %>
             </label>  
-            <div class="options well <%= "hidden-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>">
+            <div class="options well <%= "hidden-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) && (params[:service] && params[:service].to_s != service.id.to_s) %>">
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<input type="text" id="<%= option.id %>" name="options[<%= service.id %>][<%= option.id %>]" value="" disabled>-->
                   <% placeholder = option.placeholder.blank? ? "" : option.placeholder %>
-                  <textarea id="<%= option.id %>" class="<%= "disabled-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder="<%= placeholder %>"><%= session["options"][service.id.to_s][option.id.to_s] if session["options"] and session["options"].any? && session["options"][service.id.to_s] %></textarea>
+                  <textarea id="<%= option.id %>" class="<%= "disabled-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) && (params[:service] && params[:service].to_s != service.id.to_s) %>" name="options[<%= service.id %>][<%= option.id %>]" placeholder="<%= placeholder %>"><%= session["options"][service.id.to_s][option.id.to_s] if session["options"] and session["options"].any? && session["options"][service.id.to_s] %></textarea>
                 <% else %>
                   <label for="<%= option.id %>"><%= option.name %></label>
                   <!--<%= select_tag("options[#{service.id}][#{option.id}]", options_from_collection_for_select(option.service_option_values, "id", "name"), :disabled => true) %>-->
-                  <select id="<%= option.id %>" class="<%= "disabled-option" if !session["options"] || !session["options"].has_key?(service.id.to_s) %>" name='<%= "options[#{service.id}][#{option.id}]" %>'>
+                  <select id="<%= option.id %>" class="<%= "disabled-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) && (params[:service] && params[:service].to_s != service.id.to_s) %>" name='<%= "options[#{service.id}][#{option.id}]" %>'>
                     <% option.service_option_values.each do |value| %>
                       <option value="<%= value.id %>" data-additional="<%= value.additional_cost %>" <%= "selected" if session["options"] and session["options"][service.id.to_s] && session["options"][service.id.to_s][option.id.to_s].eql?(value.id.to_s) %>><%= value.name %></option>
                     <% end %>

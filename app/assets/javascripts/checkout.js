@@ -263,9 +263,9 @@ function update_cost() {
   $("#total-cost").html(total);
 }
 
-function open_service_options($clicked) {
-  $options = $clicked.closest(".checkout-service").find(".options");
-  if($clicked.is(":checked")) {
+function open_service_options($clicked) {  
+  $options = $clicked.closest(".checkout-service").find(".options");  
+  if($clicked.is(":checked")) {    
     $("input", $options).each(function() {
       $(this).removeAttr("disabled");
     });
@@ -274,9 +274,10 @@ function open_service_options($clicked) {
     });      
     $("select", $options).each(function() {
       $(this).removeAttr("disabled");
-    });    
+    });        
     $options.slideDown(function() {
       update_cost();
+      console.log($options.html());
     });
   }
   else {
