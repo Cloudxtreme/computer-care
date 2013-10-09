@@ -102,13 +102,16 @@
 .info-box {
     background-image: url('diagonal-stripe.png'); 
     padding: 30px;
-    color: #ffffff;
-    font-size: 150%;
+    color: #ffffff;    
     text-align: center;
 }
 
 .info-box b {
 	color: #FA9804;
+}
+
+.info-box p {
+  font-size: 150%;
 }
 
 #certified {
