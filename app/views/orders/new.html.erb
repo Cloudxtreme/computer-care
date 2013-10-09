@@ -137,11 +137,8 @@
             $( "#datepicker" ).datepicker({
               minDate: +1, 
               altField: '#date'
-              //defaultDate: queryDate
             });
             $("#date").val("<%= session[:date] %>");
-            //$("#datepicker").datepicker( "setDate" , queryDate );
-            //$("#datepicker").datepicker( "setDate", "10/12/2012" );
           });
         </script>
         <!--<p>Please select a convenient time for collection:</p>

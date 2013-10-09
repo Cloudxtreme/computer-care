@@ -41,10 +41,21 @@
     </div>
     <div class="well">
       <% @order.order_services.each do |service| %>
-        <% service_name = Service.find(service.service_id).name %>
+        <% begin %>
+          <% service = Service.find(service.service_id) %>
+        <% rescue %>
+          <b>Service Deleted</b>
+          <% next %>
+        <% end %>
+        <% service_name = service.name %>
         <b><%= service_name %></b><br>
         <% service.order_service_options.each do |option| %>
-          <% service_option = ServiceOption.find(option.service_option_id) %>
+          <% begin %>
+            <% service_option = ServiceOption.find(option.service_option_id) %>
+          <% rescue %>
+            <b>Option Deleted</b>
+            <% next %>
+          <% end %>
           <% option_name = service_option.name %>
           <% if service_option.is_arbitrary %>
             <%= "#{option_name}: " if !option_name.blank? %><%= option.value %><br>
