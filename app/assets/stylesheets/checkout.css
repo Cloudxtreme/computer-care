@@ -3,7 +3,8 @@
   padding: 7px;
   margin-bottom: 15px;
   width: 60%;
-  border-radius: 5px
+  border-radius: 5px;
+  background-color: #fff;
 }
 #order-form fieldset {
   background-image: url("thatching_BG.png");
