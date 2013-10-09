@@ -176,12 +176,6 @@ jQuery(function($){
     update_cost();
   });
 
-  $( "#datepicker" ).datepicker({
-    minDate: +1, 
-    altField: '#date',
-    beforeShowDay: $.datepicker.noWeekends
-  });
-
   $(".checkout-service .checkbox input[type='checkbox']").click(function() {
     var $clicked = $(this);
     var $container = $clicked.closest(".checkout-service");
@@ -277,7 +271,6 @@ function open_service_options($clicked) {
     });        
     $options.slideDown(function() {
       update_cost();
-      console.log($options.html());
     });
   }
   else {

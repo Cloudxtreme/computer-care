@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
       session["postcode"] = nil
       session["options"] = nil
       session["discount"] = nil
+      session["date"] = nil
     end
     @order = Order.new
     @services = Service.where(:can_checkout => true) 
@@ -29,6 +30,7 @@ class OrdersController < ApplicationController
     session["town"] = params["town"]
     session["postcode"] = params["postcode"]
     session["options"] = params[:options] ? params[:options].select { |service_id, options| params[:services].include?(service_id) } : {}
+    session["date"] = params["date"] if params["date"]
 
     if !params["complete_date"]
       date = params["date"].split("/") 
@@ -60,9 +62,6 @@ class OrdersController < ApplicationController
       @missing << param if params[param].blank?
     end
     @missing << "services" if @options.empty?
-
-    logger.warn "*"*100
-    logger.warn @options.inspect
 
     if @missing.any?
       render :new

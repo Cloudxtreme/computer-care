@@ -31,7 +31,7 @@
             <label class="checkbox">
               <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) || (params[:service] && params[:service].to_s == service.id.to_s) %>> <%= service.name %>
             </label>  
-            <div class="options well <%= "hidden-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) && (params[:service] && params[:service].to_s != service.id.to_s) %>">
+            <div class="options well <%= "hidden-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) || (params[:service] && params[:service].to_s != service.id.to_s) %>">
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
@@ -130,6 +130,20 @@
         <p>Please select a convenient day for collection:</p>
         <div id="datepicker"></div>
         <input type="hidden" name="date"  id="date"/>
+        <script type="text/javascript">  
+          $(function() {
+            var queryDate = new Date();    
+            queryDate.setFullYear(2009,11,01);
+            $( "#datepicker" ).datepicker({
+              minDate: +1, 
+              altField: '#date'
+              //defaultDate: queryDate
+            });
+            $("#date").val("<%= session[:date] %>");
+            //$("#datepicker").datepicker( "setDate" , queryDate );
+            //$("#datepicker").datepicker( "setDate", "10/12/2012" );
+          });
+        </script>
         <!--<p>Please select a convenient time for collection:</p>
         <%= select_time(nil, :prefix => "time") %>-->
         <br><br>
