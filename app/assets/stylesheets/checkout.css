@@ -5,6 +5,9 @@
   width: 60%;
   border-radius: 5px
 }
+#order-form fieldset {
+  background-image: url("thatching_BG.png");
+}
 
 #order-form fieldset#options .options.well {
   background-color: #C0D9D9;
