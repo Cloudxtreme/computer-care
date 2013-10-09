@@ -42,12 +42,12 @@
     <div class="well">
       <% @order.order_services.each do |service| %>
         <% begin %>
-          <% service = Service.find(service.service_id) %>
+          <% service_obj = Service.find(service.service_id) %>
         <% rescue %>
           <b>Service Deleted</b>
           <% next %>
         <% end %>
-        <% service_name = service.name %>
+        <% service_name = service_obj.name %>
         <b><%= service_name %></b><br>
         <% service.order_service_options.each do |option| %>
           <% begin %>

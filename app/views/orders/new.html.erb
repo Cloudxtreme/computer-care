@@ -128,21 +128,25 @@
       </header>      
       <fieldset class="main-content" id="collection">
         <p>Please select a convenient day for collection:</p>
+        <%= select_date(Time.now.tomorrow, :prefix => "date-fallback") %>
         <div id="datepicker"></div>
-        <input type="hidden" name="date"  id="date"/>
+        <input type="hidden" name="date"  id="date" disabled="disabled"/>
         <script type="text/javascript">  
           $(function() {
-            var queryDate = new Date();    
-            queryDate.setFullYear(2009,11,01);
+            // get rid of the no js fallback
+            $("#date-fallback_year").remove();
+            $("#date-fallback_month").remove();
+            $("#date-fallback_day").remove();
+            $("#date").removeAttr("disabled");
             $( "#datepicker" ).datepicker({
               minDate: +1, 
               altField: '#date'
             });
-            $("#date").val("<%= session[:date] %>");
+            <% if session[:date] %>
+              $("#date").val("<%= session[:date] %>");
+            <% end %>
           });
-        </script>
-        <!--<p>Please select a convenient time for collection:</p>
-        <%= select_time(nil, :prefix => "time") %>-->
+        </script>        
         <br><br>
         <a class="btn back js">back</a>
         <%= submit_tag :next, :class => "btn btn-primary" %>        
