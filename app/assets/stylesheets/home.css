@@ -6,12 +6,12 @@
 .grid article {
   float: left;
   width: 450px;
-  height: 260px;
+  height: 240px;
   margin-bottom: 40px;
+  padding-top: 20px;
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
   border-radius:6px;
-  font-weight: 100;
   -webkit-box-shadow: 0px 3px 5px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 3px 5px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 3px 5px rgba(50, 50, 50, 0.75);  
@@ -26,7 +26,6 @@
   list-style-type: none;
   list-style-image: url("tick.png");
   color: #fff;
-  font-weight: bolder;
   margin-left: 45px;  
 }
 
@@ -39,12 +38,14 @@
   color: #FFFFFF;
   margin-left: 25px;
   margin-right: 25px;
+  letter-spacing: 1px;
+  line-height: 18px;
 }
 
-.grid article p {
-  font-weight: bolder;
-  font-size: 110%;
-  text-shadow: 0px -1px 0px #666;
+.grid article p, .grid article ul {
+  font-size: 14px;
+  text-shadow: 0px 1px 0px #666;
+  font-weight: lighter;
 }
 
 .grid article h1 {
