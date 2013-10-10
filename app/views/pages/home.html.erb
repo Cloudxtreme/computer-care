@@ -67,6 +67,7 @@ These are some of the most common faults we take care of on a daily basis. For a
     </article>
     <article class="red">
         <h1>Tip of the Week</h1>
-        <p><%= raw @tip.body if @tip %></p>
+        <p><%= raw snippet(@tip.body, 65) if @tip %></p>
+        <%= link_to "read more", tip_path(@tip.id), :class => "link" if @tip %>
     </article>
 </section>

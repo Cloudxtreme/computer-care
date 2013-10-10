@@ -34,7 +34,7 @@
   color: #F59733;
 }
 
-.grid article h1, .grid article p {
+.grid article h1, .grid article p, .grid article a.link {
   color: #FFFFFF;
   margin-left: 25px;
   margin-right: 25px;

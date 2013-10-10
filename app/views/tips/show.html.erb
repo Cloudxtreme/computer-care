@@ -1,0 +1,10 @@
+<header class="stripe">
+  <h1 class="white">Tip of the Week</h1><h1><%= @tip.title if @tip %></h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+</header>
+<div id="main-content">
+  <div class="service">
+    <%= raw @tip.body if @tip %>
+  </div>
+</div>
