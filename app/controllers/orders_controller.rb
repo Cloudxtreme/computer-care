@@ -37,11 +37,12 @@ class OrdersController < ApplicationController
       date = params["date"].split("/") if params["date"]
       date = [params["date-fallback"]["month"], params["date-fallback"]["day"].to_i + 1, params["date-fallback"]["year"]] if params["date-fallback"]
       delivery_date = Time.new(date.last, date.first, date.second) if !date.blank?
+      delivery_date = delivery_date + 1.hour
     else
       delivery_date = params["complete_date"]
     end
 
-    @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})
+    @order = Order.new({:date => delivery_date, :building => params[:building], :email => params[:email], :first_name => params["first-name"], :last_name => params["last-name"], :postcode => params["postcode"], :street => params["street"], :telephone => params["telephone"], :town => params["town"]})    
     @service_options = {}
     @options = params[:options] ? params[:options].select { |service_id, options| params[:services].include?(service_id) } : {}
     @services = Service.all
