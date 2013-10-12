@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
   def new
+    date = Date.today
+    timezone = ActiveSupport::TimeZone['London']    
+    time = timezone.local(date.year, date.month, date.day) + 13.hours
+    @can_collect_today = Time.now < time
     if !params[:back]
       session["first-name"] = nil
       session["last-name"] = nil

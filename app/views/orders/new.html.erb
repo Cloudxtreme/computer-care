@@ -31,7 +31,7 @@
             <label class="checkbox">
               <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) || (params[:service] && params[:service].to_s == service.id.to_s) %>> <%= service.name %>
             </label>  
-            <div class="options well <%= "hidden-option" if (!session["options"] || !session["options"].has_key?(service.id.to_s)) || (params[:service] && params[:service].to_s != service.id.to_s) %>">
+            <div class="options well <%= "hidden-option" if (session["options"] && !session["options"].has_key?(service.id.to_s)) || (params[:service] && params[:service].to_s != service.id.to_s) %>">
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
@@ -133,13 +133,14 @@
         <input type="hidden" name="date"  id="date" disabled="disabled"/>
         <script type="text/javascript">  
           $(function() {
+            var min_date = <%= @can_collect_today ? "0" : "1" %>;
             // get rid of the no js fallback
             $("#date-fallback_year").remove();
             $("#date-fallback_month").remove();
             $("#date-fallback_day").remove();
             $("#date").removeAttr("disabled");
             $( "#datepicker" ).datepicker({
-              minDate: +1, 
+              minDate: +parseInt(min_date), 
               altField: '#date'
             });
             <% if session[:date] %>
