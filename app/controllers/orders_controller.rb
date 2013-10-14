@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       session["street"] = nil
       session["town"] = nil
       session["postcode"] = nil
-      session["options"] = nil
+      session["options"] = {}
       session["discount"] = nil
       session["date"] = nil
     end
