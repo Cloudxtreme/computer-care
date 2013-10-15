@@ -160,7 +160,7 @@ header.main h1 em {
 
 #main-nav ul.inline li {
 	padding: 15px 1% 9px 1%;
-	margin-right: 0px;
+	margin-right: 1px;
 	  -webkit-text-shadow: 1px 1px 3px #000000;
 	  -moz-text-shadow: 1px 1px 3px #000000;
 	  text-shadow: 1px 1px 3px #000000;	
