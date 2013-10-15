@@ -48,7 +48,11 @@
         </p>
         <% service = Service.where("lower(name) = 'data recovery'").first %>
         <% if service %>
-          <a href="<%= new_order_path('service' => service.id) %>" class="btn btn-large btn-success">Click here to get started</a>
+          <% if service.can_checkout %>
+            <a href="<%= new_order_path('service' => service.id) %>" class="btn btn-large btn-success">Click here to get started</a>
+          <% else %>
+            <a href="<%= quote_service_path(service.id) %>" class="btn btn-large btn-success">Click here to get started</a>
+          <% end %>
         <% else %>
           <a href="<%= new_order_path %>" class="btn btn-large btn-success">Click here to get started</a>
         <% end %>
