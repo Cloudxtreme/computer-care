@@ -1,4 +1,4 @@
-#order-form #options .checkout-service {
+#order-form #options .checkout-service, #quote-form #options .checkout-service {
   border: 1px solid #ccc;
   padding: 7px;
   margin-bottom: 15px;
@@ -6,28 +6,28 @@
   border-radius: 5px;
   background-color: #fff;
 }
-#order-form fieldset {
+#order-form fieldset, #quote-form fieldset {
   background-image: url("thatching_BG.png");
 }
 
-#order-form fieldset#options .options.well {
+#order-form fieldset#options .options.well, #quote-form fieldset#options .options.well {
   background-color: #C0D9D9;
   /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);    */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
 }
 
-#order-form header h1 {
+#order-form header h1, #quote-form header h1 {
   font-size: 110%;
   color: #D18100;
   float: left;
 }
 
-#order-form .btn.js {
+#order-form .btn.js, #quote-form .btn.js {
   display: none;
 }
 
-#order-form header span {
+#order-form header span, #quote-form header span {
   font-size: 140%;
   color: #CCCCCC;
   float: left;
@@ -35,7 +35,7 @@
   line-height: 40px;
 }
 
-#order-form header.active h1 {
+#order-form header.active h1, #quote-form header.active h1 {
   color: #69A3CC;
 }
 

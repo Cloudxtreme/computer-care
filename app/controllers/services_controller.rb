@@ -1,6 +1,18 @@
 class ServicesController < ApplicationController
-  def index
-  end
+    def quote
+        @service = Service.find(params[:id])
+        redirect_to root_path if @service.can_checkout
+        @missing = []
+        @invalid = []
+        @services = []
+    end
+
+    def send_quote
+        @service = Service.find(params[:id])
+    end
+
+    def index
+    end
 
     def data_recovery
         #if request.headers['X-PJAX']

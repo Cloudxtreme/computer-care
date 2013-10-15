@@ -10,6 +10,7 @@ jQuery(function($){
   $(".disabled-option").attr("disabled", "disabled");
 
   $("#order-form .btn.js").show();
+  $("#quote-form .btn.js").show();
 
   // disable finalize button until user has accepted the TOC's
   $("#summary-next").attr("disabled", "disabled");
@@ -26,11 +27,13 @@ jQuery(function($){
   $(":input").attr("autocomplete", "off");
 
   // form validation
-  if($("#order-form.first").length > 0) {
+  if(($("#order-form.first").length > 0) || ($("#quote-form.first").length > 0)) {
+    var is_order_form = $("#order-form.first").length > 0;
+    var is_quote_form = $("#quote-form.first").length > 0;
     if($preselected.length > 0) {
       $("#options a.btn").removeAttr("disabled");
     }
-    else {
+    else if(is_order_form) {
       $("#options a.next").attr("disabled", "disabled");
     }
 
@@ -88,7 +91,7 @@ jQuery(function($){
       }
     });
 
-    $("#user a.next").attr("disabled", "disabled");
+    $("#user .next").attr("disabled", "disabled");
     validate_user_details();
 
     $("#user input").keyup(function() {
@@ -129,17 +132,25 @@ jQuery(function($){
     }
 
     if(areAllValid) {
-      $("#user a.next").removeAttr("disabled");
+      $("#user .next").removeAttr("disabled");
     } else {
-      $("#user a.next").attr("disabled", "disabled"); 
+      $("#user .next").attr("disabled", "disabled"); 
     }
   }
 
   // accordian effect
-  initialize_form();
-  $("#order-form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
+  if($("#order-form").length > 0) {
+    initialize_form($("#order-form"));
+  }
+  else if($("#quote-form").length > 0) {
+    initialize_form($("#quote-form")); 
+  }
+  $("form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
     $fieldset = $(this).closest("fieldset");
-    if($fieldset.attr("id") == "options") {
+    if($("#quote-form").length > 0) {
+      open_next_section($fieldset);
+    }
+    else if($fieldset.attr("id") == "options") {
       // make sure atleast one service was selected
       if($("input[type='checkbox']:checked", $fieldset).length > 0) {
         open_next_section($fieldset);
@@ -157,12 +168,12 @@ jQuery(function($){
         open_next_section($fieldset);
       }
     }
-    else if($fieldset.attr("id") == "collection") {
-      open_next_section($fieldset);
-    } 
+    else {
+      open_next_section($fieldset); 
+    }
   });
 
-  $("#order-form").on("click", "fieldset.active a.back", function() {
+  $("form").on("click", "fieldset.active a.back", function() {
     $fieldset = $(this).closest("fieldset");
     open_previous_section($fieldset);
   });
@@ -183,23 +194,23 @@ jQuery(function($){
       open_service_options($clicked);
     });
 
-    update_cost();        
+    update_cost();
   });
 });
 
-function initialize_form() {
-  if(!$("#order-form").hasClass("error")) {
-    if($("#order-form").hasClass("reverse")) {
-      $("#order-form fieldset").last().addClass("active");
-      $("#order-form fieldset:not(:last)").hide();
+function initialize_form($form) {
+  if(!$form.hasClass("error")) {
+    if($form.hasClass("reverse")) {
+      $("fieldset", $form).last().addClass("active");
+      $("fieldset:not(:last)", $form).hide();
     }
     else {
-      $("#order-form fieldset").first().addClass("active");
-      $("#order-form fieldset:not(:first)").hide();
+      $("fieldset", $form).first().addClass("active");
+      $("fieldset:not(:first)", $form).hide();
     }
     $(".img-shadow").hide();
-    $("#order-form fieldset.active").prev("header.stripe").find(".img-shadow:not(.top)").show();
-    $("#order-form fieldset.active").next("header.stripe").find(".img-shadow.top").show();
+    $("fieldset.active", $form).prev("header.stripe").find(".img-shadow:not(.top)").show();
+    $("fieldset.active", $form).next("header.stripe").find(".img-shadow.top").show();
     /*$("#order-form header.stripe").each(function(i) {
       i++;
       if(i>2) {

@@ -34,6 +34,11 @@ ComputerCare::Application.routes.draw do
         get :upgrades
         get :repairs
       end
+
+      member do
+        get :quote
+        post :quote_send
+      end
     end
   resources :companies
 
