@@ -76,7 +76,7 @@ jQuery(function($){
 
     $("#postcode").blur(function() {
       var postcode_value = $(this).val();
-      var newPostCode = checkPostCode(postcode_value.trim());
+      var newPostCode = checkPostCode($.trim(postcode_value));
       if(newPostCode) {
         $(this).addClass("LV_valid_field");
         $(this).removeClass("LV_invalid_field");
@@ -127,7 +127,8 @@ jQuery(function($){
     catch(err) {
       areAllValid = false;
     }
-    if(!checkPostCode($("#postcode").val().trim())) {
+    var postcode_val = $.trim($("#postcode").val());
+    if(!checkPostCode(postcode_val)) {
       areAllValid = false;
     }
 
