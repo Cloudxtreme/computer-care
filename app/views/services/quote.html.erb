@@ -14,14 +14,14 @@
         <% end %>  
       </div> 
     <% end %> 
-    <%= form_tag orders_path, :method => :post, :class => "form-horizontal #{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
+    <%= form_tag quote_send_service_path(@service.id), :method => :post, :class => "form-horizontal #{@missing.any? || @invalid.any? ? 'error' : ''}" do %>
       <header class="stripe order active">
-        <span>1</span><h1>Job Details</h1>
+        <span>1</span><h1>Quote Details</h1>
         <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
         <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
       </header>
       <fieldset id="options" class="main-content">
-        <p>Please select your required services below:</p>
+        <p>Please complete the following information for a quote.</p>
             <div class="options well">
               <% @service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
@@ -104,7 +104,7 @@
         </div>
         <div style="clear:both;"></div>
         <a class="btn back js">back</a>
-        <%= submit_tag :send, :class => "next btn btn-primary" %>
+        <%= submit_tag "Get Quote", :class => "next btn btn-primary" %>
       </fieldset>
       <footer class="stripe no-margin">   
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>

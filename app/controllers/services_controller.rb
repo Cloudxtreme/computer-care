@@ -7,8 +7,9 @@ class ServicesController < ApplicationController
         @services = []
     end
 
-    def send_quote
+    def quote_send
         @service = Service.find(params[:id])
+        render 'quote_complete'
     end
 
     def index
