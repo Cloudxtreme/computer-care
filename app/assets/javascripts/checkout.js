@@ -1,7 +1,7 @@
 jQuery(function($){
   var $preselected = $(".checkout-service .checkbox input[type='checkbox']:checked");
   var $container = $preselected.closest(".checkout-service");
-  $container.toggleClass("selected", function() {
+  $container.addClass("selected", function() {
     open_service_options($preselected);
   });
 
