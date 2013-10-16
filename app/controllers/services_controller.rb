@@ -9,7 +9,26 @@ class ServicesController < ApplicationController
 
     def quote_send
         @service = Service.find(params[:id])
-        render 'quote_complete'
+        @order = Order.new(params[:order])
+        @order.paid = false
+
+        if params[:options].any? and @order.save
+            params[:options].each do |service_id, options|
+                order_service = @order.order_services.create(:service_id => service_id)
+                options.each do |option_id, value|
+                    service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
+                end
+            end
+
+            # send confimation to customer
+            NotificationMailer.quote_confirmation(@order).deliver
+            # send notification to admin
+            NotificationMailer.quote_notification(@order).deliver
+
+            render 'quote_complete'
+        else
+            render :new
+        end
     end
 
     def index

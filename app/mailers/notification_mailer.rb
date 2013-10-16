@@ -28,4 +28,14 @@ class NotificationMailer < ActionMailer::Base
     @order = order
     mail(:to => ADMIN_CREDENTIALS["email"], :subject => "Cheaper Computer Care Order Received", :from => "info@cheaper_computer_care.com")
   end
+
+  def quote_confirmation(order)
+    @order = order
+    mail(:to => @order.email, :subject => "Cheaper Computer Care Quote", :from => "info@cheaper_computer_care.com")
+  end
+
+  def quote_notification(order)
+    @order = order
+    mail(:to => ADMIN_CREDENTIALS["email"], :subject => "Cheaper Computer Care Quote Request Received", :from => "info@cheaper_computer_care.com")
+  end  
 end

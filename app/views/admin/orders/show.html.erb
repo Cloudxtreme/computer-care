@@ -37,7 +37,7 @@
       </ul>         
     </div>
     <div class="well">
-      <b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") %>
+      <b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") if @order.date %>
     </div>
     <div class="well">
       <% @order.order_services.each do |service| %>
