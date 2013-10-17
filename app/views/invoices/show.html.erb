@@ -1,20 +1,20 @@
 <header class="stripe">
-  <h1>Order</h1>
+  <h1>Service Quote</h1>
   <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
   <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
 </header>  
 <div id="main-content">
   <div class="service">
     <h5>Order Details</h5>
-    <div class="well">
+    <div class="well column">
       <ul class="unstyled">
         <li>First Name: <%= @order.first_name %></li>
         <li>Last Name: <%= @order.last_name %></li>
         <li>Email: <%= @order.email %></li>
         <li>Telephone: <%= @order.telephone %></li>
       </ul>     
-    </div>
-    <div class="well">
+    </div>        
+    <div class="well column">
       <ul class="unstyled">
         <li>Building: <%= @order.building %></li>
         <li>Street: <%= @order.street %></li>        
@@ -23,7 +23,27 @@
       </ul>         
     </div>
     <div class="well">
-      <b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") %>
+      <b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") if @order.date %>
+      <p>Please select a convenient day for collection:</p>
+      <%= select_date(Time.now.tomorrow, :prefix => "date-fallback") %>
+      <div id="datepicker"></div>
+      <script type="text/javascript">  
+        $(function() {
+          var min_date = <%= @can_collect_today ? "0" : "1" %>;
+          // get rid of the no js fallback
+          $("#date-fallback_year").remove();
+          $("#date-fallback_month").remove();
+          $("#date-fallback_day").remove();
+          $("#date").removeAttr("disabled");
+          $( "#datepicker" ).datepicker({
+            minDate: +parseInt(min_date), 
+            altField: '#date'
+          });
+          <% if session[:date] %>
+            $("#date").val("<%= session[:date] %>");
+          <% end %>
+        });
+      </script>
     </div>
     <div class="well">
       <% @order.order_services.each do |service| %>
@@ -43,12 +63,17 @@
       <% end %>
     </div>      
     <%= form_tag payment_order_invoice_path(@order.id), :method => :post do %>
+      <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
       <fieldset id="payment">
         <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
         <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
         <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
       </fieldset>
-      <%= submit_tag :complete, :class => "btn btn-large btn-primary" %>
+      <label class="checkbox accept error">
+        <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
+      </label>
+      <br>      
+      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-nexte" %>
     <% end %>
   </div>
 </div>
