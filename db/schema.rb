@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(:version => 20131004070221) do
     t.string   "town"
     t.string   "postcode"
     t.datetime "date"
-    t.decimal  "total_cost"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.decimal  "total_cost",      :precision => 10, :scale => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.boolean  "paid"
     t.integer  "student_code_id"
     t.boolean  "agreed_to_terms"
