@@ -44,5 +44,5 @@ module ApplicationHelper
   
   def snippet(text, wordcount=10) 
     text.split[0..(wordcount-1)].join(" ") + (text.split.size > wordcount ? "..." : "") 
-  end   
+  end
 end

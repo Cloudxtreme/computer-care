@@ -50,6 +50,9 @@ ComputerCare::Application.routes.draw do
       resources :student_codes
       resources :orders do
         resource :invoice
+        member do
+          post :update_cost
+        end
       end
       resources :services do
         resources :service_options do

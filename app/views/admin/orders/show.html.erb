@@ -19,6 +19,12 @@
     <div class="well">
       <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %><br>
       <b>Total cost: </b> <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %>
+      <br><br>
+      <p>Update order cost:</p>
+      <%= form_tag update_cost_admin_order_path(@order.id) do %>
+        <%= number_field_tag :cost %><br>
+        <%= submit_tag :submit, :class => "btn" %>
+      <% end %>
     </div>
     <div class="well">
       <ul class="unstyled">
