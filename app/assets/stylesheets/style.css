@@ -51,6 +51,15 @@ a:hover {
 	color: #FA9804;
 }
 
+.well.column {
+	float: left;
+	width: 44%;
+}
+
+.well.column.first {
+	margin-right: 25px;
+}
+
 .overlay {
 	position: absolute;
 	height: 100%;
@@ -356,6 +365,11 @@ footer ul.inline li:first-child, footer ul.inline li:first-child a {
 	.container {
 		width: 100% !important;
 	}
+	.well.column {
+	}
+	.well.column.first {
+		margin-right: 0;
+	}	
 }
 
 @media screen and (max-width: 768px) {

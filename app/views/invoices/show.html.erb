@@ -6,7 +6,24 @@
 <div id="main-content">
   <div class="service">
     <h5>Order Details</h5>
-    <div class="well column">
+    <div class="well">
+      <% @order.order_services.each do |service| %>
+        <% service_name = Service.find(service.service_id).name %>
+        <b><%= service_name %></b><br>
+        <% service.order_service_options.each do |option| %>
+          <% service_option = ServiceOption.find(option.service_option_id) %>
+          <% option_name = service_option.name %>
+          <% if service_option.is_arbitrary %>
+            <%= option_name %>: <%= option.value %><br>
+          <% else %>
+            <% value = ServiceOptionValue.find(option.value) %>
+            <%= option_name %>: <%= value.name %><br>
+          <% end %>
+        <% end %>
+        <br>
+      <% end %>
+    </div>    
+    <div class="well column first">
       <ul class="unstyled">
         <li>First Name: <%= @order.first_name %></li>
         <li>Last Name: <%= @order.last_name %></li>
@@ -22,6 +39,8 @@
         <li>Postcode: <%= @order.postcode %></li>
       </ul>         
     </div>
+    <div style="clear:both;"></div>
+    <hr>
     <div class="well">
       <b>Collection Date:</b> <%= @order.date.strftime("%d/%m/%Y") if @order.date %>
       <p>Please select a convenient day for collection:</p>
@@ -45,23 +64,6 @@
         });
       </script>
     </div>
-    <div class="well">
-      <% @order.order_services.each do |service| %>
-        <% service_name = Service.find(service.service_id).name %>
-        <b><%= service_name %></b><br>
-        <% service.order_service_options.each do |option| %>
-          <% service_option = ServiceOption.find(option.service_option_id) %>
-          <% option_name = service_option.name %>
-          <% if service_option.is_arbitrary %>
-            <%= option_name %>: <%= option.value %><br>
-          <% else %>
-            <% value = ServiceOptionValue.find(option.value) %>
-            <%= option_name %>: <%= value.name %><br>
-          <% end %>
-        <% end %>
-        <br>
-      <% end %>
-    </div>      
     <%= form_tag payment_order_invoice_path(@order.id), :method => :post do %>
       <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
       <fieldset id="payment">
