@@ -5,7 +5,7 @@
 </header>  
 <div id="main-content">
   <div class="service">
-    <h5>Order Details</h5>
+    <h4>Quoted Cost: <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %></h4>
     <div class="well">
       <% @order.order_services.each do |service| %>
         <% service_name = Service.find(service.service_id).name %>
