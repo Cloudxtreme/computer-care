@@ -71,7 +71,7 @@
       <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
       <input type="hidden" name="stripe-token" id="stripe-token" value="" />
       <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
-      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       <fieldset id="payment">
         <div class="field">
           <%= label_tag :card_number, "Credit Card Number" %>

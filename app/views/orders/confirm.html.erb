@@ -109,7 +109,7 @@
         <li><%= @order.postcode %></li>
       </ul>         
     </div>
-    <a href="<%= new_order_path(:back => "true") %>" class="btn back">back</a>
+    <a href="<%= new_order_path(:back => "true") %>" class="btn back js">back</a>
     <a class="btn btn-primary next js">next</a>
   </fieldset>
   <header class="stripe no-margin order">
@@ -146,7 +146,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
       <div class="field">
         <%= label_tag :card_number, "Credit Card Number" %>
