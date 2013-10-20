@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 294d6c63b3aa5d63d03f58872622c732a54b73bc
+  specs:
+    stripe (1.8.8)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,6 +136,7 @@ DEPENDENCIES
   rails (= 3.2.8)
   rest-client
   sass-rails (~> 3.2.3)
+  stripe!
   therubyracer
   uglifier (>= 1.0.3)
   unicorn

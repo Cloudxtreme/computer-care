@@ -10,6 +10,7 @@
     <% if @order.paid %>
       <div class="alert alert-success">
         <strong>PAID</strong>
+        <p>Stripe Charge ID: <%= @order.stripe_charge_id %></p>
       </div>
     <% else %>
       <div class="alert alert-error">
@@ -19,11 +20,13 @@
     <div class="well">
       <b>Order placed: </b> <%= @order.created_at.strftime("%H:%M %d/%m/%Y") %><br>
       <b>Total cost: </b> <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %>
-      <br><br>
-      <p>Update order cost:</p>
-      <%= form_tag update_cost_admin_order_path(@order.id) do %>
-        <%= number_field_tag :cost %><br>
-        <%= submit_tag :submit, :class => "btn" %>
+      <% if !@order.paid %>
+        <br><br>
+        <p>Update order cost:</p>
+        <%= form_tag update_cost_admin_order_path(@order.id) do %>
+          <%= number_field_tag :cost %><br>
+          <%= submit_tag :submit, :class => "btn" %>
+        <% end %>
       <% end %>
     </div>
     <div class="well">

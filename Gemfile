@@ -7,6 +7,7 @@ gem 'rest-client'
 gem 'json'
 gem 'execjs'
 gem 'therubyracer'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :production do
   gem 'unicorn'

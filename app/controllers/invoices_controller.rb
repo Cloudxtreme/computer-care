@@ -23,10 +23,31 @@ class InvoicesController < ApplicationController
     delivery_date = delivery_date + 1.hour
 
     @order.date = delivery_date
-    if @accepted #payment successful
+
+    stripe_token = params["stripe-token"]
+    begin
+      response = Stripe::Charge.create(
+        :amount => @order.total_cost * 100,
+        :currency => "gbp",
+        :card => stripe_token,
+        :description => "Cheaper Computer Care"
+      )
+    rescue Stripe::CardError => e
+      redirect_to order_invoice_path(@order.id), :alert => e.message
+      return
+    rescue Stripe::InvalidRequestError => e
+      redirect_to order_invoice_path(@order.id), :alert => e.message
+      return
+    rescue Exception => e
+      redirect_to order_invoice_path(@order.id), :alert => e.message
+      return      
+    end
+
+    if @accepted && response.paid
       @order.paid = true
       @order.agreed_to_terms = true
-      #@order.save
+      @order.stripe_charge_id = response.id
+      @order.save
       redirect_to complete_orders_path
     else
       render 'show'

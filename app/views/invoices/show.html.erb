@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+</script>
 <header class="stripe">
   <h1>Service Quote</h1>
   <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
@@ -64,18 +67,32 @@
         });
       </script>
     </div>
-    <%= form_tag payment_order_invoice_path(@order.id), :method => :post do %>
+    <%= form_tag payment_order_invoice_path(@order.id), :method => :post, :class => "payment" do %>
       <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
+      <input type="hidden" name="stripe-token" id="stripe-token" value="" />
+      <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       <fieldset id="payment">
-        <input type="text" name="card-num" placeholder="Credit Card Number" value=""><br>
-        <input type="text" name="card-num" placeholder="Verification Code" value=""><br>
-        <input type="text" name="card-num" placeholder="Expiry Date" value=""><br>
-      </fieldset>
+        <div class="field">
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil %>
+        </div>
+        <div class="field">
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil %>
+        </div>
+        <div class="field">
+          <%= label_tag :card_month, "Card Expiration" %>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+        </div>
+      </fieldset>      
+      <br>
       <label class="checkbox accept error">
         <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
       </label>
       <br>      
-      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-nexte" %>
+      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>
     <% end %>
   </div>
 </div>
