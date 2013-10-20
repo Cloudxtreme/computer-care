@@ -13,15 +13,14 @@
     <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
     <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
   </header>
-  <fieldset class="main-content" id="summary">
+  <fieldset class="main-content active" id="summary">
     <% if !@accepted %>
       <div class="alert alert-error">
         <h5>You must accept the <a href="#">Terms & Conditions</a> below before continuing</h5> 
       </div>
     <% end %>    
 
-
-    <%= form_tag orders_path do %>
+    <%= form_tag orders_path, :class => "form-inline" do %>
       <input type="hidden" name="building" value="<%= @order.building %>">
       <input type="hidden" name="email" value="<%= @order.email %>">
       <input type="hidden" name="first-name" value="<%= @order.first_name %>">
@@ -59,7 +58,6 @@
         <input type="hidden" name="discount" value="<%= @discount.code %>">
       <% end %>
     <% end %>
-
 
     <div class="well">
       <% total = 0.0 %>
@@ -108,6 +106,17 @@
         <li><%= @order.postcode %></li>
       </ul>         
     </div>
+    <a href="<%= new_order_path(:back => "true") %>" class="btn back">back</a>
+    <a class="btn btn-primary next js">next</a>
+  </fieldset>
+  <header class="stripe no-margin order">
+    <span>5</span><h1>Payment</h1>
+    <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+    <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+    <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+    <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
+  </header>      
+  <fieldset class="main-content" id="payment">
     <%= form_tag finalize_orders_path, :method => :post do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">
@@ -137,13 +146,12 @@
         <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
       </label>
       <br>
-      <a href="<%= new_order_path(:back => "true") %>" class="btn back">back</a>
+      <a class="btn back js">back</a>
       <%= submit_tag "next", :class => "btn btn-primary", :id=>"summary-next" %>
     <% end %>    
-  </fieldset>
-  <header class="stripe no-margin order">
-    <span>5</span><h1>Payment</h1>    
-  </header>        
-  <footer class="stripe no-margin">   
+  </fieldset>    
+  <footer class="stripe no-margin">
+    <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+    <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>     
   </footer>
 </div>

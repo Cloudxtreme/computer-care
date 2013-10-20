@@ -146,7 +146,7 @@ jQuery(function($){
   else if($("#quote-form").length > 0) {
     initialize_form($("#quote-form")); 
   }
-  $("form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
+  $("#order-form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
     $fieldset = $(this).closest("fieldset");
     if($("#quote-form").length > 0) {
       open_next_section($fieldset);
@@ -174,7 +174,7 @@ jQuery(function($){
     }
   });
 
-  $("form").on("click", "fieldset.active a.back", function() {
+  $("#order-form").on("click", "fieldset.active a.back", function() {
     $fieldset = $(this).closest("fieldset");
     open_previous_section($fieldset);
   });
