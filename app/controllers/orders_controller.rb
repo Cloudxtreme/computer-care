@@ -97,10 +97,8 @@ class OrdersController < ApplicationController
       @order.agreed_to_terms = true
       
       total = 0.0
-      services_that_need_quote = []
       params[:options].each do |service_id, options|
         service = Service.find(service_id)
-        services_that_need_quote << service if !service.can_checkout
         total += service.base_cost
 
         options.each do |service_option, value|
@@ -125,28 +123,50 @@ class OrdersController < ApplicationController
         end
       end
 
-      if services_that_need_quote.any?
-        @order.paid = false
-      elsif false # payment completed successfully
-        @order.paid = true
-      else # payment completed unsuccesfully 
-        @order.paid = false
-      end
-
-      if params[:options].any? and @order.save
-        params[:options].each do |service_id, options|
-          order_service = @order.order_services.create(:service_id => service_id)
-          options.each do |option_id, value|
-            service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
-          end
+      if params[:options].any?
+        stripe_token = params["stripe-token"]
+        begin
+          response = Stripe::Charge.create(
+            :amount => @order.total_cost * 100,
+            :currency => "gbp",
+            :card => stripe_token,
+            :description => "Cheaper Computer Care"
+          )
+        rescue Stripe::CardError => e
+          #render :confirm
+          redirect_to new_order_path(:back => "true"), :alert => e.message
+          return
+        rescue Stripe::InvalidRequestError => e
+          #render :confirm
+          redirect_to new_order_path(:back => "true"), :alert => e.message
+          return
+        rescue Exception => e
+          #render :confirm
+          redirect_to new_order_path(:back => "true"), :alert => e.message
+          return      
         end
 
-        # send confimation to customer
-        NotificationMailer.order_confirmation(@order).deliver
-        # send notification to admin
-        NotificationMailer.order_notification(@order).deliver
+        if response.paid
+          @order.paid = true
+          @order.stripe_charge_id = response.id
+          @order.save
 
-        redirect_to complete_orders_path
+          params[:options].each do |service_id, options|
+            order_service = @order.order_services.create(:service_id => service_id)
+            options.each do |option_id, value|
+              service_option = order_service.order_service_options.create(:service_option_id => option_id, :value => value)
+            end
+          end
+
+          # send confimation to customer
+          NotificationMailer.order_confirmation(@order).deliver
+          # send notification to admin
+          NotificationMailer.order_notification(@order).deliver
+
+          redirect_to complete_orders_path
+        else
+          render :confirm
+        end
       else
         render :new
       end

@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+</script>
 <div id="order-form">
   <header class="stripe order">
     <span>1</span><h1>Service Selection</h1>
@@ -117,7 +120,7 @@
     <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
   </header>      
   <fieldset class="main-content" id="payment">
-    <%= form_tag finalize_orders_path, :method => :post do %>
+    <%= form_tag finalize_orders_path, :method => :post, :class => "payment" do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">
       <input type="hidden" name="order[first_name]" value="<%= @order.first_name %>">
@@ -127,6 +130,7 @@
       <input type="hidden" name="order[telephone]" value="<%= @order.telephone %>">
       <input type="hidden" name="order[town]" value="<%= @order.town %>">
       <input type="hidden" name="order[date]" value="<%= @order.date %>">
+      <input type="hidden" name="stripe-token" id="stripe-token" value="" />
       <% if @discount %>
         <input type="hidden" name="discount" value="<%= @discount.code if @discount %>">
       <% end %>
@@ -142,12 +146,28 @@
           <% end %>
         <% end %>
       <% end %>
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
+      <div class="field">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+      </div>
+      <br>
       <label class="checkbox accept error">
         <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
       </label>
       <br>
       <a class="btn back js">back</a>
-      <%= submit_tag "next", :class => "btn btn-primary", :id=>"summary-next" %>
+      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>      
     <% end %>    
   </fieldset>    
   <footer class="stripe no-margin">
