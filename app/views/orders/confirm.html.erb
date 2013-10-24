@@ -1,7 +1,12 @@
+<noscript class="alert alert-error" style="display:block;">
+  <p><b>Javascript must be enabled to continue</b></p>
+  <p>We're sorry but at this moment Javascript is required for the order form to function.  Please enable it in your browser settings and refresh the page.</p>
+  <p>Alternatively, get in <%= link_to "contact", contact_path %> to discuss your requirements and we can arrange another payment option.</p>
+</noscript>
 <script type="text/javascript">
   Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
 </script>
-<div id="order-form">
+<div id="order-form" class="<%= 'reverse' if @errors.any? %>" style="display:none;">
   <header class="stripe order">
     <span>1</span><h1>Service Selection</h1>
   </header>
@@ -11,12 +16,12 @@
   <header class="stripe no-margin order">
     <span>3</span><h1>Collection Arrangements</h1>
   </header> 
-  <header class="stripe no-margin order active">
+  <header class="stripe no-margin order <%= 'active' if @errors.empty? %>">
     <span>4</span><h1>Summary</h1>
     <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
     <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
   </header>
-  <fieldset class="main-content active" id="summary">   
+  <fieldset class="main-content <%= 'active' if @errors.empty? %>" id="summary">   
     <%= form_tag orders_path, :class => "form-inline" do %>
       <input type="hidden" name="building" value="<%= @order.building %>">
       <input type="hidden" name="email" value="<%= @order.email %>">
@@ -106,14 +111,14 @@
     <a href="<%= new_order_path(:back => "true") %>" class="btn back js">back</a>
     <a class="btn btn-primary next js">next</a>
   </fieldset>
-  <header class="stripe no-margin order">
+  <header class="stripe no-margin order <%= 'active' if @errors.any? %>">
     <span>5</span><h1>Payment</h1>
     <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
     <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
     <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
     <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>
   </header>      
-  <fieldset class="main-content" id="payment">
+  <fieldset class="main-content <%= 'active' if @errors.any? %>" id="payment">
     <%= form_tag finalize_orders_path, :method => :post, :class => "payment" do %>
       <input type="hidden" name="order[building]" value="<%= @order.building %>">
       <input type="hidden" name="order[email]" value="<%= @order.email %>">

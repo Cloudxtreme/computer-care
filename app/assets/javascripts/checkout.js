@@ -148,12 +148,13 @@ jQuery(function($){
   else if($("#quote-form").length > 0) {
     initialize_form($("#quote-form")); 
   }
+  $("#quote-form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
+    $fieldset = $(this).closest("fieldset");
+    open_next_section($fieldset);
+  });  
   $("#order-form").on("click", "fieldset.active a.next[disabled!='disabled']", function() {
     $fieldset = $(this).closest("fieldset");
-    if($("#quote-form").length > 0) {
-      open_next_section($fieldset);
-    }
-    else if($fieldset.attr("id") == "options") {
+    if($fieldset.attr("id") == "options") {
       // make sure atleast one service was selected
       if($("input[type='checkbox']:checked", $fieldset).length > 0) {
         open_next_section($fieldset);
@@ -212,8 +213,8 @@ function initialize_form($form) {
       $("fieldset:not(:first)", $form).hide();
     }
     $(".img-shadow").hide();
-    $("fieldset.active", $form).prev("header.stripe").find(".img-shadow:not(.top)").show();
-    $("fieldset.active", $form).next("header.stripe").find(".img-shadow.top").show();
+    $("fieldset.active", $form).prev(".stripe").find(".img-shadow:not(.top)").show();
+    $("fieldset.active", $form).next(".stripe").find(".img-shadow.top").show();
     /*$("#order-form header.stripe").each(function(i) {
       i++;
       if(i>2) {
