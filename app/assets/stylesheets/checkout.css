@@ -11,8 +11,12 @@
   background-image: url("thatching_BG.png");
 }
 
-#order-form fieldset#payment {
-  background-image: url("thatching_BG_secure.png");
+#payment {
+  background-image: url("thatching_BG_secure.png") !important;
+}
+
+#payment.invoice {
+  border-top: 1px solid #497FAF;
 }
 
 #order-form fieldset#options .options.well, #quote-form fieldset#options .options.well {

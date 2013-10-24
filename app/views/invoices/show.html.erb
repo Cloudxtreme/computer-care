@@ -6,7 +6,7 @@
   <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
   <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
 </header>  
-<div id="main-content">
+<div class="main-content">
   <div class="service">
     <h4>Quoted Cost: <%= number_to_currency(@order.total_cost, unit: "&pound;", separator: ".", delimiter: "") %></h4>
     <div class="well">
@@ -67,6 +67,10 @@
         });
       </script>
     </div>
+  </div>
+</div>
+<div class="main-content invoice" id="payment">
+  <div class="well">
     <noscript class="alert alert-error" style="display:block;">
       <p><b>Javascript must be enabled to continue</b></p>
       <p>We're sorry but at this moment Javascript is required for payment.  Please enable it in your browser settings and refresh the page.</p>
@@ -75,28 +79,48 @@
     <%= form_tag payment_order_invoice_path(@order.id), :method => :post, :class => "payment" do %>
       <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
       <input type="hidden" name="stripe-token" id="stripe-token" value="" />
+      <h3><%= image_tag("lock.png") %> Secure credit card payment</h3>
+      <br>          
       <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
-      <fieldset id="payment">
-        <div class="field">
-          <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil, name: nil %>
+      <% if @errors.any? %>
+        <div class="alert alert-error">
+            <% @errors.each do |err| %>
+              <p><%= err %></p>
+            <% end %>
+        </div>
+      <% end %>      
+      <fieldset>
+        <div class="field">          
+          <label for="card_number"><span class="red">*</span>Credit Card Number</label>
+          <label for="card_number"><span class="grey">The 16 digits on the front of your credit card</span></label>
+          <div id="card_num">
+            <%= text_field_tag :card_number, nil, name: nil %>
+            <%= image_tag("visa_icon.png", :class => "card-icon") %>
+            <%= image_tag("mastercard_icon.png", :class => "card-icon")%>
+            <%= image_tag("aexpress_icon.png", :class => "card-icon") %>
+          </div>
         </div>
         <div class="field">
-          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil %>
-        </div>
-        <div class="field">
-          <%= label_tag :card_month, "Card Expiration" %>
+          <label for="card_month"><span class="red">*</span>Expiration date</label>
+          <label for="card_month"><span class="grey">The date your credit card expires.  Find this on the front of your credit card</span></label>
           <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
           <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
         </div>
-      </fieldset>      
-      <br>
-      <label class="checkbox accept error">
-        <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
-      </label>
-      <br>      
-      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>
+        <div class="field">
+          <label for="card_code"><span class="red">*</span>Security Code <span class="grey">(or "CVC" or "CVV")</span></label>          
+          <label for="card_code"><span class="grey">The last 3 digits displayed on the back of your credit card</span></label>
+          <%= text_field_tag :card_code, nil, name: nil %>
+        </div>        
+        <label class="checkbox accept error">
+          <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
+        </label>
+        <br>      
+        <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>
+      </fieldset>
     <% end %>
   </div>
 </div>
+<footer class="stripe no-margin">
+  <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
+  <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>     
+</footer> 

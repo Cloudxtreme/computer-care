@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   def show
+    @errors = []
     @order = Order.find(params[:order_id])
     @invoice = @order.invoice
     date = Date.today
