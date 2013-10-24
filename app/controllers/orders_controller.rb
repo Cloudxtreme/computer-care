@@ -59,12 +59,12 @@ class OrdersController < ApplicationController
     
     @discount = nil
     if !params[:discount].blank?
-      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      @discount = StudentCode.where("code" => params[:discount]).first 
       session["discount"] = params[:discount] if @discount && @discount.is_valid
     end
     if session["discount"]
       #session["discount"] = nil
-      @discount = StudentCode.where("code = '#{session[:discount]}'").first 
+      @discount = StudentCode.where("code" => session[:discount]).first 
     end
     
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @discount = nil
     if !params[:discount].blank?
-      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      @discount = StudentCode.where("code" => params[:discount]).first 
       session["discount"] = params[:discount] if @discount && @discount.is_valid
     end
     @services = Service.all
@@ -115,7 +115,7 @@ class OrdersController < ApplicationController
     @order.total_cost = total
 
     if params[:discount]
-      @discount = StudentCode.where("code = '#{params[:discount]}'").first 
+      @discount = StudentCode.where("code" => params[:discount]).first 
       if @discount
         @order.total_cost = @order.total_cost - (@order.total_cost * 0.15)
         @order.student_code_id = @discount.id
