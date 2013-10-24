@@ -1,8 +1,13 @@
+<noscript class="alert alert-error" style="display:block;">
+  <p><b>Javascript must be enabled to continue</b></p>
+  <p>We're sorry but at this moment Javascript is required for the order form to function.  Please enable it in your browser settings and refresh the page.</p>
+  <p>Alternatively, get in <%= link_to "contact", contact_path %> to discuss your requirements and we can arrange another payment option.</p>
+</noscript>
 <script type="text/javascript">
   var missing = [<%= raw @missing.to_json %>];
   var invalid = [<%= raw @invalid.to_json %>];
 </script>
-<div id="order-form" class="first <%= 'reverse' if params[:back] %>">
+<div id="order-form" class="first <%= 'reverse' if params[:back] %>" style="display:none;">
     <% if @missing.any? || @invalid.any? %>
       <div id="errors" class="well">
         <h5>Please fix the following errors before continuing:</h5>
@@ -15,7 +20,7 @@
           <div class="alert alert-error">
             <p><strong><%= field.capitalize %></strong> is not valid</p>
           </div>
-        <% end %>  
+        <% end %>
       </div> 
     <% end %> 
     <%= form_tag orders_path, :method => :post, :class => "form-horizontal #{@missing.any? || @invalid.any? ? 'error' : ''}" do %>

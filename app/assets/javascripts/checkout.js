@@ -1,4 +1,6 @@
 jQuery(function($){
+  $("#order-form").show();
+  
   var $preselected = $(".checkout-service .checkbox input[type='checkbox']:checked");
   var $container = $preselected.closest(".checkout-service");
   $container.addClass("selected", function() {

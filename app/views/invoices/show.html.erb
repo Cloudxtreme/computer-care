@@ -67,11 +67,15 @@
         });
       </script>
     </div>
+    <noscript class="alert alert-error" style="display:block;">
+      <p><b>Javascript must be enabled to continue</b></p>
+      <p>We're sorry but at this moment Javascript is required for payment.  Please enable it in your browser settings and refresh the page.</p>
+      <p>Alternatively, get in <%= link_to "contact", contact_path %> quoting your order number (<%= @order.id %>) and we can arrange another payment option.</p>
+    </noscript>
     <%= form_tag payment_order_invoice_path(@order.id), :method => :post, :class => "payment" do %>
       <input type="hidden" name="date"  id="date" disabled="disabled" value="<%= !@order.date.blank? ? "#{@order.date.month}/#{@order.date.day}/#{@order.date.year}" : "" %>"/>
       <input type="hidden" name="stripe-token" id="stripe-token" value="" />
       <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
-      <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       <fieldset id="payment">
         <div class="field">
           <%= label_tag :card_number, "Credit Card Number" %>

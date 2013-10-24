@@ -142,8 +142,7 @@
       <% end %>
       <div class="well">
         <h3><%= image_tag("lock.png") %> Secure credit card payment</h3>
-        <br>
-        <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+        <br>        
         <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
         <% if @errors.any? %>
           <div class="alert alert-error">
