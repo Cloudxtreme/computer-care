@@ -6,8 +6,13 @@
   border-radius: 5px;
   background-color: #fff;
 }
+
 #order-form fieldset, #quote-form fieldset {
   background-image: url("thatching_BG.png");
+}
+
+#order-form fieldset#payment {
+  background-image: url("thatching_BG_secure.png");
 }
 
 #order-form fieldset#options .options.well, #quote-form fieldset#options .options.well {
@@ -38,6 +43,32 @@
 #order-form header.active h1, #quote-form header.active h1 {
   color: #69A3CC;
 }
+
+/* payment form */
+#card_code {
+  width: 50px;
+}
+
+#payment label {
+  margin-bottom: 0;
+}
+
+#payment input {
+  margin-top: 5px;
+}
+
+#summary-next {
+  margin-top: 0 !important;
+}
+
+#payment .field {
+  margin-bottom: 18px;
+}
+
+#payment .card-icon {
+  margin-top: -5px;
+}
+
 
 #time_hour, #time_minute {
   width: auto;

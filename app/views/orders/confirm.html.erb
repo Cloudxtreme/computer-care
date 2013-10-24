@@ -16,13 +16,7 @@
     <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
     <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
   </header>
-  <fieldset class="main-content active" id="summary">
-    <% if !@accepted %>
-      <div class="alert alert-error">
-        <h5>You must accept the <a href="#">Terms & Conditions</a> below before continuing</h5> 
-      </div>
-    <% end %>    
-
+  <fieldset class="main-content active" id="summary">   
     <%= form_tag orders_path, :class => "form-inline" do %>
       <input type="hidden" name="building" value="<%= @order.building %>">
       <input type="hidden" name="email" value="<%= @order.email %>">
@@ -146,28 +140,46 @@
           <% end %>
         <% end %>
       <% end %>
-      <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-      <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
-      <div class="field">
-        <%= label_tag :card_number, "Credit Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil %>
-      </div>
-      <div class="field">
-        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil %>
-      </div>
-      <div class="field">
-        <%= label_tag :card_month, "Card Expiration" %>
-        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-      </div>
-      <br>
-      <label class="checkbox accept error">
-        <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
-      </label>
-      <br>
-      <a class="btn back js">back</a>
-      <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>      
+      <div class="well">
+        <h3><%= image_tag("lock.png") %> Secure credit card payment</h3>
+        <br>
+        <noscript class="alert alert-error" style="display:block;">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+        <div id="stripe-error" class="alert alert-error" style="display:none;"></div>
+        <% if @errors.any? %>
+          <div class="alert alert-error">
+              <% @errors.each do |err| %>
+                <p><%= err %></p>
+              <% end %>
+          </div>
+        <% end %>
+        <div class="field">          
+          <label for="card_number"><span class="red">*</span>Credit Card Number</label>
+          <label for="card_number"><span class="grey">The 16 digits on the front of your credit card</span></label>
+          <div id="card_num">
+            <%= text_field_tag :card_number, nil, name: nil %>
+            <%= image_tag("visa_icon.png", :class => "card-icon") %>
+            <%= image_tag("mastercard_icon.png", :class => "card-icon")%>
+            <%= image_tag("aexpress_icon.png", :class => "card-icon") %>
+          </div>
+        </div>
+        <div class="field">
+          <label for="card_month"><span class="red">*</span>Expiration date</label>
+          <label for="card_month"><span class="grey">The date your credit card expires.  Find this on the front of your credit card</span></label>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+        </div>
+        <div class="field">
+          <label for="card_code"><span class="red">*</span>Security Code <span class="grey">(or "CVC" or "CVV")</span></label>          
+          <label for="card_code"><span class="grey">The last 3 digits displayed on the back of your credit card</span></label>
+          <%= text_field_tag :card_code, nil, name: nil %>
+        </div>        
+        <label class="checkbox accept error">
+          <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
+        </label>
+        <br>
+        <a class="btn btn-large back js">back</a>
+        <%= submit_tag :complete, :class => "btn btn-large btn-primary", :id => "summary-next" %>        
+      </div>      
     <% end %>    
   </fieldset>    
   <footer class="stripe no-margin">
