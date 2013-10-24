@@ -10,6 +10,7 @@ class InvoicesController < ApplicationController
   end
 
   def payment
+    @errors = []
     @order = Order.find(params[:order_id])
     @invoice = @order.invoice
     @accepted = params[:accept_terms] && params[:accept_terms].eql?("on") ? true : false
@@ -34,30 +35,42 @@ class InvoicesController < ApplicationController
         :description => "Cheaper Computer Care"
       )
     rescue Stripe::CardError => e
-      redirect_to order_invoice_path(@order.id), :alert => e.message
-      return
+      @errors << "Something went wrong with your card payment: '#{e.message}'"  
+      @errors << "Please try again"
+      render :show
+      return  
     rescue Stripe::InvalidRequestError => e
-      redirect_to order_invoice_path(@order.id), :alert => e.message
+      if !e.message.include?("You cannot use a Stripe token more than once")
+        @errors << "Something went wrong with your card payment: '#{e.message}'"
+        @errors << "Please try again and contact us if the problem persists"
+      end
+      render :show
+      return    
+    end
+
+    if !response.paid
+      @errors << "Something went wrong with your card payment: '#{response.message}'"
+      @errors << "Please try again"
+      render :show
       return
-    rescue Exception => e
-      redirect_to order_invoice_path(@order.id), :alert => e.message
+    end
+
+    if !@accepted
+      @errors << "The terms and conditions must be accepted before  continuing"
+      render :show
       return      
-    end
+    end 
 
-    if @accepted && response.paid
-      @order.paid = true
-      @order.agreed_to_terms = true
-      @order.stripe_charge_id = response.id
-      @order.save
+    @order.paid = true
+    @order.agreed_to_terms = true
+    @order.stripe_charge_id = response.id
+    @order.save
 
-      # send confimation to customer
-      NotificationMailer.order_confirmation(@order).deliver
-      # send notification to admin
-      NotificationMailer.order_notification(@order).deliver
-      
-      redirect_to complete_orders_path
-    else
-      render 'show'
-    end
+    # send confimation to customer
+    NotificationMailer.order_confirmation(@order).deliver
+    # send notification to admin
+    NotificationMailer.order_notification(@order).deliver
+    
+    redirect_to complete_orders_path
   end
 end
