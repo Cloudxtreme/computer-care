@@ -29,7 +29,7 @@ class InvoicesController < ApplicationController
     stripe_token = params["stripe-token"]
     begin
       response = Stripe::Charge.create(
-        :amount => @order.total_cost * 100,
+        :amount => (@order.total_cost * 100).to_i,
         :currency => "gbp",
         :card => stripe_token,
         :description => "Cheaper Computer Care"
