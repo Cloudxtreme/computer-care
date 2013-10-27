@@ -8,6 +8,7 @@ gem 'json'
 gem 'execjs'
 gem 'therubyracer'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :production do
   gem 'unicorn'

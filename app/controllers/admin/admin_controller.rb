@@ -8,12 +8,17 @@ class Admin::AdminController < ApplicationController
 
 	private
 		def authenticate
-			authenticate_or_request_with_http_basic do |user, password|
-				sha256 = Digest::SHA256.new
-				user_hash = Digest::SHA1.hexdigest(user)
-				pass_hash = Digest::SHA1.hexdigest(password)
+			if session[:user_id]
+				user = Admin.find(session[:user_id])
+				if user
 
-				user_hash.eql?(ADMIN_CREDENTIALS["user"]) && pass_hash.eql?(ADMIN_CREDENTIALS["pass"])
+				else
+					redirect_to root_path
+					return
+				end
+			else
+				redirect_to root_path
+				return
 			end
 		end
 end

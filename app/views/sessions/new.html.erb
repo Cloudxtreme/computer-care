@@ -1,0 +1,18 @@
+<header class="stripe">
+  <h1 class="white">Sign In</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>
+</header>
+<div id="main-content">
+  <div class="service">
+    <%= form_tag sessions_path do %>
+      <div class="field">
+        <%= text_field_tag :email, nil, :placeholder => "email", :required => "required" %>
+      </div>
+      <div class="field">
+        <%= password_field_tag :password, nil, :placeholder => "password", :required => "required" %>
+      </div>
+      <%= submit_tag :submit, :class => "btn" %>
+    <% end %>
+  </div>
+</div>

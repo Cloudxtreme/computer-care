@@ -10,5 +10,9 @@
     <%= link_to "Newsletter Subscribers", admin_newsletter_users_path %><br>
     <%= link_to "Registered Student Discounts", admin_student_codes_path %><br>
     <%= link_to "Tip of the Week archive", admin_tips_url %>
+    <br><br>
+    <%= form_tag session_path(session[:user_id]), :method => :delete do %>
+      <%= submit_tag "log out", :class => "btn" %>
+    <% end %>
   </div>
 </div>

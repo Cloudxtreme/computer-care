@@ -10,6 +10,7 @@ ComputerCare::Application.routes.draw do
     match "privacy", to: "pages#privacy"
     match "slider", to: "pages#slider"
 
+  resources :sessions
   resources :tips
   resources :newsletter_users
   resources :student_codes
