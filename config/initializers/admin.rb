@@ -1,1 +1,0 @@
-ADMIN_CREDENTIALS = YAML.load_file("#{Rails.root}/config/admin.yml")
