@@ -1,3 +1,7 @@
+#card_month, #card_year {
+  width: auto;
+}
+
 #order-form #options .checkout-service, #quote-form #options .checkout-service {
   border: 1px solid #ccc;
   padding: 7px;
