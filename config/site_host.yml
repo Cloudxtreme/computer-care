@@ -2,4 +2,4 @@ development:
   host: localhost:3000
 
 production:
-  host: ancient-plains-6432.herokuapp.com
+  host: cheapercomputercare.com

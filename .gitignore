@@ -26,3 +26,6 @@ app/assets/.DS_Store
 app/.DS_Store
 
 log/production.log
+config/mandrill.yml
+
+config/stripe.yml
