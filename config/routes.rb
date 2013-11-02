@@ -1,14 +1,14 @@
 ComputerCare::Application.routes.draw do
     root to: "pages#home"
-    match "send", to: "pages#contact_send"
-    match "home", to: "pages#home"
-    match "contact", to: "pages#contact"
-    match "about", to: "pages#about"
-    match "offers", to: "pages#offers"
-    match "faq", to: "pages#faq"
-    match "terms", to: "pages#terms"
-    match "privacy", to: "pages#privacy"
-    match "slider", to: "pages#slider"
+    get "send", to: "pages#contact_send"
+    get "home", to: "pages#home"
+    get "contact", to: "pages#contact"
+    get "about", to: "pages#about"
+    get "offers", to: "pages#offers"
+    get "faq", to: "pages#faq"
+    get "terms", to: "pages#terms"
+    get "privacy", to: "pages#privacy"
+    get "slider", to: "pages#slider"
 
   resources :sessions
   resources :tips
@@ -44,7 +44,7 @@ ComputerCare::Application.routes.draw do
   resources :companies
 
   namespace :admin do
-  	match "dashboard", to: "admin#dashboard"
+  	get "dashboard", to: "admin#dashboard"
       
       resources :tips
       resources :newsletter_users
