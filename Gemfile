@@ -7,10 +7,12 @@ gem 'rest-client'
 gem 'json'
 gem 'execjs'
 gem 'therubyracer'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', '1.8.8'
+#gem 'stripe'#, :git => 'https://github.com/stripe/stripe-ruby'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'mysql2'
 gem 'protected_attributes'
+gem 'activesupport'
 
 group :production do
   #gem 'unicorn'
