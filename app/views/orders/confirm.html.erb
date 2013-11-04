@@ -70,15 +70,14 @@
         <b><%= service_name %> - <%= number_to_currency(service.base_cost, unit: "&pound;", separator: ".", delimiter: "") %></b><br>
         <% option_values.each do |service_option, value| %>
           <% option = ServiceOption.find(service_option) %>
-
           <% if option.is_arbitrary %>
             <% if !value.blank? %>
-              <%= "#{option.name}: " if !option.name.blank? %><%= value %><br>
+              <%= "#{option.label}: " if !option.label.blank? %><%= value %><br>
             <% end %>
           <% else %>
             <% option_value = ServiceOptionValue.find(value) %>
             <% total += option_value.additional_cost %>
-            <%= "#{option.name}: " if !option.name.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if option_value.additional_cost > 0 %><br>
+            <%= "#{option.label}: " if !option.label.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if option_value.additional_cost > 0 %><br>
           <% end %>
         <% end %>
         <br>
