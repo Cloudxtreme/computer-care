@@ -304,10 +304,10 @@
       #slider article div.pull-left {
         width: 85%;
       }
-      #slider article img#newsletter-background {
-        display: none;
+      #slider #newsletter-background {
+        display:none;
       }
-      #new_newsletter_user {
+      #slider #new_newsletter_user {
         right: auto;
         left: auto;
         bottom: 0;
@@ -343,6 +343,25 @@
     display: block;
   }
 
+      #newsletter-offers #newsletter-background, #slider #newsletter-background {
+        display: none;
+      }
+      #newsletter-offers form#new_newsletter_user {
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+      #newsletter-offers {
+        right: auto;
+        left: auto;
+        bottom: 0;
+        padding: 7px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);   
+      }
   .grid article {
     width: 100%;
     height: auto;
