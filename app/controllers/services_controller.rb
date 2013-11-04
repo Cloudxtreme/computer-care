@@ -8,9 +8,16 @@ class ServicesController < ApplicationController
     end
 
     def quote_send
+        @missing = []
+        @invalid = []        
         @service = Service.find(params[:id])
         @order = Order.new(params[:order])
         @order.paid = false
+
+        if !params[:options]
+            redirect_to quote_service_path(@service.id), :alert => "Error: no service options received"
+            return
+        end
 
         if params[:options].any? and @order.save
             params[:options].each do |service_id, options|
@@ -27,7 +34,7 @@ class ServicesController < ApplicationController
 
             render 'quote_complete'
         else
-            render :new
+            render :quote
         end
     end
 
