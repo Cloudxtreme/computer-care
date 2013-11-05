@@ -138,4 +138,7 @@ textarea.LV_invalid_field:active {
   #order-form textarea, #order-form select {
     width: 100%;
   }
+  #order-form #options .checkout-service, #quote-form #options .checkout-service {
+    width: auto;
+  }
 }
