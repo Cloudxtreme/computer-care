@@ -1,6 +1,14 @@
 jQuery(function($){
   $("#order-form").show();
   
+  $("#order-form fieldset a.second-last, #quote-form fieldset a.second-last").click(function() {
+    $("footer.stripe").show();
+  });
+
+  $("#order-form fieldset a.last, #quote-form fieldset a.last").click(function() {
+    $("footer.stripe").hide();
+  });
+
   var $preselected = $(".checkout-service .checkbox input[type='checkbox']:checked");
   var $container = $preselected.closest(".checkout-service");
   $container.addClass("selected", function() {
@@ -177,7 +185,7 @@ jQuery(function($){
     }
   });
 
-  $("#order-form").on("click", "fieldset.active a.back", function() {
+  $("#order-form, #quote-form").on("click", "fieldset.active a.back", function() {
     $fieldset = $(this).closest("fieldset");
     open_previous_section($fieldset);
   });

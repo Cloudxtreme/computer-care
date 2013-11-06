@@ -39,7 +39,7 @@
               <% end %>
             </div>
         <br>        
-        <a class="btn btn-primary next js">next</a>
+        <a class="btn btn-primary next js second-last">next</a>
       </fieldset>
       <header class="stripe no-margin order">
         <span>2</span><h1>Customer Information</h1>
@@ -103,10 +103,10 @@
           </div>
         </div>
         <div style="clear:both;"></div>
-        <a class="btn back js">back</a>
+        <a class="btn back js last">back</a>
         <%= submit_tag "Get Quote", :class => "next btn btn-primary" %>
       </fieldset>
-      <footer class="stripe no-margin">   
+      <footer class="stripe no-margin" style="display:none;">   
         <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
         <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>        
       </footer>

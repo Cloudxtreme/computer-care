@@ -108,7 +108,7 @@
       </ul>         
     </div>
     <a href="<%= new_order_path(:back => "true") %>" class="btn back js">back</a>
-    <a class="btn btn-primary next js">next</a>
+    <a class="btn btn-primary next js second-last">next</a>
   </fieldset>
   <header class="stripe no-margin order <%= 'active' if @errors.any? %>">
     <span>5</span><h1>Payment</h1>
@@ -182,12 +182,12 @@
           <input type="checkbox" class="required agreement" name="accept_terms"> I have read and agree with the <a href="#">Terms & Conditions</a>
         </label>
         <br>
-        <a class="btn back js">back</a>
+        <a class="btn back js last">back</a>
         <%= submit_tag :complete, :class => "btn btn-primary", :id => "summary-next" %>        
       </div>      
     <% end %>    
   </fieldset>    
-  <footer class="stripe no-margin">
+  <footer class="stripe no-margin" style="display:none;">
     <div class="img-shadow left top"><%= image_tag("shadow-top-left.png") %></div>
     <div class="img-shadow right top"><%= image_tag("shadow-top-right.png") %></div>     
   </footer>
