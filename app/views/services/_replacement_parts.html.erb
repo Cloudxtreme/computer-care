@@ -12,7 +12,7 @@
         So if your computer screen is cracked, if your keyboard has keys no longer working, or any other problems then answer a few simple questions for a <b>no obligation</b> quote today. 
       </p>
       
-      <% service = Service.where("lower(name) = 'replacement parts'").first %>
+      <% service = Service.where("lower(name) = 'replacement laptop parts'").first %>
       <% if service %>
         <% if service.can_checkout %>
           <a href="<%= new_order_path('service' => service.id) %>" class="btn btn-large btn-success">Click here to get started</a>

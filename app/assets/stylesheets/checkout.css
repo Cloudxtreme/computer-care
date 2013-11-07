@@ -2,6 +2,10 @@
   width: auto;
 }
 
+#order-form select {
+  width: 250px;
+}
+
 #order-form #options .checkout-service, #quote-form #options .checkout-service {
   border: 1px solid #ccc;
   padding: 7px;

@@ -37,6 +37,7 @@
               <input type="checkbox" class="service" data-base="<%= service.base_cost %>" data-can-checkout="<%= service.can_checkout %>" name="services[]" value="<%= service.id %>" <%= "checked" if is_checked(session["options"], service.id.to_s) || (params[:service] && params[:service].to_s == service.id.to_s) %>> <%= service.name %>
             </label>  
             <div class="options well <%= "hidden-option" if (session["options"].any? && !session["options"].has_key?(service.id.to_s)) || (params[:service] && params[:service].to_s != service.id.to_s) || (session["options"].empty? && params[:service].blank?) %>">
+              <p>Please complete the following information:</p>
               <% service.service_options.each do |option| %> 
                 <% if option.is_arbitrary %>
                   <label for="<%= option.id %>"><%= option.name %></label>
