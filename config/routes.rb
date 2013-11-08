@@ -1,6 +1,6 @@
 ComputerCare::Application.routes.draw do
     root to: "pages#home"
-    get "send", to: "pages#contact_send"
+    post "send", to: "pages#contact_send"
     get "home", to: "pages#home"
     get "contact", to: "pages#contact"
     get "about", to: "pages#about"
