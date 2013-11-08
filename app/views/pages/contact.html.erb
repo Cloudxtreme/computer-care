@@ -11,8 +11,8 @@
           If you have any questions please fill out the form below and we will be happy to help. 
         </p>
         <%= form_tag send_path do %>
-          <input type="text" name="blanktest" style="position:absolute;left:-999px" value="">
-          <input type="text" name="tokentest" style="position:absolute;left:-999px" value="<%= session[:spam_token] %>">          
+          <input type="text" name="blanktest" style="position:absolute;left:-2999px" value="">
+          <input type="text" name="tokentest" style="position:absolute;left:-2999px" value="<%= session[:spam_token] %>">          
           <input type="text" required class="input" id="contact_name" placeholder="Name" name="name"><br>
           <input type="text" required class="input" id="contact_email" placeholder="Email" name="email"><br>
           <input type="text" required class="input" id="contact_number" placeholder="Contact Number" name="phone"><br>
