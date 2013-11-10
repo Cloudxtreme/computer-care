@@ -270,11 +270,17 @@ function open_previous_section($current) {
 
 function update_cost() {
   var total = 0;
-  $("input[type='checkbox']:checked").each(function() {      
-    total = total + parseInt($(this).data("base"));
+  $("input[type='checkbox']:checked").each(function() {
+    var cost = parseFloat($(this).data("base"));
+    if(cost && cost > 0) {
+      total = total + parseFloat($(this).data("base"));
+    }
   });
   $(".selected :selected", "#options").each(function() {
-    total = total + parseInt($(this).data("additional"));
+    var cost = parseFloat($(this).data("additional"));
+    if(cost && cost > 0) {
+      total = total + parseFloat($(this).data("additional"));
+    }
   });
 
   $("#total-cost").html(total);
