@@ -269,7 +269,7 @@ function open_previous_section($current) {
 }
 
 function update_cost() {
-  var total = 0;
+  var total = 0.0;
   $("input[type='checkbox']:checked").each(function() {
     var cost = parseFloat($(this).data("base"));
     if(cost && cost > 0) {
