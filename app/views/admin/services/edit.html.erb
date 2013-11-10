@@ -10,7 +10,7 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       <%= f.label :base_cost %>
-      <%= f.number_field :base_cost %><br>
+      <%= f.number_field :base_cost, :step=>"0.01" %><br>
       <%= f.label :can_checkout %>
       <%= f.check_box :can_checkout %><br><br>
       <%= f.submit :submit, :class => "btn" %>
