@@ -273,13 +273,13 @@ function update_cost() {
   $("input[type='checkbox']:checked").each(function() {
     var cost = parseFloat($(this).data("base"));
     if(cost && cost > 0) {
-      total = total + parseFloat($(this).data("base"));
+      total = total + cost;
     }
   });
   $(".selected :selected", "#options").each(function() {
     var cost = parseFloat($(this).data("additional"));
     if(cost && cost > 0) {
-      total = total + parseFloat($(this).data("additional"));
+      total = total + cost;
     }
   });
 
