@@ -15,12 +15,12 @@
         <b><%= service_name %></b><br>
         <% service.order_service_options.each do |option| %>
           <% service_option = ServiceOption.find(option.service_option_id) %>
-          <% option_name = service_option.name %>
+          <% option_name = service_option.label %>
           <% if service_option.is_arbitrary %>
-            <%= option_name %>: <%= option.value %><br>
+            <%= "#{option_name}: " if !option_name.blank? %><%= option.value %><br>
           <% else %>
             <% value = ServiceOptionValue.find(option.value) %>
-            <%= option_name %>: <%= value.name %><br>
+            <%= "#{option_name}: " if !option_name.blank? %><%= value.name %><br>
           <% end %>
         <% end %>
         <br>

@@ -65,7 +65,7 @@
             <b>Option Deleted</b>
             <% next %>
           <% end %>
-          <% option_name = service_option.name %>
+          <% option_name = service_option.label %>
           <% if service_option.is_arbitrary %>
             <%= "#{option_name}: " if !option_name.blank? %><%= option.value %><br>
           <% else %>
