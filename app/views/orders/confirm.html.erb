@@ -77,7 +77,7 @@
           <% else %>
             <% option_value = ServiceOptionValue.find(value) %>
             <% total += option_value.additional_cost %>
-            <%= "#{option.label}: " if !option.label.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if option_value.additional_cost > 0 %><br>
+            <%= "#{option.label}: " if !option.label.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if !option_value.nil? && !option_value.additional_cost.nil? %><br>
           <% end %>
         <% end %>
         <br>
