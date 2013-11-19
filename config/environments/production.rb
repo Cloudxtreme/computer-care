@@ -63,7 +63,7 @@ ComputerCare::Application.configure do
     :user_name => "mandrill@cheaper-computer-care.co.uk",
     :password  => "FYLjnmKtVCBZHTA5meHV9w", # SMTP password is any valid API key
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    :domain => 'ancient-plains-6432.herokuapp.com', # your domain to identify your server when connecting
+    :domain => 'cheapercomputercare.com', # your domain to identify your server when connecting
   }
   config.action_mailer.asset_host = ""
 
