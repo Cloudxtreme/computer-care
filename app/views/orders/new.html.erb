@@ -156,6 +156,7 @@
             $("#date-fallback_day").remove();
             $("#date").removeAttr("disabled");
             $( "#datepicker" ).datepicker({
+              beforeShowDay: $.datepicker.noWeekends,
               minDate: +parseInt(min_date), 
               altField: '#date'
             });
