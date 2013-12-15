@@ -5,6 +5,7 @@
 </header>
 <div id="main-content">
   <div class="service">
+    <%= link_to "back", admin_dashboard_path %>
     <%= form_tag admin_discount_codes_path do %>
       <label for="discount">Discount %</label><input type="number" name="discount" id="discount"><br>
       <%= submit_tag "generate code", :class => "btn" %>
