@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104201130) do
+ActiveRecord::Schema.define(version: 20131203214338) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "discount_codes", force: true do |t|
+    t.string   "code"
+    t.boolean  "is_valid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "discount"
   end
 
   create_table "invoices", force: true do |t|

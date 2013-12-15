@@ -49,6 +49,7 @@ ComputerCare::Application.routes.draw do
       resources :tips
       resources :newsletter_users
       resources :student_codes
+      resources :discount_codes
       resources :orders do
         resource :invoice
         member do

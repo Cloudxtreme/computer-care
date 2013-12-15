@@ -59,12 +59,14 @@ class OrdersController < ApplicationController
     
     @discount = nil
     if !params[:discount].blank?
-      @discount = StudentCode.where("code" => params[:discount]).first 
+      @discount = StudentCode.where("code" => params[:discount]).first
+      @discount = DiscountCode.where("code" => params[:discount]).first if @discount.nil?
       session["discount"] = params[:discount] if @discount && @discount.is_valid
     end
     if session["discount"]
       #session["discount"] = nil
-      @discount = StudentCode.where("code" => session[:discount]).first 
+      @discount = StudentCode.where("code" => session[:discount]).first
+      @discount = DiscountCode.where("code" => session[:discount]).first if @discount.nil?
     end
     
     required = ["first-name", "last-name", "email", "telephone", "building", "street", "town", "postcode"]
@@ -92,7 +94,8 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @discount = nil
     if !params[:discount].blank?
-      @discount = StudentCode.where("code" => params[:discount]).first 
+      @discount = StudentCode.where("code" => params[:discount]).first
+      @discount = DiscountCode.where("code" => params[:discount]).first if @discount.nil?
       session["discount"] = params[:discount] if @discount && @discount.is_valid
     end
     @services = Service.all
@@ -107,7 +110,7 @@ class OrdersController < ApplicationController
 
         if !option.is_arbitrary
           option_value = ServiceOptionValue.find(value)
-          total += option_value.additional_cost
+          total += option_value.additional_cost if option_value.additional_cost && option_value.additional_cost > 0
         end
       end
     end
@@ -115,9 +118,11 @@ class OrdersController < ApplicationController
     @order.total_cost = total
 
     if params[:discount]
-      @discount = StudentCode.where("code" => params[:discount]).first 
+      @discount = StudentCode.where("code" => params[:discount]).first
+      @discount = DiscountCode.where("code" => params[:discount]).first if @discount.nil?
       if @discount
-        @order.total_cost = @order.total_cost - (@order.total_cost * 0.15)
+        discount_percent = @discount.respond_to?("discount") ? @discount.discount  : 15
+        @order.total_cost = @order.total_cost - (@order.total_cost * (discount_percent.to_f / 100.0))
         @order.student_code_id = @discount.id
         @discount.is_valid = false
         @discount.save

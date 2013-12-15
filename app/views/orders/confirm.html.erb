@@ -76,15 +76,16 @@
             <% end %>
           <% else %>
             <% option_value = ServiceOptionValue.find(value) %>
-            <% total += option_value.additional_cost %>
+            <% total += option_value.additional_cost if option_value.additional_cost && option_value.additional_cost > 0 %>
             <%= "#{option.label}: " if !option.label.blank? %><%= option_value.name %><%= raw " - #{number_to_currency(option_value.additional_cost, unit: "&pound;", separator: ".", delimiter: "")}" if !option_value.nil? && !option_value.additional_cost.nil? && option_value.additional_cost > 0 %><br>
           <% end %>
         <% end %>
         <br>
       <% end %>
       <% if @discount && @discount.is_valid %>
-        <b>Discount: 15%</b><br>
-        <b>Total Cost:</b> <%= number_to_currency(total - (total * 0.15), unit: "&pound;", separator: ".", delimiter: "") %>
+        <% discount_percent = @discount.respond_to?("discount") ? @discount.discount  : 15 %>
+        <b>Discount: <%= discount_percent.to_s + "%" %></b><br>
+        <b>Total Cost:</b> <%= number_to_currency(total - (total * (discount_percent.to_f / 100.0)), unit: "&pound;", separator: ".", delimiter: "") %>
       <% else %>
         <b>Total Cost:</b> <%= number_to_currency(total, unit: "&pound;", separator: ".", delimiter: "") %>
       <% end %>

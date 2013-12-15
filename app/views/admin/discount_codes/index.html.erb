@@ -1,0 +1,33 @@
+<header class="stripe">
+  <h1>Discount Codes</h1>
+  <div class="img-shadow left"><%= image_tag("shadow-left.png") %></div>
+  <div class="img-shadow right"><%= image_tag("shadow-right.png") %></div>  
+</header>
+<div id="main-content">
+  <div class="service">
+    <%= form_tag admin_discount_codes_path do %>
+      <label for="discount">Discount %</label><input type="number" name="discount" id="discount"><br>
+      <%= submit_tag "generate code", :class => "btn" %>
+    <% end %>
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Discount</th>
+        <th>Valid</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+      <% @codes.each_with_index do |code, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= code.code %></td>
+          <td><%= code.discount %>%</td>
+          <td><%= code.is_valid %></td>
+          <td><%= code.created_at %></td>
+          <td><%= button_to "Delete", { action: "destroy", id: code.id }, method: :delete, :class => "btn" %></td>
+        </tr>
+      <% end %>
+    </table>  
+  </div>
+</div>
